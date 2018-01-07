@@ -1,10 +1,21 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { Arrullo } from '../pages/arrullo/arrullo.component';
+import { Alimentar } from '../pages/alimentar/alimentar.component';
+import { Panal } from '../pages/panal/panal.component';
+import { Calificacion } from '../pages/calificacion/calificacion.component';
+import { Bluetooth } from '../pages/bluetooth/bluetooth.component';
+import { Contrasena } from '../pages/contrasena/contrasena.component';
+import { Vestimenta } from '../pages/vestimenta/vestimenta.component';
+import { Actividades } from '../pages/actividades/actividades.component';
+import { AltaAlumno } from '../pages/altaAlumno/altalumno.component';
+import { Configuracion } from '../pages/configuracion/configuracion';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +33,15 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Alimentar', component: Alimentar },
+      { title: 'Arrullo', component: Arrullo },
+      { title: 'Pañal', component: Panal},
+      { title: 'Vestimenta', component: Vestimenta},
+      { title: 'Bluetooth', component: Bluetooth},
+      { title: 'Contraseña', component: Contrasena},
+      { title: 'Actividades', component: Actividades},
+      { title: 'Alta alumno', component: AltaAlumno},
+      { title: 'Configuración', component: Configuracion}
     ];
 
   }

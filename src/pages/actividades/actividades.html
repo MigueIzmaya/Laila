@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><h1>Actividades</h1></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <button class = "large-button" ion-button icon-start outline block (click)="goArrullar()">
+          <ion-icon ios="ios-happy" md="md-happy"></ion-icon>
+            Arrullar
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button class = "large-button" ion-button icon-start outline block (click)="goPanal()">
+          <ion-icon ios="ios-sad" md="md-sad"></ion-icon>
+            Pañal
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-6>
+        <button class = "large-button" ion-button icon-start outline block (click)="goAlimentar()">
+          <ion-icon ios="ios-nutrition" md="md-nutrition"></ion-icon>
+            Alimentar
+        </button>
+      </ion-col>
+
+      <ion-col col-6>
+        <button class = "large-button" ion-button icon-start outline block (click)="goVestimenta()">
+          <ion-icon ios="ios-man" md="md-man"></ion-icon>
+            Vestimenta
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-6>
+        <button class = "large-button" ion-button icon-start outline block (click)="goBluetooth()">
+          <ion-icon ios="ios-bluetooth" md="md-bluetooth"></ion-icon>
+            Bluetooth
+        </button>
+      </ion-col>
+
+      <ion-col col-6>
+        <button class = "large-button" ion-button icon-start outline block (click)="goConfiguracion()">
+          <ion-icon ios="ios-construct" md="md-construct"></ion-icon>
+            Configuración
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
