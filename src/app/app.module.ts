@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { DatePicker } from '@ionic-native/date-picker';
 import { Calendar } from '@ionic-native/calendar';
 import { NgCalendarModule  } from 'ionic2-calendar';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 
 
 import { MyApp } from './app.component';
@@ -19,6 +20,7 @@ import { Vestimenta } from '../pages/vestimenta/vestimenta.component';
 import { Actividades } from '../pages/actividades/actividades.component';
 import { RegistroPage } from '../pages/registro/registro';
 import { AltaAlumno } from '../pages/altaAlumno/altalumno.component';
+import { Configuracion } from '../pages/configuracion/configuracion';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -51,7 +53,8 @@ export const firebaseConfig = {
     Vestimenta,
     Actividades,
     RegistroPage,
-    AltaAlumno
+    AltaAlumno,
+    Configuracion
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ export const firebaseConfig = {
     Vestimenta,
     Actividades,
     RegistroPage,
-    AltaAlumno
+    AltaAlumno,
+    Configuracion
   ],
   providers: [
     StatusBar,
@@ -83,7 +87,8 @@ export const firebaseConfig = {
     Calendar,
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    IniciarsesionProvider
+    IniciarsesionProvider,
+    BluetoothSerial
   ]
 })
 export class AppModule {}

@@ -10,6 +10,7 @@ import { Alimentar } from '../alimentar/alimentar.component';
 import { Contrasena } from '../contrasena/contrasena.component';
 import { Vestimenta } from '../vestimenta/vestimenta.component';
 import { Panal } from '../panal/panal.component';
+import { Configuracion } from '../configuracion/configuracion';
 
 
 @Component({
@@ -25,6 +26,11 @@ export class Actividades {
   }
 
   goArrullar(){ this.navCtrl.push( Arrullo ); }
-  
+  goEructar(){ this.navCtrl.push( Alimentar ); }
+  goBluetooth(){ this.navCtrl.push( Bluetooth ); }
+  goAbrigar(){ this.navCtrl.push( Vestimenta ); }
+  goPanal(){ this.navCtrl.push( Panal ); }
+  goConfiguracion(){ this.navCtrl.push( Configuracion ); }
+
 
 }
