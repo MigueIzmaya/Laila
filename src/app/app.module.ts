@@ -21,6 +21,8 @@ import { Actividades } from '../pages/actividades/actividades.component';
 import { RegistroPage } from '../pages/registro/registro';
 import { AltaAlumno } from '../pages/altaAlumno/altalumno.component';
 import { Configuracion } from '../pages/configuracion/configuracion';
+import { Actividad } from '../pages/actividad/actividad';
+import { ListaAlumnos } from '../pages/lista-alumnos/lista-alumnos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -54,7 +56,9 @@ export const firebaseConfig = {
     Actividades,
     RegistroPage,
     AltaAlumno,
-    Configuracion
+    Configuracion,
+    Actividad,
+    ListaAlumnos
   ],
   imports: [
     BrowserModule,
@@ -78,7 +82,9 @@ export const firebaseConfig = {
     Actividades,
     RegistroPage,
     AltaAlumno,
-    Configuracion
+    Configuracion,
+    Actividad,
+    ListaAlumnos
   ],
   providers: [
     StatusBar,

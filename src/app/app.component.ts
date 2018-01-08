@@ -15,6 +15,7 @@ import { Vestimenta } from '../pages/vestimenta/vestimenta.component';
 import { Actividades } from '../pages/actividades/actividades.component';
 import { AltaAlumno } from '../pages/altaAlumno/altalumno.component';
 import { Configuracion } from '../pages/configuracion/configuracion';
+import { Actividad } from '../pages/actividad/actividad';
 
 
 @Component({
@@ -41,7 +42,8 @@ export class MyApp {
       { title: 'Contraseña', component: Contrasena},
       { title: 'Actividades', component: Actividades},
       { title: 'Alta alumno', component: AltaAlumno},
-      { title: 'Configuración', component: Configuracion}
+      { title: 'Configuración', component: Configuracion},
+      { title: 'Actividad', component: Actividad}
     ];
 
   }
