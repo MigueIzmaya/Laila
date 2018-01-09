@@ -9,30 +9,28 @@
 
 <ion-content padding class="login-content">
   <div class="login-box">
-    <ion-row text-center center>
-      <ion-col>
-        <ion-item>
-          <ion-label stacked>Número de Boleta: </ion-label>
-              <ion-input type="text"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+    <form (ngSubmit)="registrar_alumno()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list>
 
-    <ion-row text-center center>
-      <ion-col>
-        <ion-item>
-          <ion-label stacked>Nombre: </ion-label>
-              <ion-input type="text"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+            <ion-item>
+              <ion-input type="text" placeholder="Número de boleta" name="boleta" [(ngModel)]="registerAlumno.boleta" required></ion-input>
+            </ion-item>
 
-    <ion-row text-center center>
-      <ion-col>
-        <ion-item>
-          <button ion-button color="secondary" round>Cambiar la contraseña</button>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+            <ion-item>
+              <ion-input type="text" placeholder="Password" name="nombre" [(ngModel)]="registerAlumno.nombre" required></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row text-center center>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit" >Registrar Alumno</button>
+        </ion-col>
+      </ion-row>
+    </form>
   </div>
 </ion-content>
