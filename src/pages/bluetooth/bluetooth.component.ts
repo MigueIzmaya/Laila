@@ -36,10 +36,10 @@ pages: Array<{title: string, component: any}>;
   }
 
   isConnect(){
-    this.devices="Conenctando...";
+    this.devices="Conectando...";
     this.bluetoothSerial.connect("00:06:66:80:AD:70").subscribe(peripheralData =>{
-      this.devices = "Entre aqui";
-      
+      this.devices = peripheralData;
+
     });
   }
 
