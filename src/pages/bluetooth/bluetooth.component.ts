@@ -23,7 +23,7 @@ pages: Array<{title: string, component: any}>;
 
   isConnect(){
     this.bluetoothSerial.isConnected().then(device =>{
-      this.read();
+      this.write();
     }).catch(device=>{
       this.connect();
     });
