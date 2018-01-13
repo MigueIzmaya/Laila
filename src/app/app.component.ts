@@ -24,7 +24,8 @@ import { Actividad } from '../pages/actividad/actividad';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  //rootPage: any = HomePage;
+  rootPage: any = Actividades;
 
   pages: Array<{title: string, component: any}>;
 
