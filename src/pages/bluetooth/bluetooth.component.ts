@@ -36,6 +36,7 @@ pages: Array<{title: string, component: any}>;
   }
 
   isConnect(){
+    this.devices="Conenctando...";
     this.bluetoothSerial.connect("00:06:66:80:AD:70").map(item =>{
       this.devices = item;
     });
