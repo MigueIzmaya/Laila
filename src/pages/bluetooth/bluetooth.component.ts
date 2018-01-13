@@ -11,7 +11,7 @@ export class Bluetooth {
 pages: Array<{title: string, component: any}>;
   constructor(public navCtrl: NavController, private bluetoothSerial: BluetoothSerial) {
     //this.devices = "";
-    this.devices = "Hola mundo";
+    this.devices = "Presiona para buscar";
 
 
   }
@@ -19,9 +19,9 @@ pages: Array<{title: string, component: any}>;
   buscar() {
     //this.devices="lala";
     this.bluetoothSerial.isEnabled().then(device=>{
-      this.devices = device;
+      this.isConnect();
     }).catch(connect=>{
-      this.devices = connect;
+      this.devices = "El bluetooth está desactivado";
     });
 
 
@@ -36,7 +36,9 @@ pages: Array<{title: string, component: any}>;
   }
 
   isConnect(){
-
+    this.bluetoothSerial.connect("00:06:66:80:AD:70").map(item =>{
+      this.devices = item;
+    });
   }
 
   noConnect(){
