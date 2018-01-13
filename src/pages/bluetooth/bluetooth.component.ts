@@ -40,9 +40,9 @@ pages: Array<{title: string, component: any}>;
     this.bluetoothSerial.connect("00:06:66:80:AD:70").subscribe(peripheralData =>{
       this.devices = "Conectado";
       this.bluetoothSerial.write('Hola Mundo').then(device=>{
-        this.devices = device;
+        this.devices = "Si escribi";
       }).catch(device=>{
-        this.devices = device;        
+        this.devices = device;
       });
 
     });
