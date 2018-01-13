@@ -20,6 +20,8 @@ pages: Array<{title: string, component: any}>;
     //this.devices="lala";
     this.bluetoothSerial.isEnabled().then(device=>{
       this.devices = device;
+    }).catch(connect=>{
+      this.devices = connect;
     });
 
 
