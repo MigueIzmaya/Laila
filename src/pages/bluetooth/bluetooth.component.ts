@@ -7,17 +7,23 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
   templateUrl: 'bluetooth.html'
 })
 export class Bluetooth {
-  devices:any = [];
-
+  devices:any;
+pages: Array<{title: string, component: any}>;
   constructor(public navCtrl: NavController, private bluetoothSerial: BluetoothSerial) {
-    this.devices = [];
+    //this.devices = "";
+    this.devices = "Hola mundo";
 
 
   }
 
   buscar() {
+    //this.devices="lala";
+
     this.bluetoothSerial.list().then(device=>{
-      this.devices.push(device);
+      //this.devices.push(device);
+      //console.log(device);
+      this.devices = device;
+      //this.devices.push(device);
 
     });
 
