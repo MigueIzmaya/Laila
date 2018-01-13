@@ -18,14 +18,26 @@ pages: Array<{title: string, component: any}>;
 
   buscar() {
     //this.devices="lala";
+    this.bluetoothSerial.isEnabled().then(device=>{
+      this.devices = device;
+    });
 
+
+    /*this.bluetoothSerial.connect("00:06:66:80:AD:70").map
     this.bluetoothSerial.list().then(device=>{
       //this.devices.push(device);
       //console.log(device);
       this.devices = device;
       //this.devices.push(device);
 
-    });
+    });*/
+  }
+
+  isConnect(){
+
+  }
+
+  noConnect(){
 
   }
 
