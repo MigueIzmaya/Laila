@@ -37,6 +37,13 @@ pages: Array<{title: string, component: any}>;
 
   isConnect(){
     this.devices="Conectando...";
+
+    this.bluetoothSerial.isConnected().then(device =>{
+      this.devices=device;
+    }).catch(device=>{
+      this.devices=device;
+    });
+
     this.bluetoothSerial.connect("00:06:66:80:AD:70").subscribe(peripheralData =>{
       this.devices = "Conectado";
       this.bluetoothSerial.write('Hola Mundo').then(device=>{
@@ -44,7 +51,6 @@ pages: Array<{title: string, component: any}>;
       }).catch(device=>{
         this.devices = device;
       });
-
     });
   }
 
