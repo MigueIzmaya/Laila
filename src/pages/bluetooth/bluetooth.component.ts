@@ -15,7 +15,8 @@ pages: Array<{title: string, component: any}>;
 
   buscar() {
     this.bluetoothSerial.isEnabled().then(device=>{
-      this.isConnect();
+      //this.isConnect();
+      this.listDevices();
     }).catch(connect=>{
       this.devices = "El bluetooth está desactivado";
     });
