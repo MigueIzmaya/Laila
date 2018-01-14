@@ -52,8 +52,10 @@ pages: Array<{title: string, component: any}>;
 
   listDevices(){
     this.bluetoothSerial.discoverUnpaired().then(device=>{
+      this.devices = "Aqui";
       this.devices = device;
     }).catch(error=>{
+      this.devices = "Error";
       this.devices = error;
     });
   }
