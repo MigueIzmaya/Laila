@@ -36,7 +36,7 @@ pages: Array<{title: string, component: any}>;
   }
 
   write(){
-    this.bluetoothSerial.write('Hola Mundo').then(device=>{
+    this.bluetoothSerial.write('Hola Mundo \n').then(device=>{
       this.devices = "Si escribi";
     }).catch(device=>{
       this.devices = device;
