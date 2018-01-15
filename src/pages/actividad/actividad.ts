@@ -9,8 +9,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class Actividad {
 
   myDate:any;
+  activity:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.myDate = "14/01/2018";
+    this.myDate = "";
+    this.activity = "";
   }
 
 

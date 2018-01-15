@@ -8,11 +8,38 @@
 
 
 <ion-content padding>
+  <div class="login-box">
+    <ion-row text-center center>
+      <ion-col>
+        <ion-item>
+        <ion-label>Actividad</ion-label>
+          <ion-select [(ngModel)]="activity">
+            <ion-option value="a">Abrigar</ion-option>
+            <ion-option value="m">Arrullo</ion-option>
+            <ion-option value="m">Eructar</ion-option>
+            <ion-option value="m">Cambiar el pañal</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-item>
-    <ion-label>Date</ion-label>
-    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate">
-    </ion-datetime>
-  </ion-item>
+    <ion-row text-center center>
+      <ion-col>
+        <ion-item>
+          <ion-label>Fecha</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY HH:mm:ss" [(ngModel)]="myDate">
+          </ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row text-center center>
+      <ion-col>
+        <ion-item>
+          <button ion-button color="secondary" round>Añadir actividad</button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </div>
 
 </ion-content>
