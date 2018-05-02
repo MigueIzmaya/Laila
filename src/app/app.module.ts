@@ -32,6 +32,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { IniciarsesionProvider } from '../providers/iniciarsesion/iniciarsesion';
+import { TasksServiceProvider } from '../providers/tasks-service/tasks-service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBprUY9O9KqFtpuag9VY9M7k1c2tLk4-tk",
@@ -97,7 +98,8 @@ export const firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     IniciarsesionProvider,
     BluetoothSerial,
-    SQLite
+    SQLite,
+    TasksServiceProvider
   ]
 })
 export class AppModule {}
