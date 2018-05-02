@@ -6,13 +6,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-actividad',
   templateUrl: 'actividad.html',
 })
+
 export class Actividad {
 
-  myDate:any;
+  miDia:any;
+  miHora:any;
   activity:any;
+  actividades:any[][];
+  registerActivity = {miDia: '', miHora: '', activity: ''};
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.myDate = "";
-    this.activity = "";
+
+  }
+
+  registrar_actividad(){
+
+    /*this.actividades.push(this.registerActivity.miDia);
+    this.actividades.push(this.registerActivity.miHora);
+    this.actividades.push(this.registerActivity.activity);*/
   }
 
 

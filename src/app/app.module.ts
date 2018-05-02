@@ -5,6 +5,7 @@ import { DatePicker } from '@ionic-native/date-picker';
 import { Calendar } from '@ionic-native/calendar';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { SQLite } from '@ionic-native/sqlite';
 
 
 import { MyApp } from './app.component';
@@ -65,7 +66,8 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgCalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -94,7 +96,8 @@ export const firebaseConfig = {
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     IniciarsesionProvider,
-    BluetoothSerial
+    BluetoothSerial,
+    SQLite
   ]
 })
 export class AppModule {}
