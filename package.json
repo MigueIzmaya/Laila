@@ -33,6 +33,7 @@
     "cordova-plugin-calendar": "^5.0.0",
     "cordova-plugin-datepicker": "^0.9.3",
     "cordova-sqlite-storage": "^2.2.0",
+    "debug-mode": "^1.0.8",
     "firebase": "^4.8.0",
     "intl": "^1.2.5",
     "ionic-angular": "3.8.0",
