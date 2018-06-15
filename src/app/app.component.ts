@@ -17,6 +17,7 @@ import { Actividades } from '../pages/actividades/actividades.component';
 import { AltaAlumno } from '../pages/altaAlumno/altalumno.component';
 import { Configuracion } from '../pages/configuracion/configuracion';
 import { Actividad } from '../pages/actividad/actividad';
+import { TasksServiceProvider } from '../providers/tasks-service/tasks-service';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class MyApp {
   constructor(public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public sqlite: SQLite) {
+    public sqlite: SQLite,
+    public tasksService: TasksServiceProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -59,6 +61,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.createDatabase();
     });
   }
 
@@ -66,5 +69,22 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  private createDatabase(){
+    this.sqlite.create({
+      name: 'laila.db',
+      location: 'default' // the location field is required
+    })
+    .then((db) => {
+      this.tasksService.setDatabase(db);
+      this.tasksService.createTableActividad().then((data) => {}, (error) => {});
+      this.tasksService.createTableAlumno().then((data) => {}, (error) => {});
+      this.tasksService.createTableMaestro().then((data) => {}, (error) => {});
+      //return this.tasksService.createTable();
+    })
+    .catch(error =>{
+      console.error(error);
+    });
   }
 }

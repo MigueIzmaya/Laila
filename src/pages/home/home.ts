@@ -30,19 +30,6 @@ export class HomePage {
 
   verifica_usuario( usuario:string, password:string ){
 
-    this.firebaseAuth
-      .auth
-      .signInWithEmailAndPassword(this.registerCredentials.email, this.registerCredentials.password)
-      .then(value => {
-
-        console.log('Nice, it worked!');
-        this.navCtrl.setRoot(Actividades);
-      })
-      .catch(err => {
-        console.log('Something went wrong:',err.message);
-        this.showAlert("Aviso",err.message,"Aceptar");
-      });
-
 
   }
 

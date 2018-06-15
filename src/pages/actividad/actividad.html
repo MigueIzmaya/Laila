@@ -15,10 +15,14 @@
           <ion-item>
           <ion-label>Actividad</ion-label>
             <ion-select [(ngModel)]="registerActivity.activity" name="activity">
-              <ion-option value="abrigar">Abrigar</ion-option>
-              <ion-option value="arrullo">Arrullo</ion-option>
-              <ion-option value="eructar">Eructar</ion-option>
-              <ion-option value="panal">Cambiar el pañal</ion-option>
+              <!-- Abrigar = 0-->
+              <ion-option value="0">Abrigar</ion-option>
+              <!-- arrullo = 1-->
+              <ion-option value="1">Arrullo</ion-option>
+              <!-- eructar = 2-->
+              <ion-option value="2">Eructar</ion-option>
+              <!-- panal = 3-->
+              <ion-option value="3">Cambiar el pañal</ion-option>
             </ion-select>
           </ion-item>
         </ion-col>
