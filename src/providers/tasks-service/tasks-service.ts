@@ -77,8 +77,9 @@ export class TasksServiceProvider {
     .then(response => {
       let Maestro = [];
       for (let index = 0; index < response.rows.length; index ++){
-        Maestro.push(response.rows.item(index));
+        Maestro.push(response.rows.item(index).username);
       }
+
       return Promise.resolve(Maestro);
     })
     .catch(error => Promise.reject(error));
