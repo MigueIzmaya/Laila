@@ -33,11 +33,15 @@ export class RegistroPage {
       this.maestro.usuario = this.registerCredentials.usuario;
       this.maestro.contrasena = this.registerCredentials.password;
       this.maestro.nombre = this.registerCredentials.nombre;
+      this.showAlert("Insercion","Estoy aqui","Aceptar");
       this.tasksService.insertTableMaestro(this.maestro).then(response => {
         this.showAlert("Insercion",response,"Aceptar");
+        this.showAlert("Insercion","Positivo","Aceptar");
       }).catch(error =>{
         this.showAlert("Insercion",error,"Aceptar");
+        this.showAlert("Insercion","Negativo","Aceptar");
       });
+      this.showAlert("Insercion","Sali de aqui","Aceptar");
 
     }
 
