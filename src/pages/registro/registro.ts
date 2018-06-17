@@ -15,6 +15,7 @@ export class RegistroPage {
   registerCredentials = {nombre: '', usuario: '',password: '', password1: ''};
   valor:any;
   maestro:any;
+  maestros: any[] = [];
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
@@ -26,13 +27,8 @@ export class RegistroPage {
     if (this.registerCredentials.password != this.registerCredentials.password1){
       this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
     }
-    this.tasksService.getMaestroByUserName(this.registerCredentials.usuario).then(response=>{
 
-      this.showAlert("Aviso",response.values.toString,"Aceptar");
-    }).catch(error =>{
-      this.showAlert("Aviso",error.toString,"Aceptar");
-    })
-
+    this.getMaestros();
 
     /*else if(this.tasksService.getMaestroByUserName(this.registerCredentials.usuario) != null){
       this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
@@ -47,6 +43,15 @@ export class RegistroPage {
       });
 
     }*/
+
+  }
+
+  getMaestros(){
+    this.tasksService.getMaestroByUserName(this.registerCredentials.usuario).then(maestros=>{
+      this.maestros = maestros;
+    }).catch(error =>{
+      this.maestros = error;
+    })
 
   }
 
