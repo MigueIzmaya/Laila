@@ -26,8 +26,12 @@ export class RegistroPage {
     if (this.registerCredentials.password != this.registerCredentials.password1){
       this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
     }
-    let A = this.tasksService.getMaestroByUserName(this.registerCredentials.usuario);
-    this.showAlert("Aviso",A,"Aceptar");
+    this.tasksService.getMaestroByUserName(this.registerCredentials.usuario).then(response=>{
+      this.showAlert("Aviso",response,"Aceptar");
+    }).catch(error =>{
+      this.showAlert("Aviso",error,"Aceptar");      
+    })
+
 
     /*else if(this.tasksService.getMaestroByUserName(this.registerCredentials.usuario) != null){
       this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
