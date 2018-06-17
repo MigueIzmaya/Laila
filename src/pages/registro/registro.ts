@@ -34,11 +34,13 @@ export class RegistroPage {
       this.maestro.contrasena = this.registerCredentials.password;
       this.maestro.nombre = this.registerCredentials.nombre;
 
-      this.tasksService.insertTableMaestro(this.maestro).then(response => {
+      this.valor = this.maestro.usuario + " " + this.maestro.contrasena + " " + this.maestro.nombre;
+
+      /*this.tasksService.insertTableMaestro(this.maestro).then(response => {
         this.valor = response;
       }).catch(error =>{
         this.valor = error;
-      });
+      });*/
 
     }
 
