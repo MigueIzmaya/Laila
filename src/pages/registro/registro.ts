@@ -35,9 +35,9 @@ export class RegistroPage {
       this.maestro.nombre = this.registerCredentials.nombre;
 
       this.tasksService.insertTableMaestro(this.maestro).then(response => {
-        this.valor = "Positivo";
+        this.valor = response;
       }).catch(error =>{
-        this.valor = "Negativo";
+        this.valor = error;
       });
 
     }
