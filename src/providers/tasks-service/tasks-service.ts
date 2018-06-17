@@ -50,7 +50,13 @@ export class TasksServiceProvider {
 
   insertTableMaestro(maestro:any){
     let sql = 'INSERT INTO Maestro(id_maestro, usuario, contrasena, nombre) VALUES(?,?,?)';
-    return this.db.executeSql(sql, [maestro.usuario, maestro.contrasena, maestro.nombre]);
+    return this.db.executeSql(sql, [maestro.usuario, maestro.contrasena, maestro.nombre])
+    .then(response => {
+      return response;
+    })
+    .catch(error => {
+      return error;
+    });
   }
 
   insertTableActividad(actividad:any){
@@ -61,6 +67,20 @@ export class TasksServiceProvider {
   insertTableActividadAlumno(actividadAlumno:any){
     let sql = 'INSERT INTO ActividadAlumno(id_actividadAlumno, fechaInicio, duracion, calificacion, Actividad_idActividad, Alumno_idAlumno) VALUES(?,?,?,?,?,?)';
     return this.db.executeSql(sql, [actividadAlumno.id_actividadAlumno, actividadAlumno.fechaInicio, actividadAlumno.duracion, actividadAlumno.calificacion, actividadAlumno.Actividad_idActividad, actividadAlumno.Alumno_idAlumno]);
+  }
+
+  getMaestroByUserName(username: string){
+    let sql = 'SELECT * FROM Alumno where username = ?';
+    return this.db.executeSql(sql,[username])
+    .then(response => {
+      let Maestro = [];
+      for (let index = 0; index < response.rows.length; index ++){
+        Maestro.push(response.rows.item(index));
+      }
+      return Promise.resolve(Maestro);
+    })
+    .catch(error => Promise.reject(error));
+
   }
 
   getAllAlumnos(){

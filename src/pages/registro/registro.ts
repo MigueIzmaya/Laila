@@ -25,12 +25,18 @@ export class RegistroPage {
 
     if (this.registerCredentials.password != this.registerCredentials.password1){
       this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
-    } else {
+    } else if(this.tasksService.getMaestroByUserName(this.registerCredentials.usuario) != null){
+      this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
+    }else {
       this.maestro.usuario = this.registerCredentials.usuario;
       this.maestro.contrasena = this.registerCredentials.password;
       this.maestro.nombre = this.registerCredentials.nombre;
+      this.tasksService.insertTableMaestro(this.maestro).then(response => {
+        this.showAlert("Insercion",response,"Aceptar");
+      }).catch(error =>{
+        this.showAlert("Insercion",error,"Aceptar");
+      });
 
-      this.tasksService.insertTableMaestro(this.maestro);
     }
 
   }
