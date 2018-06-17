@@ -80,7 +80,7 @@ export class MyApp {
     })
     .then((db) => {
       this.tasksService.setDatabase(db);
-      this.tasksService.createTableActividad().then((data) => { this.showAlert(data)}, (error) => {});
+      this.tasksService.createTableActividad().then((data) => { this.showAlert("Esto es data"+data)}, (error) => { this.showAlert(error)});
       this.tasksService.createTableAlumno().then((data) => {}, (error) => {});
       this.tasksService.createTableMaestro().then((data) => {}, (error) => {});
       //return this.tasksService.createTable();
