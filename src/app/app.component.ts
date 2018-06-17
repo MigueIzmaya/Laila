@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SQLite } from '@ionic-native/sqlite';
+import { AlertController } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -35,7 +36,8 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public sqlite: SQLite,
-    public tasksService: TasksServiceProvider) {
+    public tasksService: TasksServiceProvider,
+    public alertCtrl: AlertController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -78,7 +80,7 @@ export class MyApp {
     })
     .then((db) => {
       this.tasksService.setDatabase(db);
-      this.tasksService.createTableActividad().then((data) => {}, (error) => {});
+      this.tasksService.createTableActividad().then((data) => { this.showAlert(data)}, (error) => {});
       this.tasksService.createTableAlumno().then((data) => {}, (error) => {});
       this.tasksService.createTableMaestro().then((data) => {}, (error) => {});
       //return this.tasksService.createTable();
@@ -86,5 +88,14 @@ export class MyApp {
     .catch(error =>{
       console.error(error);
     });
+  }
+
+  showAlert(data:any) {
+    const alert = this.alertCtrl.create({
+      title: 'Base',
+      subTitle: data,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }
