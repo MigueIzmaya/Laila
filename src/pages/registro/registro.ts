@@ -28,9 +28,9 @@ export class RegistroPage {
     }
     this.tasksService.getMaestroByUserName(this.registerCredentials.usuario).then(response=>{
 
-      this.showAlert("Aviso",response,"Aceptar");
+      this.showAlert("Aviso",response.toString,"Aceptar");
     }).catch(error =>{
-      this.showAlert("Aviso",error,"Aceptar");
+      this.showAlert("Aviso",error.toString,"Aceptar");
     })
 
 
