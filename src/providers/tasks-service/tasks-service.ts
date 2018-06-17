@@ -52,11 +52,13 @@ export class TasksServiceProvider {
     let sql = 'INSERT INTO Maestro(id_maestro, usuario, contrasena, nombre) VALUES(?,?,?)';
     return this.db.executeSql(sql, [maestro.usuario, maestro.contrasena, maestro.nombre])
     .then(response => {
-      return response;
+      let Maestro = [];
+      for (let index = 0; index < response.rows.length; index ++){
+        Maestro.push(response.rows.item(index));
+      }
+      return Promise.resolve(Maestro);
     })
-    .catch(error => {
-      return error;
-    });
+    .catch(error => Promise.reject(error));
   }
 
   insertTableActividad(actividad:any){
