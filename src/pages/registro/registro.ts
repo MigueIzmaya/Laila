@@ -30,19 +30,16 @@ export class RegistroPage {
     }else if(this.getMaestros()){
       this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
     }else {
-      /*this.maestro.usuario = this.registerCredentials.usuario;
+      this.maestro.usuario = this.registerCredentials.usuario;
       this.maestro.contrasena = this.registerCredentials.password;
-      this.maestro.nombre = this.registerCredentials.nombre;*/
-      this.valor = this.registerCredentials.usuario;
-      /*this.tasksService.insertTableMaestro(this.maestro).then(response => {
-        this.showAlert("Insercion",response,"Aceptar");
-        this.showAlert("Insercion","Positivo","Aceptar");
+      this.maestro.nombre = this.registerCredentials.nombre;
+
+      this.tasksService.insertTableMaestro(this.maestro).then(response => {
+        this.valor = "Positivo";
       }).catch(error =>{
-        this.showAlert("Insercion",error,"Aceptar");
-        this.showAlert("Insercion","Negativo","Aceptar");
+        this.valor = "Negativo";
       });
-      this.showAlert("Insercion","Sali de aqui","Aceptar");
-*/
+
     }
 
   }

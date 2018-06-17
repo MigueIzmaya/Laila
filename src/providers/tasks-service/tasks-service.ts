@@ -49,7 +49,7 @@ export class TasksServiceProvider {
   }
 
   insertTableMaestro(maestro:any){
-    let sql = 'INSERT INTO Maestro(id_maestro, usuario, contrasena, nombre) VALUES(?,?,?)';
+    let sql = 'INSERT INTO Maestro(usuario, contrasena, nombre) VALUES(?,?,?)';
     return this.db.executeSql(sql, [maestro.usuario, maestro.contrasena, maestro.nombre])
     .then(response => {
       let Maestro = [];
