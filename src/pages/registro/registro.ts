@@ -16,6 +16,7 @@ export class RegistroPage {
   valor:any;
   maestro:any;
   maestros: any[] = [];
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
@@ -48,11 +49,9 @@ export class RegistroPage {
 
   getMaestros(){
     this.tasksService.getMaestroByUserName(this.registerCredentials.usuario).then(maestros=>{
-      for(let a of maestros){
-        this.maestros = a.username;        
-      }
+      this.valor = "Entre aqui";
     }).catch(error =>{
-      this.maestros = error;
+      this.valor = "Error";
     })
 
   }
