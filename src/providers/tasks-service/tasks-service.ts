@@ -34,7 +34,7 @@ export class TasksServiceProvider {
   }
 
   createTableMaestro(){
-    let sql = 'CREATE TABLE IF NOT EXISTS Maestro(id_maestro INTEGER PRIMARY KEY AUTOINCREMENT, usuario TEXT, contrasena TEXT, nombre TEXT, FOREIGN KEY(id_alumno) REFERENCES Alumno(id_alumno))';
+    let sql = 'CREATE TABLE IF NOT EXISTS Maestro(id_maestro INTEGER PRIMARY KEY AUTOINCREMENT, usuario TEXT, contrasena TEXT, nombre TEXT)';
     return this.db.executeSql(sql, []);
   }
 
@@ -49,8 +49,8 @@ export class TasksServiceProvider {
   }
 
   insertTableMaestro(maestro:any){
-    let sql = 'INSERT INTO Maestro(id_maestro, usuario, contrasena, nombre, id_alumno) VALUES(?,?,?,?,?)';
-    return this.db.executeSql(sql, [maestro.id_alumno, maestro.usuario, maestro.contrasena, maestro.nombre, maestro.id_alumno]);
+    let sql = 'INSERT INTO Maestro(id_maestro, usuario, contrasena, nombre) VALUES(?,?,?)';
+    return this.db.executeSql(sql, [maestro.usuario, maestro.contrasena, maestro.nombre]);
   }
 
   insertTableActividad(actividad:any){

@@ -28,7 +28,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   //rootPage: any = HomePage;
-  rootPage: any = Actividades;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -36,8 +36,7 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public sqlite: SQLite,
-    public tasksService: TasksServiceProvider,
-    public alertCtrl: AlertController) {
+    public tasksService: TasksServiceProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -80,7 +79,7 @@ export class MyApp {
     })
     .then((db) => {
       this.tasksService.setDatabase(db);
-      this.tasksService.createTableActividad().then((data) => { this.showAlert("Esto es data"+data)}, (error) => { this.showAlert(error)});
+      this.tasksService.createTableActividad().then((data) => { }, (error) => {});
       this.tasksService.createTableAlumno().then((data) => {}, (error) => {});
       this.tasksService.createTableMaestro().then((data) => {}, (error) => {});
       //return this.tasksService.createTable();
@@ -88,14 +87,5 @@ export class MyApp {
     .catch(error =>{
       console.error(error);
     });
-  }
-
-  showAlert(data:any) {
-    const alert = this.alertCtrl.create({
-      title: 'Base',
-      subTitle: data,
-      buttons: ['OK']
-    });
-    alert.present();
   }
 }

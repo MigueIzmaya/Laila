@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
-import { IniciarsesionProvider } from '../../providers/iniciarsesion/iniciarsesion';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { TasksServiceProvider } from '../../providers/tasks-service/tasks-service';
 
 
 
@@ -14,25 +12,27 @@ import { HomePage } from '../home/home';
 })
 export class RegistroPage {
 
-  registerCredentials = {email: '', password: ''};
+  registerCredentials = {nombre: '', usuario: '',password: '', password1: ''};
   valor:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authService: IniciarsesionProvider, private firebaseAuth: AngularFireAuth, public alertCtrl: AlertController) {
+  maestro:any;
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public tasksService: TasksServiceProvider) {
   }
 
   registrar(){
 
-    this.firebaseAuth
-      .auth
-      .createUserWithEmailAndPassword(this.registerCredentials.email, this.registerCredentials.password)
-      .then(value => {
-        console.log('Success!', value);
-        this.showAlert("Aviso","El usuario: "+this.registerCredentials.email+" ha sido registrado con éxito","Aceptar");
-        this.navCtrl.push( RegistroPage );
-      })
-      .catch(err => {
-        this.showAlert("Aviso",err.message,"Aceptar");
-        console.log('Something went wrong:',err.message);
-      });
+    if (this.registerCredentials.password != this.registerCredentials.password1){
+      this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
+    } else {
+      this.maestro.usuario = this.registerCredentials.usuario;
+      this.maestro.contrasena = this.registerCredentials.password;
+      this.maestro.nombre = this.registerCredentials.nombre;
+
+      this.tasksService.insertTableMaestro(this.maestro);
+    }
+
   }
 
   showAlert(titulo, contenido, boton) {
