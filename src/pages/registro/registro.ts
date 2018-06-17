@@ -30,10 +30,10 @@ export class RegistroPage {
     }else if(this.getMaestros()){
       this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
     }else {
-      this.maestro.usuario = this.registerCredentials.usuario;
+      /*this.maestro.usuario = this.registerCredentials.usuario;
       this.maestro.contrasena = this.registerCredentials.password;
-      this.maestro.nombre = this.registerCredentials.nombre;
-      this.valor = "Lala";
+      this.maestro.nombre = this.registerCredentials.nombre;*/
+      this.valor = this.registerCredentials.usuario;
       /*this.tasksService.insertTableMaestro(this.maestro).then(response => {
         this.showAlert("Insercion",response,"Aceptar");
         this.showAlert("Insercion","Positivo","Aceptar");
@@ -52,7 +52,7 @@ export class RegistroPage {
       return true;
     }).catch(error =>{
       return false;
-    })
+    });
 
   }
 
