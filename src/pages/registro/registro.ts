@@ -14,7 +14,7 @@ export class RegistroPage {
 
   registerCredentials = {nombre: '', usuario: '',password: '', password1: ''};
   valor:any;
-  maestro:any;
+  maestro = {nombre: '', usuario: '',contrasena: ''};
   maestros: any[] = [];
 
   constructor(public navCtrl: NavController,
@@ -35,12 +35,12 @@ export class RegistroPage {
       this.maestro.nombre = this.registerCredentials.nombre;
 
       this.valor = this.maestro.usuario + " " + this.maestro.contrasena + " " + this.maestro.nombre;
-
-      /*this.tasksService.insertTableMaestro(this.maestro).then(response => {
+      console.log(this.valor);
+      this.tasksService.insertTableMaestro(this.maestro).then(response => {
         this.valor = response;
       }).catch(error =>{
         this.valor = error;
-      });*/
+      });
 
     }
 
