@@ -77,18 +77,18 @@ export class TasksServiceProvider {
   }
 
   getMaestroByUserName(username: string){
-    let sql = 'SELECT * FROM Maestro';
-    return this.db.executeSql(sql,[])
+    let sql = 'SELECT * FROM Maestro where usuario = ?';
+    return this.db.executeSql(sql,[username])
     .then(response => {
       let Maestro = [];
       for (let index = 0; index < response.rows.length; index ++){
-        this.showAlert("getMaestro",response.rows.item(index).usuario,"Positivo");
-        Maestro.push(response.rows.item(index).username);
+        //this.showAlert("getMaestro",response.rows.item(index).usuario,"Positivo");
+        Maestro.push(response.rows.item(index).usuario);
       }
 
       return Promise.resolve(Maestro);
     })
-    .catch(error => { this.showAlert("insertTableMaestro",error,"Error"); Promise.reject(error)});
+    .catch(error => {Promise.reject(error)});
 
   }
 

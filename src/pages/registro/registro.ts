@@ -33,7 +33,8 @@ export class RegistroPage {
       this.maestro.usuario = this.registerCredentials.usuario;
       this.maestro.contrasena = this.registerCredentials.password;
       this.maestro.nombre = this.registerCredentials.nombre;
-      this.tasksService.insertTableMaestro(this.maestro);/*.then(response => {
+      //this.tasksService.insertTableMaestro(this.maestro);
+      /*.then(response => {
         this.valor = response;
       }).catch(error =>{
         this.valor = error;
@@ -45,7 +46,7 @@ export class RegistroPage {
 
   getMaestros(usuario:any){
     this.tasksService.getMaestroByUserName(usuario).then(maestros=>{
-      return true;
+      this.valor = maestros;
     }).catch(error =>{
       return false;
     });
