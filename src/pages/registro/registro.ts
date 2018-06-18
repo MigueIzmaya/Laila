@@ -46,8 +46,8 @@ export class RegistroPage {
 
   }
 
-  getMaestros(){
-    this.tasksService.getMaestroByUserName(this.registerCredentials.usuario).then(maestros=>{
+  getMaestros(usuario:any){
+    this.tasksService.getMaestroByUserName(usuario).then(maestros=>{
       return true;
     }).catch(error =>{
       return false;

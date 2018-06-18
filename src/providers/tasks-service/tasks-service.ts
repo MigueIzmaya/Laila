@@ -57,9 +57,10 @@ export class TasksServiceProvider {
     .then(response => {
       let Maestro = [];
       for (let index = 0; index < response.rows.length; index ++){
+        this.showAlert("insertTableMaestro",response.rows.item(index),"Positivo");
         Maestro.push(response.rows.item(index));
       }
-      this.showAlert("insertTableMaestro",Maestro,"Positivo");
+
       //return Promise.resolve(Maestro);
     })
     .catch(error => {this.showAlert("insertTableMaestro",error,"Error");}/*Promise.reject(error)*/);
@@ -76,17 +77,18 @@ export class TasksServiceProvider {
   }
 
   getMaestroByUserName(username: string){
-    let sql = 'SELECT * FROM Alumno where username = ?';
+    let sql = 'SELECT * FROM Maestro where usuario = ?';
     return this.db.executeSql(sql,[username])
     .then(response => {
       let Maestro = [];
       for (let index = 0; index < response.rows.length; index ++){
+        this.showAlert("insertTableMaestro",response.rows.item(index),"Positivo");
         Maestro.push(response.rows.item(index).username);
       }
 
       return Promise.resolve(Maestro);
     })
-    .catch(error => Promise.reject(error));
+    .catch(error => { this.showAlert("insertTableMaestro",error,"Error"); Promise.reject(error)});
 
   }
 
