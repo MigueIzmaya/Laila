@@ -57,7 +57,7 @@ export class TasksServiceProvider {
     .then(response => {
       let Maestro = [];
       for (let index = 0; index < response.rows.length; index ++){
-        this.showAlert("insertTableMaestro",response.rows.item(index).usuario,"Positivo");
+        this.showAlert("insertTableMaestro",response.rows.item(index),"Positivo");
         Maestro.push(response.rows.item(index));
       }
 
@@ -82,7 +82,7 @@ export class TasksServiceProvider {
     .then(response => {
       let Maestro = [];
       for (let index = 0; index < response.rows.length; index ++){
-        this.showAlert("insertTableMaestro",response.rows.item(index),"Positivo");
+        this.showAlert("getMaestro",response.rows.item(index).usuario,"Positivo");
         Maestro.push(response.rows.item(index).username);
       }
 
