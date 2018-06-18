@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 //import { Http } from '@angular/http';
-
+import { AlertController } from 'ionic-angular';
 import { SQLiteObject } from '@ionic-native/sqlite';
 import 'rxjs/add/operator/map';
 
@@ -15,7 +15,7 @@ export class TasksServiceProvider {
 
   db: SQLiteObject = null;
 
-  constructor() {}
+  constructor(public alertCtrl: AlertController) {}
 
   setDatabase(db: SQLiteObject){
     if(this.db === null){
@@ -49,7 +49,8 @@ export class TasksServiceProvider {
   }
 
   insertTableMaestro(maestro:any){
-    let sql = 'INSERT INTO Maestro(usuario, contrasena, nombre) VALUES(?,?,?)';
+    this.showAlert("insertTableMaestro",maestro.usuario,"Aceptar");
+    /*let sql = 'INSERT INTO Maestro(usuario, contrasena, nombre) VALUES(?,?,?)';
     return this.db.executeSql(sql, [maestro.usuario, maestro.contrasena, maestro.nombre])
     .then(response => {
       let Maestro = [];
@@ -58,7 +59,7 @@ export class TasksServiceProvider {
       }
       return Promise.resolve(Maestro);
     })
-    .catch(error => Promise.reject(error));
+    .catch(error => Promise.reject(error));*/
   }
 
   insertTableActividad(actividad:any){
@@ -125,6 +126,15 @@ update(task: any){
 delete(task: any){
   let sql = 'DELETE FROM tasks WHERE id=?';
   return this.db.executeSql(sql, [task.id]);
+}
+
+showAlert(titulo, contenido, boton) {
+  let alert = this.alertCtrl.create({
+    title: titulo,
+    subTitle: contenido,
+    buttons: [boton]
+  });
+  alert.present();
 }
 
 }
