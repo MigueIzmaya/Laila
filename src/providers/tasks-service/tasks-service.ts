@@ -77,8 +77,8 @@ export class TasksServiceProvider {
   }
 
   getMaestroByUserName(username: string){
-    let sql = 'SELECT * FROM Maestro where usuario = ?';
-    return this.db.executeSql(sql,[username])
+    let sql = 'SELECT * FROM Maestro';
+    return this.db.executeSql(sql,[])
     .then(response => {
       let Maestro = [];
       for (let index = 0; index < response.rows.length; index ++){
