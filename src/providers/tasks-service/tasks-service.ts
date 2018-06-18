@@ -50,6 +50,8 @@ export class TasksServiceProvider {
 
   insertTableMaestro(maestro:any){
     this.showAlert("insertTableMaestro",maestro.usuario,"Aceptar");
+    this.showAlert("insertTableMaestro",maestro.contrasena,"Aceptar");
+    this.showAlert("insertTableMaestro",maestro.nombre,"Aceptar");
     /*let sql = 'INSERT INTO Maestro(usuario, contrasena, nombre) VALUES(?,?,?)';
     return this.db.executeSql(sql, [maestro.usuario, maestro.contrasena, maestro.nombre])
     .then(response => {
