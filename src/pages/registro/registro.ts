@@ -33,9 +33,6 @@ export class RegistroPage {
       this.maestro.usuario = this.registerCredentials.usuario;
       this.maestro.contrasena = this.registerCredentials.password;
       this.maestro.nombre = this.registerCredentials.nombre;
-
-      this.valor = this.maestro.usuario + " " + this.maestro.contrasena + " " + this.maestro.nombre;
-      console.log(this.valor);
       this.tasksService.insertTableMaestro(this.maestro);/*.then(response => {
         this.valor = response;
       }).catch(error =>{
