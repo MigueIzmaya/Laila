@@ -76,13 +76,12 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, [actividadAlumno.id_actividadAlumno, actividadAlumno.fechaInicio, actividadAlumno.duracion, actividadAlumno.calificacion, actividadAlumno.Actividad_idActividad, actividadAlumno.Alumno_idAlumno]);
   }
 
-  getMaestroByUserName(username: string){
+  getMaestroByUserName(username: String){
     let sql = 'SELECT * FROM Maestro where usuario = ?';
     return this.db.executeSql(sql,[username])
     .then(response => {
       let Maestro = [];
       for (let index = 0; index < response.rows.length; index ++){
-        //this.showAlert("getMaestro",response.rows.item(index).usuario,"Positivo");
         Maestro.push(response.rows.item(index).usuario);
       }
 
