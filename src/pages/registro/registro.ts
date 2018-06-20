@@ -53,24 +53,24 @@ export class RegistroPage {
   }
 
   getMaestros(usuario:String): boolean {
-    let retorno:boolean;
+    let retorno:boolean = false;
 
-    this.tasksService.getMaestroByUserName(usuario)
+    return this.tasksService.getMaestroByUserName(usuario)
     .then(maestros => {
       this.maestros = maestros;
       for (let index = 0; index < this.maestros.length; index++){
         //this.valor = "Valor ingresado: " + usuario + "Valor base: " + this.maestros[index].usuario;
          if(this.maestros[index].usuario === usuario){
            //this.valor = this.valor + " Entre aqui";
-           retorno = true;
+           return true;
          }
       }
-      retorno = false;
+      return false;
       //this.showAlert("getMaestros",this.maestros[0].usuario,"Accept");
     }).catch(error =>{
-      retorno = false;
+      return false;
     });
-    return retorno;
+
   }
 
   showAlert(titulo, contenido, boton) {
