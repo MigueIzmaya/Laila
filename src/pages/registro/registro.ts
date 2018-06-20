@@ -38,7 +38,7 @@ export class RegistroPage {
           this.maestro.nombre = this.registerCredentials.nombre;
           this.maestro.contrasena = this.registerCredentials.password;
           this.showAlert("Nombre de usuario","Todo bien", "Aceptar");
-          //this.tasksService.insertTableMaestro(this.maestro);
+          this.tasksService.insertTableMaestro(this.maestro);
         }
 
       }).catch(error=>{ this.showAlert("Error","Ocurrio un error al momento de insertar el usuario", "Aceptar"); })
