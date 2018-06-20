@@ -30,6 +30,7 @@ export class RegistroPage {
       this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
     }else if(this.getMaestros(this.registerCredentials.usuario)){
       this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
+      this.valor = "Lanze el show alert";
     }else {
       this.maestro.usuario = this.registerCredentials.usuario;
       this.maestro.contrasena = this.registerCredentials.password;
