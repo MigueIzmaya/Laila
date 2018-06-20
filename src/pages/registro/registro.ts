@@ -26,31 +26,27 @@ export class RegistroPage {
 
   registrar(){
 
+    let registro:any;
+
     if (this.registerCredentials.password != this.registerCredentials.password1){
       this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
+    } else {
+      this.getMaestros(this.registerCredentials.usuario)
+      .then(data=>{ registro = data; })
+      .catch(error=>{ registro = error; })
+
+      if(registro){
+        this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
+      }else{
+        this.maestro.usuario = this.registerCredentials.usuario;
+        this.maestro.contrasena = this.registerCredentials.password;
+        this.maestro.nombre = this.registerCredentials.nombre;
+
+        this.valor = this.maestro.usuario + " " + this.maestro.contrasena + " " + this.maestro.nombre;
+        //this.tasksService.insertTableMaestro(this.maestro);
+
+      }
     }
-
-    let as = this.getMaestros(this.registerCredentials.usuario)
-    .then(data=>{ return data; })
-    .catch(error=>{ return error; })
-
-    this.valor = as;
-    /*else if(this.getMaestros(this.registerCredentials.usuario)){
-      this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
-      this.valor = "Lanze el show alert";
-    }else {
-      this.maestro.usuario = this.registerCredentials.usuario;
-      this.maestro.contrasena = this.registerCredentials.password;
-      this.maestro.nombre = this.registerCredentials.nombre;
-      //this.tasksService.insertTableMaestro(this.maestro);
-      /*.then(response => {
-        this.valor = response;
-      }).catch(error =>{
-        this.valor = error;
-      });
-
-    }*/
-
   }
 
   getMaestros(usuario:String){
