@@ -14,6 +14,7 @@ import 'rxjs/add/operator/map';
 export class TasksServiceProvider {
 
   db: SQLiteObject = null;
+  maestros: {nombre: '', usuario: '',contrasena: ''}[] = [];
 
   constructor(public alertCtrl: AlertController) {}
 
@@ -85,6 +86,36 @@ export class TasksServiceProvider {
       return Promise.resolve(Maestro);
     })
     .catch(error => {Promise.reject(error)});
+  }
+
+  getAllMaestrosByUserNameAndPassword(usuario:String, contrasena: String): any {
+    return this.getMaestroByUserName(usuario)
+    .then(maestros => {
+      this.maestros = maestros;
+      for (let index = 0; index < this.maestros.length; index++){
+         if(this.maestros[index].contrasena === contrasena){
+           return true;
+         }
+      }
+      return false;
+    }).catch(error =>{
+      return false;
+    });
+  }
+
+  getAllMaestrosByUserName(usuario:String){
+    return this.getMaestroByUserName(usuario)
+    .then(maestros => {
+      this.maestros = maestros;
+      for (let index = 0; index < this.maestros.length; index++){
+         if(this.maestros[index].usuario === usuario){
+           return true;
+         }
+      }
+      return false;
+    }).catch(error =>{
+      return false;
+    });
 
   }
 
