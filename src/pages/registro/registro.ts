@@ -59,9 +59,9 @@ export class RegistroPage {
     .then(maestros => {
       this.maestros = maestros;
       for (let index = 0; index < this.maestros.length; index++){
-        this.valor = "Valor ingresado: " + usuario + "Valor base: " + this.maestros[index].usuario;
+        //this.valor = "Valor ingresado: " + usuario + "Valor base: " + this.maestros[index].usuario;
          if(this.maestros[index].usuario === usuario){
-           this.valor = this.valor + " Entre aqui";
+           //this.valor = this.valor + " Entre aqui";
            retorno = true;
          }
       }
