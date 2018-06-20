@@ -28,7 +28,13 @@ export class RegistroPage {
 
     if (this.registerCredentials.password != this.registerCredentials.password1){
       this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
-    }else if(this.getMaestros(this.registerCredentials.usuario)){
+    }
+
+    let valorRegreso = this.getMaestros(this.registerCredentials.usuario);
+
+    this.valor = "El valor que regreso es: "+valorRegreso;
+
+    /*else if(this.getMaestros(this.registerCredentials.usuario)){
       this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
       this.valor = "Lanze el show alert";
     }else {
@@ -40,9 +46,9 @@ export class RegistroPage {
         this.valor = response;
       }).catch(error =>{
         this.valor = error;
-      });*/
+      });
 
-    }
+    }*/
 
   }
 
