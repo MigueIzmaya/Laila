@@ -32,20 +32,11 @@ export class RegistroPage {
       this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
     } else {
       this.getMaestros(this.registerCredentials.usuario)
-      .then(data=>{ registro = data; })
-      .catch(error=>{ registro = error; })
+      .then(data=>{ this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar"); })
+      .catch(error=>{ this.showAlert("Nombre de usuario","Entre en error", "Aceptar"); })
 
-      if(registro){
-        this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
-      }else{
-        this.maestro.usuario = this.registerCredentials.usuario;
-        this.maestro.contrasena = this.registerCredentials.password;
-        this.maestro.nombre = this.registerCredentials.nombre;
 
-        this.valor = this.maestro.usuario + " " + this.maestro.contrasena + " " + this.maestro.nombre;
-        //this.tasksService.insertTableMaestro(this.maestro);
 
-      }
     }
   }
 
