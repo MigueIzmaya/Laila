@@ -49,10 +49,12 @@ export class RegistroPage {
     this.tasksService.getMaestroByUserName(usuario)
     .then(maestros => {
       this.maestros = maestros;
-      this.valor = "";
       for (let index = 0; index < this.maestros.length; index++){
-        this.valor = this.valor + " " + this.maestros[index].usuario; 
+         if(this.maestros[index].usuario == usuario){
+           return true;
+         }
       }
+      return false;
       //this.showAlert("getMaestros",this.maestros[0].usuario,"Accept");
     }).catch(error =>{
       return false;
