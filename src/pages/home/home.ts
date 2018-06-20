@@ -22,7 +22,7 @@ export class HomePage {
   items: Observable<any[]>;
   email: string;
   password: string;
-  registerCredentials = {email: '', password: ''};
+  registerCredentials = {usuario: '', password: ''};
 
   constructor(public navCtrl: NavController, public afDB: AngularFireDatabase, private authService: IniciarsesionProvider, private firebaseAuth: AngularFireAuth, public alertCtrl: AlertController) {
 

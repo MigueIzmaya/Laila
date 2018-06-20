@@ -24,28 +24,28 @@ export class TasksServiceProvider {
   }
 
   createTableActividad(){
-    let sql = 'CREATE TABLE IF NOT EXISTS Actividad(id_actividad INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, descripcion TEXT)';
+    let sql = 'CREATE TABLE IF NOT EXISTS Actividad(id_actividad INTEGER PRIMARY KEY, nombre TEXT, descripcion TEXT)';
     return this.db.executeSql(sql, []);
   }
 
   createTableAlumno(){
-    let sql = 'CREATE TABLE IF NOT EXISTS Alumno(id_alumno INTEGER PRIMARY KEY AUTOINCREMENT, boleta TEXT, nombre TEXT, id_maestro INTEGER, FOREIGN KEY(id_maestro) REFERENCES Maestro(id_maestro))';
+    let sql = 'CREATE TABLE IF NOT EXISTS Alumno(boleta TEXT PRIMARY KEY, nombre TEXT, numero_serie TEXT ,usuario TEXT, FOREIGN KEY(usuario) REFERENCES Maestro(usuario))';
     return this.db.executeSql(sql, []);
   }
 
   createTableMaestro(){
-    let sql = 'CREATE TABLE IF NOT EXISTS Maestro(id_maestro INTEGER PRIMARY KEY AUTOINCREMENT, usuario TEXT, contrasena TEXT, nombre TEXT)';
+    let sql = 'CREATE TABLE IF NOT EXISTS Maestro(usuario TEXT PRIMARY KEY, contrasena TEXT, nombre TEXT)';
     return this.db.executeSql(sql, []);
   }
 
   createTableActividadAlumno(){
-    let sql = 'CREATE TABLE IF NOT EXISTS ActividadAlumno(id_actividadAlumno INTEGER PRIMARY KEY AUTOINCREMENT, fechaInicio TEXT, duracion INTEGER, calificacion INTEGER, Actividad_idActividad INTEGER, Alumno_idAlumno INTEGER, FOREIGN KEY(Actividad_idActividad) REFERENCES Actividad(id_actividad), FOREIGN KEY(Alumno_idAlumno) REFERENCES Alumno(id_alumno))';
+    let sql = 'CREATE TABLE IF NOT EXISTS ActividadAlumno(id_actividadAlumno INTEGER PRIMARY KEY AUTOINCREMENT, fechaInicio TEXT, duracion INTEGER, calificacion INTEGER, Actividad_idActividad INTEGER, boleta TEXT, FOREIGN KEY(Actividad_idActividad) REFERENCES Actividad(id_actividad), FOREIGN KEY(boleta) REFERENCES Alumno(boleta))';
     return this.db.executeSql(sql, []);
   }
 
   insertTableAlumno(alumno: any){
-    let sql = 'INSERT INTO Alumno(id_alumno, boleta, nombre, id_maestro) VALUES(?,?,?,?)';
-    return this.db.executeSql(sql, [alumno.id_alumno, alumno.boleta, alumno.nombre, alumno.id_maestro]);
+    let sql = 'INSERT INTO Alumno(boleta, nombre, numero_serie, usuario) VALUES(?,?,?,?)';
+    return this.db.executeSql(sql, [alumno.boleta, alumno.nombre, alumno.numero_serie, alumno.usuario]);
   }
 
   insertTableMaestro(maestro:any){
@@ -64,13 +64,13 @@ export class TasksServiceProvider {
   }
 
   insertTableActividad(actividad:any){
-    let sql = 'INSERT INTO Actividad(id_actividad, usuario, contrasena, nombre, id_alumno) VALUES(?,?,?,?,?)';
-    return this.db.executeSql(sql, [actividad.id_actividad, actividad.usuario, actividad.contrasena, actividad.nombre, actividad.id_alumno]);
+    let sql = 'INSERT INTO Actividad(id_actividad, usuario, contrasena, nombre, boleta) VALUES(?,?,?,?,?)';
+    return this.db.executeSql(sql, [actividad.id_actividad, actividad.usuario, actividad.contrasena, actividad.nombre, actividad.boleta]);
   }
 
   insertTableActividadAlumno(actividadAlumno:any){
-    let sql = 'INSERT INTO ActividadAlumno(id_actividadAlumno, fechaInicio, duracion, calificacion, Actividad_idActividad, Alumno_idAlumno) VALUES(?,?,?,?,?,?)';
-    return this.db.executeSql(sql, [actividadAlumno.id_actividadAlumno, actividadAlumno.fechaInicio, actividadAlumno.duracion, actividadAlumno.calificacion, actividadAlumno.Actividad_idActividad, actividadAlumno.Alumno_idAlumno]);
+    let sql = 'INSERT INTO ActividadAlumno(fechaInicio, duracion, calificacion, Actividad_idActividad, boleta) VALUES(?,?,?,?,?,?)';
+    return this.db.executeSql(sql, [actividadAlumno.fechaInicio, actividadAlumno.duracion, actividadAlumno.calificacion, actividadAlumno.Actividad_idActividad, actividadAlumno.boleta]);
   }
 
   getMaestroByUserName(username: String): any {
@@ -86,6 +86,20 @@ export class TasksServiceProvider {
     })
     .catch(error => {Promise.reject(error)});
 
+  }
+
+  getAllMaestros(): any{
+    let sql = 'SELECT * FROM Maestro';
+    return this.db.executeSql(sql,[])
+    .then(response => {
+      let Maestro = [];
+      for (let index = 0; index < response.rows.length; index ++){
+        Maestro.push(response.rows.item(index) );
+      }
+
+      return Promise.resolve(Maestro);
+    })
+    .catch(error => {Promise.reject(error)});
   }
 
   getAllAlumnos(){

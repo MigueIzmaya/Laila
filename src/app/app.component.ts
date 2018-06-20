@@ -73,19 +73,19 @@ export class MyApp {
   }
 
   private createDatabase(){
-    this.sqlite.deleteDatabase({
+    this.sqlite.create({
       name: 'laila.db',
       location: 'default' // the location field is required
     })
     .then((db) => {
-      /*this.tasksService.setDatabase(db);
+      this.tasksService.setDatabase(db);
       this.tasksService.createTableActividad().then((data) => { }, (error) => {});
       this.tasksService.createTableAlumno().then((data) => {}, (error) => {});
-      this.tasksService.createTableMaestro().then((data) => {}, (error) => {});*/
+      this.tasksService.createTableMaestro().then((data) => {}, (error) => {});
       //return this.tasksService.createTable();
     })
     .catch(error =>{
-      //console.error(error);
+      console.error(error);
     });
   }
 }
