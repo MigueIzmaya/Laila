@@ -15,7 +15,7 @@ export class RegistroPage {
   registerCredentials = {nombre: '', usuario: '',password: '', password1: ''};
   valor:any;
   maestro = {nombre: '', usuario: '',contrasena: ''};
-  maestros: any;
+  maestros: any[] = [];
   maestro1: any[];
 
   constructor(public navCtrl: NavController,
@@ -46,13 +46,10 @@ export class RegistroPage {
   }
 
   getMaestros(usuario:String){
-    this.tasksService.getMaestroByUserName(usuario).then(maestros=>{
+    this.tasksService.getMaestroByUserName(usuario)
+    .then(maestros => {
       this.maestros = maestros;
-      if(!(usuario.search(this.maestros) == -1)){
-        return true;
-      } else {
-        return false;
-      }
+      this.showAlert("getMaestros",this.maestros,"Accept");
     }).catch(error =>{
       return false;
     });

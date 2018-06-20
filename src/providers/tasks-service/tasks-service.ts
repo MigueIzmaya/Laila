@@ -53,7 +53,7 @@ export class TasksServiceProvider {
     this.showAlert("insertTableMaestro",maestro.contrasena,"Aceptar");
     this.showAlert("insertTableMaestro",maestro.nombre,"Aceptar");*/
     let sql = 'INSERT INTO Maestro(usuario, contrasena, nombre) VALUES(?,?,?)';
-    return this.db.executeSql(sql, [maestro.usuario, maestro.contrasena, maestro.nombre])
+    return this.db.executeSql(sql, [maestro.usuario , maestro.contrasena, maestro.nombre])
     .then(response => {
       let Maestro = [];
       for (let index = 0; index < response.rows.length; index ++){
@@ -76,13 +76,13 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, [actividadAlumno.id_actividadAlumno, actividadAlumno.fechaInicio, actividadAlumno.duracion, actividadAlumno.calificacion, actividadAlumno.Actividad_idActividad, actividadAlumno.Alumno_idAlumno]);
   }
 
-  getMaestroByUserName(username: String){
+  getMaestroByUserName(username: String): any {
     let sql = 'SELECT * FROM Maestro where usuario = ?';
     return this.db.executeSql(sql,[username])
     .then(response => {
       let Maestro = [];
       for (let index = 0; index < response.rows.length; index ++){
-        Maestro.push(response.rows.item(index).usuario);
+        Maestro.push(response.rows.item(index) );
       }
 
       return Promise.resolve(Maestro);
