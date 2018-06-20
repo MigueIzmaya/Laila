@@ -15,7 +15,7 @@ export class RegistroPage {
   registerCredentials = {nombre: '', usuario: '',password: '', password1: ''};
   valor:any;
   maestro = {nombre: '', usuario: '',contrasena: ''};
-  maestros: any[] = [];
+  maestros: {nombre: '', usuario: '',contrasena: ''}[] = [];
   maestro1: any[];
 
   constructor(public navCtrl: NavController,
@@ -49,7 +49,11 @@ export class RegistroPage {
     this.tasksService.getMaestroByUserName(usuario)
     .then(maestros => {
       this.maestros = maestros;
-      this.showAlert("getMaestros",this.maestros,"Accept");
+      this.valor = "";
+      for (let index = 0; index < this.maestros.length; index++){
+        this.valor = this.valor + " " + this.maestros[index].usuario; 
+      }
+      //this.showAlert("getMaestros",this.maestros[0].usuario,"Accept");
     }).catch(error =>{
       return false;
     });
