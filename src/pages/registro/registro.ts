@@ -50,13 +50,13 @@ export class RegistroPage {
         //this.valor = "Valor ingresado: " + usuario + "Valor base: " + this.maestros[index].usuario;
          if(this.maestros[index].usuario === usuario){
            //this.valor = this.valor + " Entre aqui";
-           return true;
+           return Promise.resolve(true);
          }
       }
-      return false;
+      Promise.reject(false);
       //this.showAlert("getMaestros",this.maestros[0].usuario,"Accept");
     }).catch(error =>{
-      return false;
+      Promise.reject(false);
     });
 
   }
