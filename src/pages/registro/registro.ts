@@ -30,9 +30,9 @@ export class RegistroPage {
       this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
     }
 
-    let valorRegreso:boolean = this.getMaestros(this.registerCredentials.usuario);
-
-    this.valor = "El valor que regreso es: "+String(valorRegreso);
+    this.getMaestros(this.registerCredentials.usuario)
+    .then(data=>{ this.valor = data;})
+    .catch(error=>{ this.valor = error;})
 
     /*else if(this.getMaestros(this.registerCredentials.usuario)){
       this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
@@ -52,7 +52,7 @@ export class RegistroPage {
 
   }
 
-  getMaestros(usuario:String): boolean {
+  getMaestros(usuario:String){
     let retorno:boolean = false;
 
     return this.tasksService.getMaestroByUserName(usuario)
