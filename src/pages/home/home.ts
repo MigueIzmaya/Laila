@@ -28,24 +28,17 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     private authService: IniciarsesionProvider,
     public alertCtrl: AlertController,
-    public tasksService: TasksServiceProvider) {
+    public tasksService: TasksServiceProvider,
+    public sesionService: IniciarsesionProvider) {
 
   }
 
   verifica_usuario(){
-    if (this.registerCredentials.usuario === "" || this.registerCredentials.password === ""){
-      this.showAlert("Credenciales","Por favor ingresa un usuario y/o contraseña","Aceptar");
-    } else {
-      this.tasksService.getAllMaestrosByUserNameAndPassword(this.registerCredentials.usuario, this.registerCredentials.password)
-      .then(data=>{
-        if(data){
-            this.nuevoActividades();
-        } else {
-          this.showAlert("Inicio de Sesión","Nombre de usuario y/o contraseña incorrectos", "Aceptar");
-        }
+    this.sesionService.login(this.registerCredentials).subscribe(allowed => {
 
-      }).catch(error=>{ this.showAlert("Error","Ocurrio un error al momento de iniciar sesion", "Aceptar"); })
-    }
+    }, error=>{
+
+    })
 
   }
 

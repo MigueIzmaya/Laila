@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
+import { TasksServiceProvider } from '../../providers/tasks-service/tasks-service';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-altalumno',
@@ -13,27 +13,43 @@ export class AltaAlumno {
   nombre: string;
 
   registerAlumno = {boleta: '', nombre: ''};
-  items: Observable<any[]>;
 
-  constructor(public navCtrl: NavController, public afDB: AngularFireDatabase) {
+  constructor(public navCtrl: NavController,
+              public tasksService: TasksServiceProvider,
+              public alertCtrl: AlertController) {
 
   }
 
   registrar_alumno(){
-    //this.items = this.afDB.list('/Actividad').valueChanges();
-    //const ref1 = this.afDB.list('/Alumno').query.ref.push();
-    //ref1.set(this.registerAlumno.boleta);
-    //const ref2 = this.afDB.list('Alumno/'+this.registerAlumno.boleta).query.ref.push();
-    //ref2.push(this.registerAlumno.nombre);
+    let registro:any;
 
-    //const ref3 = this.afDB.list().
-    //var ref3 = this.afDB.list('Alumno/'+this.registerAlumno.boleta+'/'+'-L2TDqaH3WTNEbDbbr6E').query.ref;
-    var ref3 = this.afDB.list('Alumno/').query.ref;
+    if (this.registerAlumno.nombre === "" || this.registerAlumno.boleta === ""){
+      this.showAlert("Alumno","Por favor ingrese un nombre y/o una boleta", "Aceptar");
+    } else {
+      this.tasksService.getAllMaestrosByUserName(this.registerCredentials.usuario)
+      .then(data=>{
+        if(data){
+            this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
+        } else {
+          this.maestro.usuario = this.registerCredentials.usuario;
+          this.maestro.nombre = this.registerCredentials.nombre;
+          this.maestro.contrasena = this.registerCredentials.password;
+          this.showAlert("Nombre de usuario","Todo bien", "Aceptar");
+          this.tasksService.insertTableMaestro(this.maestro);
+        }
 
-    //ref3.update('2011640248','20115609');
-    //console.log(ref1.key);
-    //console.log(ref2.key);
-    //console.log(newKey);
-  }
+      }).catch(error=>{ this.showAlert("Error","Ocurrio un error al momento de insertar el usuario", "Aceptar"); });
 
+    }
+
+}
+
+showAlert(titulo, contenido, boton) {
+  let alert = this.alertCtrl.create({
+    title: titulo,
+    subTitle: contenido,
+    buttons: [boton]
+  });
+  alert.present();
+}
 }

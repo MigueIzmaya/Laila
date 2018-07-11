@@ -1,76 +1,95 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 import { AlertController } from 'ionic-angular';
-//import { NavController } from 'ionic-angular';
-
 import { HomePage } from '../../pages/home/home';
+import { TasksServiceProvider } from '../../providers/tasks-service/tasks-service';
 
+export class User {
+  nombre: String;
+  usuario: String;
+  contrasena: String;
+
+  constructor(nombre: String, usuario: String, contrasena: String) {
+    this.nombre = nombre;
+    this.usuario = usuario;
+    this.contrasena = contrasena;
+  }
+
+}
 
 @Injectable()
 export class IniciarsesionProvider {
+  newUser: User;
+  tasksService: TasksServiceProvider;
+  alertCtrl: AlertController;
 
-  user: Observable<firebase.User>;
-  result: any;
-  /*alertaInicio: any;
-  alertaRegistro: any;*/
+  maestro = {nombre: '', usuario: '',contrasena: ''};
+  maestros: {nombre: '', usuario: '',contrasena: ''}[] = [];
+  registerCredentials = {nombre: '', usuario: '',password: '', password1: ''};
 
+  signup(credentials) {
 
+    if (credentials.password != credentials.password1){
+      return Observable.throw("Las contraseñas no coinciden");
+      //this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
+    } else {
+      this.tasksService.getAllMaestrosByUserName(credentials.usuario)
+      .then(data=>{
+        if(data){
+          return Observable.throw("Ese nombre de usuario ya fue utilizado");
+            //this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
+        } else {
+          this.maestro.usuario = credentials.usuario;
+          this.maestro.nombre = credentials.nombre;
+          this.maestro.contrasena = credentials.password;
+          this.tasksService.insertTableMaestro(this.maestro);
 
-  constructor(private firebaseAuth: AngularFireAuth, public alertCtrl: AlertController) {
-    /*this.alertaInicio = this.alertCtrl.create({
-      title: "Aviso",
-      subTitle: ,
-      buttons: [{
-          text: boton,
-          handler: data => {
-            this.navCtrl.push( RegistroPage );
+        }
 
-          }
-        }]
-    });*/
-
-    /*this.alertaRegistro = this.alertCtrl.create({
-      title: "Aviso",
-      subTitle: "",
-      buttons: [{
-          text: "Aceptar",
-          handler: data => {
-            this.navCtrl.push( HomePage );
-
-          }
-        }]
-    });*/
-
-  }
-
-  signup(email: string, password: string) {
-    this.firebaseAuth
-      .auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(value => {
-        console.log('Success!', value);
-        this.showAlert("Aviso","El usuario: "+email+" ha sido registrado con éxito","Aceptar");
-        console.log(value);
-        return this.result = value;
-      })
-      .catch(err => {
-        this.showAlert("Aviso",err.message,"Aceptar");
-        console.log('Something went wrong:',err.message);
+      }).catch(error=>{
+        return Observable.throw("Ocurrio un error al momento de insertar el usuario");
+        //this.showAlert("Error","Ocurrio un error al momento de insertar el usuario", "Aceptar");
       });
+    }
   }
 
-  login(email: string, password: string) {
-    
+  login(credentials) {
+    if (credentials.usuario === "" || credentials.password === ""){
+      //this.showAlert("Credenciales","Por favor ingresa un usuario y/o contraseña","Aceptar");
+      return Observable.throw("Por favor ingrese un usuario y/o una contraseña");
+    } else {
+      this.tasksService.getAllMaestrosByUserNameAndPassword(credentials.usuario, credentials.password)
+      .then(data=>{
+        if(data){
+          return Observable.create(observer =>{
+            observer.next(data);
+            observer.complete();
+          });
+
+        } else {
+          return Observable.throw("Datos erroneos");
+        }
+
+      }).catch(error=>{
+        //this.showAlert("Error","Ocurrio un error al momento de iniciar sesion", "Aceptar");
+        return Observable.throw("Error al momento de iniciar sesión");
+      });
+    }
+
   }
 
   logout() {
-    this.firebaseAuth
-      .auth
-      .signOut();
+    return Observable.create(observer => {
+      this.newUser = null;
+      observer.next(true);
+      observer.complete();
+    });
+  }
+
+  public getUserInfo() : User {
+    return this.newUser;
   }
 
   showAlert(titulo, contenido, boton) {
