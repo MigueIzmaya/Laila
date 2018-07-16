@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
 import { Observable } from 'rxjs/Observable';
-
 import { IniciarsesionProvider } from '../../providers/iniciarsesion/iniciarsesion';
 import { RegistroPage } from "../registro/registro";
-
 import { AlertController } from 'ionic-angular';
-
 import {AltaAlumno} from '../altaAlumno/altalumno.component';
 import { Actividades } from '../actividades/actividades.component';
-
 import { TasksServiceProvider } from '../../providers/tasks-service/tasks-service';
 
 @Component({
@@ -35,8 +30,13 @@ export class HomePage {
 
   verifica_usuario(){
     this.sesionService.login(this.registerCredentials).subscribe(allowed => {
-
+      if(allowed){
+        this.navCtrl.setRoot('Actividades');
+      } else {
+        this.showAlert("Error","Acceso denegado","Aceptar");
+      }
     }, error=>{
+      this.showAlert("Error",error,"Aceptar")
 
     })
 

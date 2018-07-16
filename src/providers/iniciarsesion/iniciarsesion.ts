@@ -60,6 +60,7 @@ export class IniciarsesionProvider {
       //this.showAlert("Credenciales","Por favor ingresa un usuario y/o contraseña","Aceptar");
       return Observable.throw("Por favor ingrese un usuario y/o una contraseña");
     } else {
+      this.newUser = new User(credentials.nombre, credentials.usuario, credentials.contrasena);
       this.tasksService.getAllMaestrosByUserNameAndPassword(credentials.usuario, credentials.password)
       .then(data=>{
         if(data){
