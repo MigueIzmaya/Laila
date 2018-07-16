@@ -41,6 +41,9 @@ export class IniciarsesionProvider {
           return Observable.throw("Ese nombre de usuario ya fue utilizado");
             //this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
         } else {
+          this.showAlert("Maestro",this.maestro.usuario,"Aceptar");
+          this.showAlert("Maestro",this.maestro.nombre,"Aceptar");
+          this.showAlert("Maestro",this.maestro.contrasena,"Aceptar");
           this.maestro.usuario = credentials.usuario;
           this.maestro.nombre = credentials.nombre;
           this.maestro.contrasena = credentials.password;
