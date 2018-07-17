@@ -25,7 +25,7 @@ export class RegistroPage {
 
   registrar(){
     //this.showAlert("Datos",this.registerCredentials,"Aceptar");
-    this.sesionService.signup(this.registerCredentials).subscribe(success => {
+    this.sesionService.signup(this.registerCredentials.nombre, this.registerCredentials).subscribe(success => {
       this.showAlert("Registrar",success,"Aceptar");
     })
 

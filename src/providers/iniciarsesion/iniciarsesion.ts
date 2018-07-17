@@ -29,7 +29,7 @@ export class IniciarsesionProvider {
   maestros: {nombre: '', usuario: '',contrasena: ''}[] = [];
   registerCredentials = {nombre: '', usuario: '',password: '', password1: ''};
 
-  signup(credentials: any) {
+  signup(nombre: String, credentials) {
 
     this.showAlert("Maestro",credentials.usuario,"Aceptar");
     this.showAlert("Maestro",credentials.nombre,"Aceptar");
