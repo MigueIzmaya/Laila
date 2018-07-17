@@ -26,9 +26,14 @@ export class RegistroPage {
   registrar(){
     this.showAlert("Datos",this.registerCredentials,"Aceptar");
     this.sesionService.signup(this.registerCredentials).subscribe(success => {
-      this.showAlert("Registrar",success,"Aceptar");
+      if(success){
+          this.showAlert("Registrar","Lala","Aceptar");
+      } else {
+          this.showAlert("Registrar","Lolo","Aceptar");
+      }
+
     },error =>{
-      this.showAlert("Registrar",error,"Aceptar");      
+      this.showAlert("Registrar",error,"Aceptar");
     })
 
 

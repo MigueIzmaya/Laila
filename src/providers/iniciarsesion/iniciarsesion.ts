@@ -41,16 +41,18 @@ export class IniciarsesionProvider {
     //this.showAlert("Maestro",credentials.contrasena,"Aceptar");
 
     if (credentials.password != credentials.password1){
+      console.log("Las constraseñas no coinciden");
       return Observable.throw("Las contraseñas no coinciden");
       //this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
     } else {
+      console.log("Si coinciden");
       this.tasksService.getAllMaestrosByUserName(credentials.usuario)
       .then(data=>{
         if(data){
           return Observable.throw("Ese nombre de usuario ya fue utilizado");
             //this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
         } else {
-          
+
           this.maestro.usuario = credentials.usuario;
           this.maestro.nombre = credentials.nombre;
           this.maestro.contrasena = credentials.password;
