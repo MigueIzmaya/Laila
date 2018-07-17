@@ -29,8 +29,12 @@ export class IniciarsesionProvider {
   maestros: {nombre: '', usuario: '',contrasena: ''}[] = [];
   registerCredentials = {nombre: '', usuario: '',password: '', password1: ''};
 
-  signup(nombre: String, credentials) {
-    this.showAlert("Maestro","Lala","Aceptar");
+  signup(credentials) {
+
+    console.log(credentials.usuario);
+    console.log(credentials.nombre);
+    console.log(credentials.password);
+    console.log(credentials.password1);
     //this.showAlert("Maestro",nombre,"Aceptar");
     //this.showAlert("Maestro",credentials.usuario,"Aceptar");
     //this.showAlert("Maestro",credentials.nombre,"Aceptar");
@@ -46,13 +50,11 @@ export class IniciarsesionProvider {
           return Observable.throw("Ese nombre de usuario ya fue utilizado");
             //this.showAlert("Nombre de usuario","Ese nombre de usuario ya fue utilizado", "Aceptar");
         } else {
-          this.showAlert("Maestro",this.maestro.usuario,"Aceptar");
-          this.showAlert("Maestro",this.maestro.nombre,"Aceptar");
-          this.showAlert("Maestro",this.maestro.contrasena,"Aceptar");
+          
           this.maestro.usuario = credentials.usuario;
           this.maestro.nombre = credentials.nombre;
           this.maestro.contrasena = credentials.password;
-          this.tasksService.insertTableMaestro(this.maestro);
+          //this.tasksService.insertTableMaestro(this.maestro);
 
           return Observable.create(observer => {
             observer.next(true);
