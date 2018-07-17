@@ -53,6 +53,11 @@ export class IniciarsesionProvider {
           this.maestro.contrasena = credentials.password;
           this.tasksService.insertTableMaestro(this.maestro);
 
+          return Observable.create(observer => {
+            observer.next(true);
+            observer.complete();
+          });
+
         }
 
       }).catch(error=>{
