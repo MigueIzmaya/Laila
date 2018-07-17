@@ -29,12 +29,12 @@ export class IniciarsesionProvider {
   maestros: {nombre: '', usuario: '',contrasena: ''}[] = [];
   registerCredentials = {nombre: '', usuario: '',password: '', password1: ''};
 
-  signup(credentials) {
+  signup(credentials: any) {
 
     this.showAlert("Maestro",credentials.usuario,"Aceptar");
     this.showAlert("Maestro",credentials.nombre,"Aceptar");
-    this.showAlert("Maestro",credentials.contrasena,"Aceptar");
-    
+    //this.showAlert("Maestro",credentials.contrasena,"Aceptar");
+
     if (credentials.password != credentials.password1){
       return Observable.throw("Las contraseñas no coinciden");
       //this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
