@@ -31,8 +31,9 @@ export class IniciarsesionProvider {
 
   signup(nombre: String, credentials) {
 
-    this.showAlert("Maestro",credentials.usuario,"Aceptar");
-    this.showAlert("Maestro",credentials.nombre,"Aceptar");
+    this.showAlert("Maestro",nombre,"Aceptar");
+    //this.showAlert("Maestro",credentials.usuario,"Aceptar");
+    //this.showAlert("Maestro",credentials.nombre,"Aceptar");
     //this.showAlert("Maestro",credentials.contrasena,"Aceptar");
 
     if (credentials.password != credentials.password1){
