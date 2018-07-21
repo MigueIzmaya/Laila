@@ -20,7 +20,6 @@ export class HomePage {
   maestro = {nombre: '', usuario: '',contrasena: ''};
 
   constructor(public navCtrl: NavController,
-    private authService: IniciarsesionProvider,
     public alertCtrl: AlertController,
     public tasksService: TasksServiceProvider) {
 
