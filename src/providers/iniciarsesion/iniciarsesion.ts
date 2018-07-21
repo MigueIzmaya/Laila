@@ -29,7 +29,7 @@ export class IniciarsesionProvider {
   maestros: {nombre: '', usuario: '',contrasena: ''}[] = [];
   registerCredentials = {nombre: '', usuario: '',password: '', password1: ''};
 
-  signup(credentials) {
+   signup(credentials) {
 
     console.log(credentials.usuario);
     console.log(credentials.nombre);
@@ -40,13 +40,33 @@ export class IniciarsesionProvider {
     //this.showAlert("Maestro",credentials.nombre,"Aceptar");
     //this.showAlert("Maestro",credentials.contrasena,"Aceptar");
 
+    this.tasksService.getMaestroByUserName(credentials.usuario).then(maestros => {
+      this.maestros = maestros;
+      for (let index = 0; index < this.maestros.length; index++){
+         if(this.maestros[index].usuario === credentials.usuario){
+           //return true;
+           return Observable.create(observer => {
+             observer.next(true);
+             observer.complete();
+           });
+         }
+      }
+
+      return Observable.fromPromise
+      return false;
+    }).catch(error =>{
+      return false;
+    });
+
+
+
     if (credentials.password != credentials.password1){
       console.log("Las constraseñas no coinciden");
       return Observable.throw("Las contraseñas no coinciden");
       //this.showAlert("Contraseña","Las contraseñas no coinciden", "Aceptar");
     } else {
       console.log("Si coinciden");
-      this.tasksService.getAllMaestrosByUserName(credentials.usuario)
+      this.tasksService.getMaestroByUserName(credentials.usuario)
       .then(data=>{
         if(data){
           return Observable.throw("Ese nombre de usuario ya fue utilizado");
@@ -61,7 +81,7 @@ export class IniciarsesionProvider {
           return Observable.create(observer => {
             observer.next(true);
             observer.complete();
-          });
+          }).toPromise();
 
         }
 
