@@ -31,7 +31,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { IniciarsesionProvider } from '../providers/iniciarsesion/iniciarsesion';
 import { TasksServiceProvider } from '../providers/tasks-service/tasks-service';
 
 export const firebaseConfig = {
@@ -96,7 +95,6 @@ export const firebaseConfig = {
     Calendar,
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    IniciarsesionProvider,
     BluetoothSerial,
     SQLite,
     TasksServiceProvider
