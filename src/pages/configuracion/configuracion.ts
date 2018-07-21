@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 import { Contrasena } from '../contrasena/contrasena.component';
 import { AltaAlumno } from '../altaAlumno/altalumno.component';
 
@@ -10,7 +9,12 @@ import { AltaAlumno } from '../altaAlumno/altalumno.component';
 })
 export class Configuracion {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  usuario:any;
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams) {
+
+                this.usuario = this.navParams.get("idMaestro");
   }
 
   goContrasena(){
@@ -18,8 +22,7 @@ export class Configuracion {
   }
 
   goAltaAlumno(){
-    this.navCtrl.push( AltaAlumno );
-
+    this.navCtrl.push( AltaAlumno, {"idMaestro":this.usuario});
   }
 
 

@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
-
+import { NavController, NavParams } from 'ionic-angular';
 import { Bluetooth } from '../bluetooth/bluetooth.component';
 import { Arrullo } from '../arrullo/arrullo.component';
 import { Alimentar } from '../alimentar/alimentar.component';
@@ -20,9 +16,12 @@ import { ListaAlumnos } from '../lista-alumnos/lista-alumnos';
 })
 export class Actividades {
 
+  usuario:any;
 
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams) {
 
-  constructor(public navCtrl: NavController, afDB: AngularFireDatabase) {
+                this.usuario = this.navParams.get("idMaestro");
 
   }
 
@@ -47,7 +46,7 @@ export class Actividades {
   }
 
   goConfiguracion(){
-    this.navCtrl.push( Configuracion );
+    this.navCtrl.push( Configuracion, {"idMaestro":this.usuario} );
   }
 
   goActividad(){

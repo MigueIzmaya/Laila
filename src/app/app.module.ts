@@ -6,8 +6,6 @@ import { Calendar } from '@ionic-native/calendar';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { SQLite } from '@ionic-native/sqlite';
-
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -24,23 +22,9 @@ import { AltaAlumno } from '../pages/altaAlumno/altalumno.component';
 import { Configuracion } from '../pages/configuracion/configuracion';
 import { Actividad } from '../pages/actividad/actividad';
 import { ListaAlumnos } from '../pages/lista-alumnos/lista-alumnos';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { TasksServiceProvider } from '../providers/tasks-service/tasks-service';
-
-export const firebaseConfig = {
-  apiKey: "AIzaSyBprUY9O9KqFtpuag9VY9M7k1c2tLk4-tk",
-  authDomain: "laila-21c65.firebaseapp.com",
-  databaseURL: "https://laila-21c65.firebaseio.com",
-  projectId: "laila-21c65",
-  storageBucket: "laila-21c65.appspot.com",
-  messagingSenderId: "916725128401"
-};
 
 @NgModule({
   declarations: [
@@ -64,9 +48,6 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     NgCalendarModule
   ],
   bootstrap: [IonicApp],
@@ -93,7 +74,6 @@ export const firebaseConfig = {
     SplashScreen,
     DatePicker,
     Calendar,
-    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BluetoothSerial,
     SQLite,

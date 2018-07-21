@@ -8,5 +8,17 @@
 
 
 <ion-content padding>
+  <table class="table" >
+    <tr>
+      <th> Numero de boleta </th>
+      <th> Nombre </th>
+    </tr>
+
+    <tr *ngFor="let alumno of Alumnos">
+      <td>{{alumno.boleta}}</td>
+      <td>{{alumno.nombre}}</td>
+    </tr>
+
+  </table>
 
 </ion-content>

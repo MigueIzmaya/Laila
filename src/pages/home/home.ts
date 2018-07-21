@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { RegistroPage } from "../registro/registro";
 import { AlertController } from 'ionic-angular';
-import {AltaAlumno} from '../altaAlumno/altalumno.component';
+import { AltaAlumno } from '../altaAlumno/altalumno.component';
 import { Actividades } from '../actividades/actividades.component';
 import { TasksServiceProvider } from '../../providers/tasks-service/tasks-service';
 
@@ -56,7 +56,8 @@ export class HomePage {
   }
 
   nuevoActividades(){
-    this.navCtrl.push (Actividades);
+
+    this.navCtrl.push (Actividades, {'idMaestro': this.registerCredentials.usuario });
   }
 
 
