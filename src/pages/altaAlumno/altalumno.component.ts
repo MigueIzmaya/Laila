@@ -30,7 +30,7 @@ export class AltaAlumno {
     this.registerAlumnoDatabase.nombre = this.registerAlumno.nombre;
     this.registerAlumnoDatabase.numero_serie = null;
     this.registerAlumnoDatabase.usuario = this.nombreUsuarioMaestro;
-    this.tasksService.insertTableAlumno(this.registerAlumnoDatabase).then();
+    this.tasksService.insertTableAlumno(this.registerAlumnoDatabase);
   }
 
   showAlert(titulo, contenido, boton) {
