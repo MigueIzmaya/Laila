@@ -18,7 +18,7 @@ export class Configuracion {
   }
 
   goContrasena(){
-    this.navCtrl.push( Contrasena );
+    this.navCtrl.push( Contrasena, {"idMaestro": this.usuario});
   }
 
   goAltaAlumno(){
