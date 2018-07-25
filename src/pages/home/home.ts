@@ -56,8 +56,11 @@ export class HomePage {
   }
 
   nuevoActividades(){
-
     this.navCtrl.push (Actividades, {'idMaestro': this.registerCredentials.usuario });
+  }
+
+  insertarActividades(){
+    
   }
 
 

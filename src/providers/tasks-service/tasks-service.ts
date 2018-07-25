@@ -15,6 +15,7 @@ export class TasksServiceProvider {
 
   db: SQLiteObject = null;
   maestros: {nombre: '', usuario: '',contrasena: ''}[] = [];
+  actividades: {id_actividad: '', nombre: '', descripcion: ''}[] = [];
 
   constructor(public alertCtrl: AlertController) {}
 
@@ -65,8 +66,65 @@ export class TasksServiceProvider {
   }
 
   insertTableActividad(actividad:any){
-    let sql = 'INSERT INTO Actividad(id_actividad, usuario, contrasena, nombre, boleta) VALUES(?,?,?,?,?)';
-    return this.db.executeSql(sql, [actividad.id_actividad, actividad.usuario, actividad.contrasena, actividad.nombre, actividad.boleta]);
+    let sql = 'INSERT INTO Actividad(id_actividad, nombre, descripcion) VALUES(?,?,?)';
+    return this.db.executeSql(sql, [actividad.id_actividad, actividad.nombre, actividad.descripcion]);
+  }
+
+  insertTableActividad_1(){
+    let sql = 'INSERT INTO Actividad(id_actividad, nombre, descripcion) VALUES(?,?,?)';
+    return this.db.executeSql(sql, [1, "Abrigar", "Abrigar"]);
+  }
+
+  getTableActividad_1(){
+    let sql = 'SELECT * FROM Actividad WHERE id_actividad = 1';
+    return this.db.executeSql(sql, []);
+  }
+
+  insertTableActividad_2(){
+    let sql = 'INSERT INTO Actividad(id_actividad, nombre, descripcion) VALUES(?,?,?)';
+    return this.db.executeSql(sql, [2, "Arrullo", "Arrullo"]);
+  }
+
+  getTableActividad_2(){
+    let sql = 'SELECT * FROM Actividad WHERE id_actividad = 2';
+    return this.db.executeSql(sql, []);
+  }
+
+  insertTableActividad_3(){
+    let sql = 'INSERT INTO Actividad(id_actividad, nombre, descripcion) VALUES(?,?,?)';
+    return this.db.executeSql(sql, [3, "Eructar", "Eructar"]);
+  }
+
+  getTableActividad_3(){
+    let sql = 'SELECT * FROM Actividad WHERE id_actividad = 3';
+    return this.db.executeSql(sql, []);
+  }
+
+  insertTAbleActividad_4(){
+    let sql = 'INSERT INTO Actividad(id_actividad, nombre, descripcion) VALUES(?,?,?)';
+    return this.db.executeSql(sql, [1, "Cambiar el pañal", "Cambiar el pañal"]);
+  }
+
+  getTableActividad_4(){
+    let sql = 'SELECT * FROM Actividad WHERE id_actividad = 4';
+    return this.db.executeSql(sql, []);
+  }
+
+  insertTableActividades(){
+
+    this.getTableActividad_1().then(actividades => {
+      let numerol = 1;
+      this.actividades = actividades;
+      for (let index = 0; index < this.actividades.length; index++){
+         if(this.actividades[index].id_actividad === numero1){
+           return true;
+         }
+      }
+      return false;
+    }).catch(error =>{
+      return false;
+    });
+
   }
 
   insertTableActividadAlumno(actividadAlumno:any){
