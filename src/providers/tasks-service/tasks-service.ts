@@ -116,7 +116,7 @@ export class TasksServiceProvider {
       let numerol = 1;
       this.actividades = actividades;
       for (let index = 0; index < this.actividades.length; index++){
-         if(this.actividades[index].id_actividad === numero1){
+         if(this.actividades[index].id_actividad == 1){
            return true;
          }
       }
