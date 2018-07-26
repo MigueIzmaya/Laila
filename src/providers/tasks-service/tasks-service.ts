@@ -114,6 +114,7 @@ export class TasksServiceProvider {
 
     this.getTableActividad_1().then(actividades => {
       this.actividades = actividades;
+      this.showAlert("Anuncio",this.actividades[0].id_actividad,"Aceptar");
       for (let index = 0; index < this.actividades.length; index++){
          if(Number(this.actividades[index].id_actividad) != 1){
            this.showAlert("Anuncio","No estaba insertado 1","Aceptar");
