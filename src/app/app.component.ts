@@ -83,6 +83,7 @@ export class MyApp {
       this.tasksService.createTableAlumno().then((data) => {}, (error) => {});
       this.tasksService.createTableMaestro().then((data) => {}, (error) => {});
       this.tasksService.createTableActividadAlumno().then((data) => {}, (error) => {});
+      this.tasksService.insertTableActividades();
 
       this.tasksService.insertTableActividades
       //return this.tasksService.createTable();

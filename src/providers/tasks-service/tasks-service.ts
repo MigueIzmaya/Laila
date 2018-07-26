@@ -100,7 +100,7 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, []);
   }
 
-  insertTAbleActividad_4(){
+  insertTableActividad_4(){
     let sql = 'INSERT INTO Actividad(id_actividad, nombre, descripcion) VALUES(?,?,?)';
     return this.db.executeSql(sql, [1, "Cambiar el pañal", "Cambiar el pañal"]);
   }
@@ -113,14 +113,49 @@ export class TasksServiceProvider {
   insertTableActividades(){
 
     this.getTableActividad_1().then(actividades => {
-      let numerol = 1;
       this.actividades = actividades;
       for (let index = 0; index < this.actividades.length; index++){
-         if(this.actividades[index].id_actividad == 1){
-           return true;
+         if(Number(this.actividades[index].id_actividad) != 1){
+           this.showAlert("Anuncio","No estaba insertado 1","Aceptar");
+           this.insertTableActividad_1();
          }
       }
+    }).catch(error =>{
       return false;
+    });
+
+    this.getTableActividad_2().then(actividades => {
+      this.actividades = actividades;
+      for (let index = 0; index < this.actividades.length; index++){
+         if(Number(this.actividades[index].id_actividad) != 2){
+           this.showAlert("Anuncio","No estaba insertado 2","Aceptar");
+           this.insertTableActividad_2();
+         }
+      }
+    }).catch(error =>{
+      return false;
+    });
+
+    this.getTableActividad_3().then(actividades => {
+      this.actividades = actividades;
+      for (let index = 0; index < this.actividades.length; index++){
+         if(Number(this.actividades[index].id_actividad) != 3){
+           this.showAlert("Anuncio","No estaba insertado 3","Aceptar");
+           this.insertTableActividad_3();
+         }
+      }
+    }).catch(error =>{
+      return false;
+    });
+
+    this.getTableActividad_4().then(actividades => {
+      this.actividades = actividades;
+      for (let index = 0; index < this.actividades.length; index++){
+         if(Number(this.actividades[index].id_actividad) != 4){
+           this.showAlert("Anuncio","No estaba insertado 4","Aceptar");
+           this.insertTableActividad_4();
+         }
+      }
     }).catch(error =>{
       return false;
     });
