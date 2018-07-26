@@ -112,6 +112,8 @@ export class TasksServiceProvider {
 
   insertTableActividades(){
 
+    this.showAlert("Anuncio","Para prueba","Aceptar");
+
     this.getTableActividad_1().then(actividades => {
       this.actividades = actividades;
       this.showAlert("Anuncio",this.actividades[0].id_actividad,"Aceptar");
