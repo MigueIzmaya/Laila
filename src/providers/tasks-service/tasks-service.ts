@@ -84,7 +84,12 @@ export class TasksServiceProvider {
         Actividades.push(response.rows.item(index) );
       }
 
-      this.showAlert("Actividad 1",Actividades,"Aceptar");
+      if(Actividades == []){
+        this.showAlert("Actividad 1 en if",Actividades,"Aceptar");
+      } else {
+        this.showAlert("Actividad 1 en else",Actividades,"Aceptar");
+      }
+
 
       return Promise.resolve(Actividades);
     })
