@@ -127,7 +127,7 @@ export class TasksServiceProvider {
       this.actividades = actividades;
 
       if(this.actividades.length < 1){
-        this.showAlert("Actividad1","Entre a actividad 1 if","Aceptar");
+        this.insertTableActividad_1();
       }
     }).catch(error =>{
       return false;
