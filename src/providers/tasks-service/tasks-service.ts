@@ -126,8 +126,8 @@ export class TasksServiceProvider {
     this.getTableActividad_1().then(actividades => {
       this.actividades = actividades;
 
-      if (typeof this.alertCtrl == 'undefined' && this.actividades == null){
-        this.showAlert("Anuncio","Entre a vacio","Aceptar");
+      if (typeof this.actividades == 'undefined' && this.actividades == null){
+        this.showAlert("Anuncio","Vacio","Aceptar");
       }
       /*this.showAlert("Anuncio",this.actividades.toString(),"Aceptar");
       for (let index = 0; index < this.actividades.length; index++){
