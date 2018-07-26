@@ -131,7 +131,9 @@ export class TasksServiceProvider {
            this.showAlert("Anuncio","No estaba insertado 1","Aceptar");
            this.insertTableActividad_1();
          }*/
-         this.showAlert("Anuncio",this.actividades[index].id_actividad,"Aceptar");
+         if(this.actividades[index] == null){
+            this.showAlert("Anuncio","Entre al if","Aceptar");
+         }
       }
     }).catch(error =>{
       return false;
