@@ -84,6 +84,8 @@ export class TasksServiceProvider {
         Actividades.push(response.rows.item(index) );
       }
 
+      this.showAlert("Actividad 1",Actividades,"Aceptar");
+
       return Promise.resolve(Actividades);
     })
     .catch(error => {Promise.reject(error)});
