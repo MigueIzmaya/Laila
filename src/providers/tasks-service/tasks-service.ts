@@ -84,13 +84,6 @@ export class TasksServiceProvider {
         Actividades.push(response.rows.item(index) );
       }
 
-      if(Actividades.length < 1){
-        this.showAlert("Actividad 1 en if",Actividades,"Aceptar");
-      } else {
-        this.showAlert("Actividad 1 en else",Actividades,"Aceptar");
-      }
-
-
       return Promise.resolve(Actividades);
     })
     .catch(error => {Promise.reject(error)});
@@ -133,19 +126,9 @@ export class TasksServiceProvider {
     this.getTableActividad_1().then(actividades => {
       this.actividades = actividades;
 
-      if (typeof this.actividades == 'undefined' && this.actividades == null){
-        this.showAlert("Anuncio","Vacio","Aceptar");
+      if(this.actividades.length < 1){
+        this.showAlert("Actividad1","Entre a actividad 1 if","Aceptar");
       }
-      /*this.showAlert("Anuncio",this.actividades.toString(),"Aceptar");
-      for (let index = 0; index < this.actividades.length; index++){
-         /*if(Number(this.actividades[index].id_actividad) != 1){
-           this.showAlert("Anuncio","No estaba insertado 1","Aceptar");
-           this.insertTableActividad_1();
-         }
-         if(this.actividades[index] == null){
-            this.showAlert("Anuncio","Entre al if","Aceptar");
-         }
-      }*/
     }).catch(error =>{
       return false;
     });
