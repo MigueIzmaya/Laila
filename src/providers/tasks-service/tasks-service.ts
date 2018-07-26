@@ -127,10 +127,11 @@ export class TasksServiceProvider {
       this.actividades = actividades;
       this.showAlert("Anuncio","Entre aqui","Aceptar");
       for (let index = 0; index < this.actividades.length; index++){
-         if(Number(this.actividades[index].id_actividad) != 1){
+         /*if(Number(this.actividades[index].id_actividad) != 1){
            this.showAlert("Anuncio","No estaba insertado 1","Aceptar");
            this.insertTableActividad_1();
-         }
+         }*/
+         this.showAlert("Anuncio",this.actividades[index].id_actividad,"Aceptar");
       }
     }).catch(error =>{
       return false;
