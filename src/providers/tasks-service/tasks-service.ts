@@ -75,9 +75,18 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, [1, "Abrigar", "Abrigar"]);
   }
 
-  getTableActividad_1(){
+  getTableActividad_1():any{
     let sql = 'SELECT * FROM Actividad WHERE id_actividad = 1';
-    return this.db.executeSql(sql, []);
+    return this.db.executeSql(sql,[])
+    .then(response => {
+      let Actividades = [];
+      for (let index = 0; index < response.rows.length; index ++){
+        Actividades.push(response.rows.item(index) );
+      }
+
+      return Promise.resolve(Actividades);
+    })
+    .catch(error => {Promise.reject(error)});
   }
 
   insertTableActividad_2(){
@@ -127,7 +136,7 @@ export class TasksServiceProvider {
       return false;
     });
 
-    this.getTableActividad_2().then(actividades => {
+    /*this.getTableActividad_2().then(actividades => {
       this.actividades = actividades;
       for (let index = 0; index < this.actividades.length; index++){
          if(Number(this.actividades[index].id_actividad) != 2){
@@ -161,7 +170,7 @@ export class TasksServiceProvider {
       }
     }).catch(error =>{
       return false;
-    });
+    });*/
 
   }
 
