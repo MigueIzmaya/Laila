@@ -128,6 +128,8 @@ export class TasksServiceProvider {
 
       if(this.actividades.length < 1){
         this.insertTableActividad_1();
+      } else {
+        this.showAlert("Actividad_1","Ya está insertado","Aceptar");
       }
     }).catch(error =>{
       return false;
