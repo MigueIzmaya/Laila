@@ -17,7 +17,7 @@ export class Actividad {
   actividades:any[][];
   Alumnos:any=[];
   registerActivity = {miDia: '', miHora: '', activity: '', alumno: '', duracion: ''};
-  registerActivityDataBase = {miDia: '', miHora: '', activity: '', alumno: ''};
+  registerActivityDataBase = {fechaInicio: '', duracion: '', calificacion: '', Actividad_idActividad: '', boleta: ''};
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
@@ -27,16 +27,11 @@ export class Actividad {
   }
 
   registrar_actividad(){
-
-    /*ActividadAlumno(id_actividadAlumno INTEGER PRIMARY KEY AUTOINCREMENT, fechaInicio TEXT, duracion INTEGER, calificacion INTEGER, Actividad_idActividad INTEGER, boleta TEXT, FOREIGN KEY(Actividad_idActividad) REFERENCES Actividad(id_actividad)
-    this.registerAlumnoDatabase.boleta = this.registerActivity.activity;
-    this.registerAlumnoDatabase.nombre = this.registerActivity.nombre;
-    this.registerAlumnoDatabase.numero_serie = null;
-    this.registerAlumnoDatabase.usuario = this.nombreUsuarioMaestro;
-    this.tasksService.insertTableAlumno(this.registerAlumnoDatabase);*/
-    this.showAlert("AltaActividad",this.registerActivity.miDia + " " + this.registerActivity.miHora,"Aceptar");
-    this.showAlert("AltaActividad",this.registerActivity.alumno,"Aceptar");
-    //this.showAlert("AltaActividad",this.registerActivity.miHora,"Aceptar");
+    this.registerActivityDataBase.fechaInicio = this.registerActivity.miDia + " " + this.registerActivity.miHora;
+    this.registerActivityDataBase.duracion = this.registerActivity.duracion;
+    this.registerActivityDataBase.Actividad_idActividad = this.registerActivity.activity;
+    this.registerActivityDataBase.boleta = null;
+    this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase);
   }
 
   getAllAlumnos(){

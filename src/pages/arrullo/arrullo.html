@@ -1,30 +1,44 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title><h1>Arullo</h1></ion-title>
-
-    <!--<ion-buttons end>
-            <button ion-button [disabled]="isToday" (click)="today()">Today</button>
-            <button ion-button (click)="changeMode('month')">M</button>
-            <button ion-button (click)="changeMode('week')">W</button>
-            <button ion-button (click)="changeMode('day')">D</button>
-            <button ion-button (click)="loadEvents()">Load Events</button>
-        </ion-buttons>-->
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <calendar [eventSource]="eventSource"
-        [calendarMode]="calendar.mode"
-        [currentDate]="calendar.currentDate"
-        (onCurrentDateChanged)="onCurrentDateChanged($event)"
-        (onRangeChanged)="reloadSource(startTime, endTime)"
-        (onEventSelected)="onEventSelected($event)"
-        (onTitleChanged)="onViewTitleChanged($event)"
-        (onTimeSelected)="onTimeSelected($event)"
-        step="30">
-      </calendar>
+<ion-content padding>
+
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label> Seleccionar Alumno </ion-label>
+        <ion-select [(ngModel)]="ActivityDataBase.boleta" name="boleta" *ngFor="let alumnon of Alumnos" (ionChange)="getActivities()">
+          <ion-option [value]="alumnon.boleta">{{alumnon.nombre}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-list>
+        <ion-item-sliding *ngFor="let actividad of Actividades">
+          <ion-item>
+            {{actividad.fechaInicio}}
+            {{actividad.duracion}}
+            {{actividad.calificacion}}
+          </ion-item>
+
+          <ion-item-options side="right">
+            <button ion-button color="danger" (click)="borrar(actividad.id_actividadAlumno)">
+              <ion-icon name="trash"></ion-icon>
+              Borrar
+            </button>
+          </ion-item-options>
+
+        </ion-item-sliding>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+
 
 </ion-content>

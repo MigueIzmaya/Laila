@@ -1,6 +1,6 @@
-page-registro {
+page-home {
   .login-content {
-    background: #56CA96;
+    background: #41bcc4;
 
     .logo-row {
       padding-top: 50px;
@@ -8,7 +8,7 @@ page-registro {
     }
 
     .login-box {
-      background: #399F8B;
+      background: #41bcc4;
       padding: 20px 20px 0px 20px;
       margin-top: 30px;
     }
@@ -28,10 +28,10 @@ page-registro {
          box-shadow: none !important;
      }
 
-     .signup-col {
+     /*.signup-col {
        margin: 0px 16px 0px 16px;
        padding-bottom: 20px;
-     }
+     }*/
 
      .item-inner {
        border-bottom-color: #ffffff !important;
@@ -39,7 +39,7 @@ page-registro {
      }
 
      .submit-btn {
-       background: #51CFB1;
+       background: #18474a;
        border-radius: 30px !important;
        border: 1px solid #ffffff;
      }
@@ -49,4 +49,5 @@ page-registro {
        font-size: 0.8em;
      }
   }
+
 }

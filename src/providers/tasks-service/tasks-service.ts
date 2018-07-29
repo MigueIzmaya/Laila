@@ -1,15 +1,8 @@
 import { Injectable } from '@angular/core';
-//import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import { SQLiteObject } from '@ionic-native/sqlite';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the TasksServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class TasksServiceProvider {
 
@@ -130,6 +123,19 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, [4, "Cambiar el pañal", "Cambiar el pañal"]);
   }
 
+  getActivitiesByUser(actividadAlumno:any){
+    let sql = 'SELECT * FROM ActividadAlumno WHERE boleta = ? AND Actividad_idActividad = ?';
+    return this.db.executeSql(sql, [actividadAlumno.boleta, actividadAlumno.id]).then(response => {
+      let Actividades = [];
+      for (let index = 0; index < response.rows.length; index ++){
+        Actividades.push(response.rows.item(index) );
+      }
+
+      return Promise.resolve(Actividades);
+    })
+    .catch(error => {Promise.reject(error)});
+  }
+
   getTableActividad_4():any{
     let sql = 'SELECT * FROM Actividad WHERE id_actividad = 4';
     return this.db.executeSql(sql, []).then(response => {
@@ -185,7 +191,7 @@ export class TasksServiceProvider {
   }
 
   insertTableActividadAlumno(actividadAlumno:any){
-    let sql = 'INSERT INTO ActividadAlumno(fechaInicio, duracion, calificacion, Actividad_idActividad, boleta) VALUES(?,?,?,?,?,?)';
+    let sql = 'INSERT INTO ActividadAlumno(fechaInicio, duracion, calificacion, Actividad_idActividad, boleta) VALUES(?,?,?,?,?)';
     return this.db.executeSql(sql, [actividadAlumno.fechaInicio, actividadAlumno.duracion, actividadAlumno.calificacion, actividadAlumno.Actividad_idActividad, actividadAlumno.boleta]);
   }
 
