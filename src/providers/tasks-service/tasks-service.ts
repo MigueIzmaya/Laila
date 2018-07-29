@@ -123,7 +123,7 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, [4, "Cambiar el pañal", "Cambiar el pañal"]);
   }
 
-  getActivitiesByUser(actividadAlumno:any){
+  getActivitiesByUser(actividadAlumno:any):any{
     let sql = 'SELECT * FROM ActividadAlumno WHERE boleta = ? AND Actividad_idActividad = ?';
     return this.db.executeSql(sql, [actividadAlumno.boleta, actividadAlumno.id]).then(response => {
       let Actividades = [];
