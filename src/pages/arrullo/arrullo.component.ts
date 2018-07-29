@@ -28,19 +28,10 @@ export class Arrullo {
     this.ActivityDataBase.id = this.arrullo;
     this.ActivityDataBase.boleta = this.activityArrullo.boleta;
 
-    this.showAlert("Arrullo",this.ActivityDataBase.id,"Aceptar");
-    this.showAlert("Arrullo",this.ActivityDataBase.boleta,"Aceptar");  
-
-    /*this.tasksService.getActivitiesByUser(this.ActivityDataBase).then(actividades=>{
-      this.showAlert("Arrullo",this.Actividades,"Aceptar");
-      this.Actividades = actividades;
-    });*/
-
-    this.tasksService.getAllActivities().then(actividades=>{
-      this.showAlert("Arrullo",this.Actividades,"Aceptar");
+    this.tasksService.getActivitiesByUser(this.ActivityDataBase).then(actividades=>{
+      this.showAlert("Arrullo","Boleta: "+this.Actividades.boleta,"Aceptar");
       this.Actividades = actividades;
     });
-
   }
 
   getAllAlumnos(){
