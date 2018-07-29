@@ -10,7 +10,7 @@
     <ion-col>
       <ion-item>
         <ion-label> Seleccionar Alumno </ion-label>
-        <ion-select [(ngModel)]="ActivityDataBase.boleta" name="boleta" *ngFor="let alumnon of Alumnos" (ionChange)="getActivities()">
+        <ion-select [(ngModel)]="activityArrullo.boleta" name="boleta" *ngFor="let alumnon of Alumnos" (ionChange)="getActivities()">
           <ion-option [value]="alumnon.boleta">{{alumnon.nombre}}</ion-option>
         </ion-select>
       </ion-item>

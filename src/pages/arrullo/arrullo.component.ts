@@ -15,6 +15,7 @@ export class Arrullo {
   Actividades:any=[];
   getActivityDataBase = {fechaInicio: '', duracion: '', calificacion: '', Actividad_idActividad: '', boleta: ''};
   ActivityDataBase = {boleta: '', id: ''};
+  activityArrullo = {boleta: '', id: ''};
 
   constructor(public navCtrl: NavController,
               public tasksService: TasksServiceProvider,
@@ -24,8 +25,13 @@ export class Arrullo {
   }
 
   getActivities(){
-    /*this.ActivityDataBase.id = this.arrullo;
-    this.tasksService.getActivitiesByUser(this.ActivityDataBase).then(actividades=>{
+    this.ActivityDataBase.id = this.arrullo;
+    this.ActivityDataBase.boleta = this.activityArrullo.boleta;
+
+    this.showAlert("Arrullo",this.ActivityDataBase.id,"Aceptar");
+    this.showAlert("Arrullo",this.ActivityDataBase.boleta,"Aceptar");  
+
+    /*this.tasksService.getActivitiesByUser(this.ActivityDataBase).then(actividades=>{
       this.showAlert("Arrullo",this.Actividades,"Aceptar");
       this.Actividades = actividades;
     });*/
