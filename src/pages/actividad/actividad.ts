@@ -35,7 +35,7 @@ export class Actividad {
     this.registerAlumnoDatabase.usuario = this.nombreUsuarioMaestro;
     this.tasksService.insertTableAlumno(this.registerAlumnoDatabase);*/
     this.showAlert("AltaActividad",this.registerActivity.miDia + " " + this.registerActivity.miHora,"Aceptar");
-    this.showAlert("AltaActividad",this.registerActivity.activity,"Aceptar");
+    this.showAlert("AltaActividad",this.registerActivity.alumno,"Aceptar");
     //this.showAlert("AltaActividad",this.registerActivity.miHora,"Aceptar");
   }
 
