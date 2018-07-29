@@ -94,9 +94,17 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, [2, "Arrullo", "Arrullo"]);
   }
 
-  getTableActividad_2(){
+  getTableActividad_2():any{
     let sql = 'SELECT * FROM Actividad WHERE id_actividad = 2';
-    return this.db.executeSql(sql, []);
+    return this.db.executeSql(sql, []).then(response => {
+      let Actividades = [];
+      for (let index = 0; index < response.rows.length; index ++){
+        Actividades.push(response.rows.item(index) );
+      }
+
+      return Promise.resolve(Actividades);
+    })
+    .catch(error => {Promise.reject(error)});
   }
 
   insertTableActividad_3(){
@@ -104,72 +112,75 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, [3, "Eructar", "Eructar"]);
   }
 
-  getTableActividad_3(){
+  getTableActividad_3():any{
     let sql = 'SELECT * FROM Actividad WHERE id_actividad = 3';
-    return this.db.executeSql(sql, []);
+    return this.db.executeSql(sql, []).then(response => {
+      let Actividades = [];
+      for (let index = 0; index < response.rows.length; index ++){
+        Actividades.push(response.rows.item(index) );
+      }
+
+      return Promise.resolve(Actividades);
+    })
+    .catch(error => {Promise.reject(error)});
   }
 
   insertTableActividad_4(){
     let sql = 'INSERT INTO Actividad(id_actividad, nombre, descripcion) VALUES(?,?,?)';
-    return this.db.executeSql(sql, [1, "Cambiar el pañal", "Cambiar el pañal"]);
+    return this.db.executeSql(sql, [4, "Cambiar el pañal", "Cambiar el pañal"]);
   }
 
-  getTableActividad_4(){
+  getTableActividad_4():any{
     let sql = 'SELECT * FROM Actividad WHERE id_actividad = 4';
-    return this.db.executeSql(sql, []);
+    return this.db.executeSql(sql, []).then(response => {
+      let Actividades = [];
+      for (let index = 0; index < response.rows.length; index ++){
+        Actividades.push(response.rows.item(index) );
+      }
+
+      return Promise.resolve(Actividades);
+    })
+    .catch(error => {Promise.reject(error)});
   }
 
   insertTableActividades(){
 
-    //this.showAlert("Anuncio","Para prueba","Aceptar");
-
     this.getTableActividad_1().then(actividades => {
       this.actividades = actividades;
-
       if(this.actividades.length < 1){
         this.insertTableActividad_1();
-      } else {
-        this.showAlert("Actividad_1","Ya está insertado","Aceptar");
       }
     }).catch(error =>{
-      return false;
+      this.showAlert("Error","No se pudo insertar la actividad 1 en la base de datos","Aceptar");
     });
 
-    /*this.getTableActividad_2().then(actividades => {
+
+    this.getTableActividad_2().then(actividades => {
       this.actividades = actividades;
-      for (let index = 0; index < this.actividades.length; index++){
-         if(Number(this.actividades[index].id_actividad) != 2){
-           this.showAlert("Anuncio","No estaba insertado 2","Aceptar");
-           this.insertTableActividad_2();
-         }
+      if(this.actividades.length < 1){
+        this.insertTableActividad_2();
       }
     }).catch(error =>{
-      return false;
+      this.showAlert("Error","No se pudo insertar la actividad 2 en la base de datos","Aceptar");
     });
 
     this.getTableActividad_3().then(actividades => {
       this.actividades = actividades;
-      for (let index = 0; index < this.actividades.length; index++){
-         if(Number(this.actividades[index].id_actividad) != 3){
-           this.showAlert("Anuncio","No estaba insertado 3","Aceptar");
-           this.insertTableActividad_3();
-         }
+      if(this.actividades.length < 1){
+        this.insertTableActividad_3();
       }
     }).catch(error =>{
-      return false;
+      this.showAlert("Error","No se pudo insertar la actividad 3 en la base de datos","Aceptar");
     });
 
     this.getTableActividad_4().then(actividades => {
       this.actividades = actividades;
-      for (let index = 0; index < this.actividades.length; index++){
-         if(Number(this.actividades[index].id_actividad) != 4){
-           this.showAlert("Anuncio","No estaba insertado 4","Aceptar");
-           this.insertTableActividad_4();
-         }
+      if(this.actividades.length < 1){
+        this.insertTableActividad_4();
       }
     }).catch(error =>{
-      return false;
-    });*/
+      this.showAlert("Error","No se pudo insertar la actividad 4 en la base de datos","Aceptar");
+    });
 
   }
 

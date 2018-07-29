@@ -21,10 +21,7 @@ export class Actividad {
   }
 
   registrar_actividad(){
-
-    /*this.actividades.push(this.registerActivity.miDia);
-    this.actividades.push(this.registerActivity.miHora);
-    this.actividades.push(this.registerActivity.activity);*/
+    
   }
 
 
