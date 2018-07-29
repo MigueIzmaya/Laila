@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NgCalendarModule } from 'ionic2-calendar';
 import { TasksServiceProvider } from '../../providers/tasks-service/tasks-service';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-arrullo',
@@ -16,7 +17,8 @@ export class Arrullo {
   ActivityDataBase = {boleta: '', id: ''};
 
   constructor(public navCtrl: NavController,
-              public tasksService: TasksServiceProvider) {
+              public tasksService: TasksServiceProvider,
+              public alertCtrl: AlertController,) {
     this.getAllAlumnos();
 
   }
@@ -24,6 +26,7 @@ export class Arrullo {
   getActivities(){
     this.ActivityDataBase.id = this.arrullo;
     this.tasksService.getActivitiesByUser(this.ActivityDataBase).then(actividades=>{
+      this.showAlert("Arrullo",this.Actividades,"Aceptar");
       this.Actividades = actividades;
     });
 
@@ -37,7 +40,16 @@ export class Arrullo {
   }
 
   borrar(){
-    
+
+  }
+
+  showAlert(titulo, contenido, boton) {
+    let alert = this.alertCtrl.create({
+      title: titulo,
+      subTitle: contenido,
+      buttons: [boton]
+    });
+    alert.present();
   }
 
 }

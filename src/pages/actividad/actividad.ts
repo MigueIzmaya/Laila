@@ -32,6 +32,7 @@ export class Actividad {
     this.registerActivityDataBase.Actividad_idActividad = this.registerActivity.activity;
     this.registerActivityDataBase.boleta = null;
     this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase);
+    this.showAlert("Actividad","Actividad registrada con éxito","Aceptar");
   }
 
   getAllAlumnos(){
