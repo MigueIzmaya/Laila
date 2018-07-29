@@ -245,6 +245,21 @@ export class TasksServiceProvider {
 
   }
 
+  getAllActivities():any{
+    let sql = 'SELECT * FROM ActividadAlumno';
+    return this.db.executeSql(sql,[])
+    .then(response => {
+      let Actividades = [];
+      for (let index = 0; index < response.rows.length; index ++){
+        Actividades.push(response.rows.item(index) );
+      }
+
+      return Promise.resolve(Actividades);
+    })
+    .catch(error => {Promise.reject(error)});
+
+  }
+
   getAllMaestros(): any{
     let sql = 'SELECT * FROM Maestro';
     return this.db.executeSql(sql,[])
@@ -283,21 +298,6 @@ export class TasksServiceProvider {
     return Promise.resolve( tasks );
   })
   .catch(error => Promise.reject(error));
-}
-
-create(task: any){
-  let sql = 'INSERT INTO tasks(title, completed) VALUES(?,?)';
-  return this.db.executeSql(sql, [task.title, task.completed]);
-}
-
-update(task: any){
-  let sql = 'UPDATE tasks SET title=?, completed=? WHERE id=?';
-  return this.db.executeSql(sql, [task.title, task.completed, task.id]);
-}
-
-delete(task: any){
-  let sql = 'DELETE FROM tasks WHERE id=?';
-  return this.db.executeSql(sql, [task.id]);
 }
 
 showAlert(titulo, contenido, boton) {
