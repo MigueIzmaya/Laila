@@ -15,13 +15,28 @@ export class Actividad {
   miHora:any;
   activity:any;
   actividades:any[][];
-  registerActivity = {miDia: '', miHora: '', activity: ''};
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  Alumnos:any=[];
+  registerActivity = {miDia: '', miHora: '', activity: '', alumno: '', duracion: ''};
+  registerActivityDataBase = {miDia: '', miHora: '', activity: '', alumno: ''};
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public tasksService: TasksServiceProvider) {
+                this.getAllAlumnos();
 
   }
 
   registrar_actividad(){
-    
+    this.registerAlumnoDatabase.boleta = this.registerActivity.activity;
+    this.registerAlumnoDatabase.nombre = this.registerActivity.nombre;
+    this.registerAlumnoDatabase.numero_serie = null;
+    this.registerAlumnoDatabase.usuario = this.nombreUsuarioMaestro;
+    this.tasksService.insertTableAlumno(this.registerAlumnoDatabase);
+  }
+
+  getAllAlumnos(){
+    this.tasksService.getAllAlumnos().then(alumnos=>{
+      this.Alumnos = alumnos;
+    });
   }
 
 

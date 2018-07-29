@@ -31,6 +31,17 @@
       <ion-row>
         <ion-col>
           <ion-item>
+            <ion-label> Seleccionar Alumno </ion-label>
+            <ion-select [(ngModel)]="registerActivity.alumno" name="alumno" *ngFor="let alumnon of Alumnos">
+              <ion-option [value]="alumnon.boleta">{{alumnon.nombre}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
             <ion-label>Dia</ion-label>
             <ion-datetime displayFormat="DDDD/MMMM/YYYY" min="2018" [(ngModel)]="registerActivity.miDia" name="miDia">
             </ion-datetime>
@@ -39,6 +50,22 @@
             <ion-label>Hora</ion-label>
             <ion-datetime displayFormat="HH:mm:ss" [(ngModel)]="registerActivity.miHora" name="miHora">
             </ion-datetime>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Duración</ion-label>
+            <ion-select [(ngModel)]="registerActivity.duracion" name="duracion">
+              <ion-option value="1">1 minuto</ion-option>
+              <ion-option value="2">2 minutos</ion-option>
+              <ion-option value="3">3 minutos</ion-option>
+              <ion-option value="4">4 minutos</ion-option>
+              <ion-option value="5">5 minutos</ion-option>
+            </ion-select>
           </ion-item>
 
         </ion-col>

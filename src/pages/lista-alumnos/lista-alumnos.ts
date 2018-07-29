@@ -21,13 +21,7 @@ export class ListaAlumnos {
   getAllAlumnos(){
     this.tasksService.getAllAlumnos().then(alumnos=>{
       this.Alumnos = alumnos;
-
-      for (let index = 0; index < this.Alumnos.length; index++){
-         this.showAlert("Mostrando alumnos",this.Alumnos[index].nombre,"Aceptar");
-      }
-
-    })
-
+    });
   }
 
   showAlert(titulo, contenido, boton) {
