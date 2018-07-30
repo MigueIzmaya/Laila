@@ -28,6 +28,10 @@ export class Arrullo {
 
   getActivities(){
 
+    this.tasksService.getTableActividad().then(descripciones=>{
+      this.descripcion = descripciones;
+    });
+
     this.tasksService.getAllActivities().then(actividades=>{
       this.Actividades = actividades;
       for (let index = 0; index < this.Actividades.length; index++){
