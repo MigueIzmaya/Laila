@@ -31,18 +31,18 @@ export class Arrullo {
     this.ActivityDataBase.Actividad_idActividad = this.arrullo;
     this.ActivityDataBase.boleta = this.activityArrullo.boleta;
 
-    this.tasksService.getActivitiesByUser(this.ActivityDataBase).then(actividades=>{
+    /*this.tasksService.getActivitiesByUser(this.ActivityDataBase).then(actividades=>{
 
       this.Actividades = actividades;
 
       this.showAlert("Arrullo","Boleta: "+this.Actividades[0].boleta,"Aceptar");
-    });
+    });*/
 
-    /*this.tasksService.getAllActivities().then(actividades=>{
+    this.tasksService.getAllActivities().then(actividades=>{
 
       this.Actividades = actividades;
       this.showAlert("Arrullo","Id: "+this.Actividades[0].Actividad_idActividad,"Aceptar");
-    });*/
+    });
 
   }
 
