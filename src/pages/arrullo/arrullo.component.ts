@@ -14,7 +14,10 @@ export class Arrullo {
   arrullo:any = 1;
   Actividades:any=[];
   getActivityDataBase = {fechaInicio: '', duracion: '', calificacion: '', Actividad_idActividad: '', boleta: ''};
-  ActivityDataBase = {boleta: '', id: ''};
+  ActivityDataBase = {Actividad_idActividad: '', boleta: ''};
+
+
+
   activityArrullo = {boleta: '', id: ''};
 
   constructor(public navCtrl: NavController,
@@ -25,7 +28,7 @@ export class Arrullo {
   }
 
   getActivities(){
-    this.ActivityDataBase.id = this.arrullo;
+    this.ActivityDataBase.Actividad_idActividad = this.arrullo;
     this.ActivityDataBase.boleta = this.activityArrullo.boleta;
 
     this.tasksService.getActivitiesByUser(this.ActivityDataBase).then(actividades=>{
