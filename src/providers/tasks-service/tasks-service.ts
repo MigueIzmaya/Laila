@@ -262,6 +262,7 @@ export class TasksServiceProvider {
 
   }
 
+
   getAllMaestros(): any{
     let sql = 'SELECT * FROM Maestro';
     return this.db.executeSql(sql,[])
