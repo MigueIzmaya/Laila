@@ -27,22 +27,13 @@ export class Arrullo {
   }
 
   getActivities(){
-    this.ActivityDataBase.Actividad_idActividad = this.arrullo;
-    this.ActivityDataBase.boleta = this.activityArrullo.boleta;
-
-    /*this.tasksService.getTableActividad().then(descripciones=>{
-      this.descripcion = descripciones;
-    });*/
 
     this.tasksService.getAllActivities().then(actividades=>{
       this.Actividades = actividades;
-      for(let actividad of actividades){
-        if (Number(actividad.boleta) == Number(this.ActivityDataBase.boleta)){
-          this.ActividadesAlumno.push(actividad);
-
-        }
-
-        this.showAlert("Dentro de Actividades",actividad.boleta,"Aceptar");
+      for (let index = 0; index < this.Actividades.length; index++){
+         if(this.Actividades[index].boleta === this.activityArrullo.boleta){
+           this.showAlert("dentro de Actividad",this.Actividades[index].boleta,"Aceptar");
+         }
       }
     });
 
