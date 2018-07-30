@@ -32,13 +32,13 @@ export class Arrullo {
 
       this.Actividades = actividades;
 
-      this.showAlert("Arrullo","Boleta: "+this.Actividades.boleta,"Aceptar");
+      this.showAlert("Arrullo","Boleta: "+this.Actividades[0].boleta,"Aceptar");
     });
 
     this.tasksService.getAllActivities().then(actividades=>{
 
       this.Actividades = actividades;
-      this.showAlert("Arrullo","Id: "+this.Actividades.Actividad_idActividad,"Aceptar");
+      this.showAlert("Arrullo","Id: "+this.Actividades[0].Actividad_idActividad,"Aceptar");
     });
 
   }
