@@ -124,6 +124,8 @@ export class TasksServiceProvider {
   }
 
   getActivitiesByUser(actividadAlumno:any):any{
+    this.showAlert("ActividadesUsuario",actividadAlumno.boleta,"Aceptar");
+    this.showAlert("ActividadesUsuario",actividadAlumno.id,"Aceptar");
     let sql = 'SELECT * FROM ActividadAlumno WHERE boleta = ? AND Actividad_idActividad = ?';
     return this.db.executeSql(sql, [actividadAlumno.boleta, actividadAlumno.id]).then(response => {
       let Actividades = [];
