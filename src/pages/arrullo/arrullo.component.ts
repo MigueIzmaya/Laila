@@ -38,7 +38,7 @@ export class Arrullo {
       for (let index = 0; index < this.Actividades.length; index++){
         this.showAlert("dentro de Actividad",this.Actividades[index].boleta,"Aceptar");
          if(Number(this.Actividades[index].boleta) == Number(this.activityArrullo.boleta)){
-           this.showAlert("dentro de Actividad2",this.Actividades[index].boleta,"Aceptar");
+           this.showAlert("dentro de Actividad22",this.Actividades[index].boleta,"Aceptar");
          }
       }
     });
