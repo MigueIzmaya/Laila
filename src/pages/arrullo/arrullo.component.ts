@@ -18,6 +18,8 @@ export class Arrullo {
   activityArrullo = {boleta: '', id: ''};
   ActividadesAlumno:any=[];
   descripcion:any=[];
+  vriable1:any;
+  variable2:any;
 
   constructor(public navCtrl: NavController,
               public tasksService: TasksServiceProvider,
@@ -30,8 +32,11 @@ export class Arrullo {
 
     this.tasksService.getTableActividad().then(descripciones=>{
       this.descripcion = descripciones;
-      this.showAlert("DescripcionLala",JSON.parse(this.descripcion),"Aceptar");
+
     });
+
+    this.vriable1 = JSON.parse(this.descripcion);
+    this.variable2 = JSON.stringify(this.descripcion);
 
     this.tasksService.getAllActivities().then(actividades=>{
       this.Actividades = actividades;
