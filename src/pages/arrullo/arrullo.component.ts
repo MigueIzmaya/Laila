@@ -31,7 +31,7 @@ export class Arrullo {
     this.tasksService.getAllActivities().then(actividades=>{
       this.Actividades = actividades;
       for (let index = 0; index < this.Actividades.length; index++){
-         if(this.Actividades[index].boleta === this.activityArrullo.boleta){
+         if(this.Actividades[index].boleta == this.activityArrullo.boleta){
            this.showAlert("dentro de Actividad",this.Actividades[index].boleta,"Aceptar");
          }
       }
