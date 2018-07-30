@@ -299,7 +299,7 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, []);
   }
 
-  getTableActividad(){
+  getTableActividad():any{
     let sql = 'SELECT * FROM Actividad';
     return this.db.executeSql(sql,[])
     .then(response => {
