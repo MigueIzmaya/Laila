@@ -138,7 +138,7 @@ export class TasksServiceProvider {
       return Promise.resolve(Actividades);
     })
     .catch(error => {
-      this.showAlert("ActividadesUsuario",error,"Aceptar");
+      this.showAlert("ActividadesUsuarioError",error,"Aceptar");
       Promise.reject(error)});
   }
 
