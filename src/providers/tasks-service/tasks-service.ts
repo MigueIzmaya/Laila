@@ -128,6 +128,7 @@ export class TasksServiceProvider {
     this.showAlert("ActividadesUsuario",actividadAlumno.Actividad_idActividad,"Aceptar");
     let sql = 'SELECT * FROM ActividadAlumno WHERE boleta = ?';
     return this.db.executeSql(sql, [actividadAlumno.boleta]).then(response => {
+      this.showAlert("ActividadesUsuario","Entre aqui","Aceptar");
       let Actividades = [];
       for (let index = 0; index < response.rows.length; index ++){
         Actividades.push(response.rows.item(index) );
@@ -135,7 +136,9 @@ export class TasksServiceProvider {
 
       return Promise.resolve(Actividades);
     })
-    .catch(error => {Promise.reject(error)});
+    .catch(error => {
+      this.showAlert("ActividadesUsuario",error,"Aceptar");
+      Promise.reject(error)});
   }
 
   getTableActividad_4():any{
