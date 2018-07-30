@@ -35,7 +35,7 @@ export class Arrullo {
 
       this.Actividades = actividades;
 
-      this.showAlert("Arrullo","Boleta: "+this.Actividades.boleta,"Aceptar");
+      this.showAlert("Arrullo","Boleta: "+this.Actividades[0].boleta,"Aceptar");
     });
 
     /*this.tasksService.getAllActivities().then(actividades=>{
