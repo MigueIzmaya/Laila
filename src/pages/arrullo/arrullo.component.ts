@@ -30,9 +30,9 @@ export class Arrullo {
     this.ActivityDataBase.Actividad_idActividad = this.arrullo;
     this.ActivityDataBase.boleta = this.activityArrullo.boleta;
 
-    this.tasksService.getTableActividad().then(descripciones=>{
+    /*this.tasksService.getTableActividad().then(descripciones=>{
       this.descripcion = descripciones;
-    });
+    });*/
 
     this.tasksService.getAllActivities().then(actividades=>{
       for(let actividad of actividades){

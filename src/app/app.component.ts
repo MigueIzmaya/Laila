@@ -79,7 +79,7 @@ export class MyApp {
     })
     .then((db) => {
       this.tasksService.setDatabase(db);
-      this.tasksService.dropTableActividades();
+      //this.tasksService.dropTableActividades();
       this.tasksService.createTableActividad().then((data) => { }, (error) => {});
       this.tasksService.createTableAlumno().then((data) => {}, (error) => {});
       this.tasksService.createTableMaestro().then((data) => {}, (error) => {});
