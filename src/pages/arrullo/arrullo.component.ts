@@ -35,6 +35,7 @@ export class Arrullo {
     });*/
 
     this.tasksService.getAllActivities().then(actividades=>{
+      this.Actividades = actividades;
       for(let actividad of actividades){
         if (actividad.boleta == this.ActivityDataBase.boleta){
           this.ActividadesAlumno.push(actividad);
