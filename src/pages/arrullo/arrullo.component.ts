@@ -40,6 +40,8 @@ export class Arrullo {
           this.ActividadesAlumno.push(actividad);
 
         }
+
+        this.showAlert("Dentro de Actividades",actividad.boletas,"Aceptar");
       }
     });
 
