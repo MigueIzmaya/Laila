@@ -29,13 +29,16 @@ export class Arrullo {
     this.ActivityDataBase.boleta = this.activityArrullo.boleta;
 
     this.tasksService.getActivitiesByUser(this.ActivityDataBase).then(actividades=>{
-      this.showAlert("Arrullo","Boleta: "+actividades.boleta,"Aceptar");
+
       this.Actividades = actividades;
+
+      this.showAlert("Arrullo","Boleta: "+this.Actividades.boleta,"Aceptar");
     });
 
     this.tasksService.getAllActivities().then(actividades=>{
-      this.showAlert("Arrullo","Id: "+actividades.Actividad_idActividad,"Aceptar");
+
       this.Actividades = actividades;
+      this.showAlert("Arrullo","Id: "+this.Actividades.Actividad_idActividad,"Aceptar");
     });
 
   }
