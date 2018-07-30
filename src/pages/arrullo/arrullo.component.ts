@@ -30,7 +30,7 @@ export class Arrullo {
 
     this.tasksService.getTableActividad().then(descripciones=>{
       this.descripcion = descripciones;
-      this.showAlert("Descripcion",descripciones[0].nombre,"Aceptar");
+      this.showAlert("DescripcionLala",JSON.parse(this.descripcion),"Aceptar");
     });
 
     this.tasksService.getAllActivities().then(actividades=>{
