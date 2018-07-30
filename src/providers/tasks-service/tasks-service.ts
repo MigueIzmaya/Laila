@@ -126,8 +126,8 @@ export class TasksServiceProvider {
   getActivitiesByUser(actividadAlumno:any):any{
     this.showAlert("ActividadesUsuario",actividadAlumno.boleta,"Aceptar");
     this.showAlert("ActividadesUsuario",actividadAlumno.Actividad_idActividad,"Aceptar");
-    let sql = 'SELECT * FROM ActividadAlumno WHERE boleta = ? AND Actividad_idActividad = ?';
-    return this.db.executeSql(sql, [actividadAlumno.boleta, actividadAlumno.Actividad_idActividad]).then(response => {
+    let sql = 'SELECT * FROM ActividadAlumno WHERE boleta = ?';
+    return this.db.executeSql(sql, [actividadAlumno.boleta]).then(response => {
       let Actividades = [];
       for (let index = 0; index < response.rows.length; index ++){
         Actividades.push(response.rows.item(index) );
