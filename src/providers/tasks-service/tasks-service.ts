@@ -299,6 +299,21 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, []);
   }
 
+  getTableActividad(){
+    let sql = 'SELECT * FROM Actividad';
+    return this.db.executeSql(sql,[])
+    .then(response => {
+      let Actividades = [];
+      for (let index = 0; index < response.rows.length; index ++){
+        Actividades.push(response.rows.item(index) );
+      }
+
+      return Promise.resolve(Actividades);
+    })
+    .catch(error => {Promise.reject(error)});
+
+  }
+
   getAll(){
   let sql = 'SELECT * FROM Alumno';
   return this.db.executeSql(sql, [])
