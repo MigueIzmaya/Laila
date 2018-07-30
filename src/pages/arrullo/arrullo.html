@@ -23,16 +23,13 @@
         <ion-item-sliding *ngFor="let actividad of ActividadesAlumno">
           <ion-item>
 
-            <ion-card>
+
               <ion-icon ios="ios-shirt" md="md-shirt" *ngIf="actividad.Actividad_idActividad == 0"></ion-icon>
               <ion-icon ios="ios-happy" md="md-happy" *ngIf="actividad.Actividad_idActividad == 1"></ion-icon>
               <ion-icon ios="ios-sad" md="md-sad" *ngIf="actividad.Actividad_idActividad == 2"></ion-icon>
               <ion-icon ios="ios-man" md="md-man" *ngIf="actividad.Actividad_idActividad == 3"></ion-icon>
 
-                <ion-card-content>
-                  <ion-card-title>
                       {{descripcion[actividad.Actividad_idActividad].nombre}}
-                    </ion-card-title>
                   <p>
                     {{actividad.fechaInicio}}
                   </p>
@@ -44,9 +41,6 @@
                   <p>
                     {{actividad.calificacion}}
                   </p>
-              </ion-card-content>
-            </ion-card>
-
 
           </ion-item>
 
