@@ -41,7 +41,7 @@ export class Arrullo {
 
         }
 
-        this.showAlert("Dentro de Actividades",actividad.boletas,"Aceptar");
+        this.showAlert("Dentro de Actividades",actividad.boleta,"Aceptar");
       }
     });
 
