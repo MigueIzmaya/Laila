@@ -257,6 +257,7 @@ export class TasksServiceProvider {
     .then(response => {
       let Actividades = [];
       for (let index = 0; index < response.rows.length; index ++){
+        this.showAlert("Actividades", response.rows.item(index) ,"Aceptar");
         Actividades.push(response.rows.item(index) );
       }
 
