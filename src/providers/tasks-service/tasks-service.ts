@@ -256,8 +256,9 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql,[])
     .then(response => {
       let Actividades = [];
+      this.showAlert("Actividades_1", response.rows.length ,"Aceptar");
       for (let index = 0; index < response.rows.length; index ++){
-        this.showAlert("Actividades_1", response.rows.item(index).length ,"Aceptar");
+
         Actividades.push(response.rows.item(index) );
       }
 
