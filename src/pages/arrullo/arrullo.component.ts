@@ -35,9 +35,6 @@ export class Arrullo {
 
     });
 
-    this.vriable1 = JSON.parse(this.descripcion);
-    this.variable2 = JSON.stringify(this.descripcion);
-
     this.tasksService.getAllActivities().then(actividades=>{
       this.Actividades = actividades;
       for (let index = 0; index < this.Actividades.length; index++){
