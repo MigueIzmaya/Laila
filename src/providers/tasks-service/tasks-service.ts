@@ -301,6 +301,21 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, []);
   }
 
+  dropTableAlumno(){
+    let sql = 'DROP TABLE Alumno'
+    return this.db.executeSql(sql,[]);
+  }
+
+  dropTableMaestro(){
+    let sql = 'DROP TABLE Maestro'
+    return this.db.executeSql(sql,[]);
+  }
+
+  dropTableActividadAlumno(){
+    let sql = 'DROP TABLE ActividadAlumno'
+    return this.db.executeSql(sql,[]);
+  }
+
   getTableActividad():any{
     let sql = 'SELECT * FROM Actividad';
     return this.db.executeSql(sql,[])
