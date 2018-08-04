@@ -124,11 +124,9 @@ export class TasksServiceProvider {
   }
 
   getActivitiesByUser(actividadAlumno:any):any{
-    this.showAlert("ActividadesUsuario",actividadAlumno.boleta,"Aceptar");
-    this.showAlert("ActividadesUsuario",actividadAlumno.Actividad_idActividad,"Aceptar");
-    let sql = 'SELECT * FROM ActividadAlumno WHERE boleta = 1';
+    let sql = 'SELECT * FROM ActividadAlumno WHERE boleta = ?';
     return this.db.executeSql(sql, [actividadAlumno.boleta]).then(response => {
-      this.showAlert("ActividadesUsuario","Entre aqui","Aceptar");
+
       let Actividades = [];
       for (let index = 0; index < response.rows.length; index ++){
         this.showAlert("ActividadesUsuario_1",response.rows.item(index),"Aceptar");
@@ -256,9 +254,7 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql,[])
     .then(response => {
       let Actividades = [];
-      this.showAlert("Actividades_1", response.rows.length ,"Aceptar");
       for (let index = 0; index < response.rows.length; index ++){
-        this.showAlert("Json",JSON.stringify(response.rows.item(index), null, 4),"Aceptar");
         Actividades.push(response.rows.item(index) );
       }
 

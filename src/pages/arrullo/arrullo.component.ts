@@ -29,18 +29,15 @@ export class Arrullo {
   }
 
   getActivities(){
-
-    /*this.tasksService.getTableActividad().then(descripciones=>{
+    this.tasksService.getTableActividad().then(descripciones=>{
       this.descripcion = descripciones;
+    });
 
-    });*/
-
-    this.tasksService.getAllActivities().then(actividades=>{
+    this.tasksService.getActivitiesByUser(this.activityArrullo.boleta).then(actividades=>{
       this.Actividades = actividades;
       for (let index = 0; index < this.Actividades.length; index++){
-        //this.showAlert("dentro de Actividad",this.Actividades[index].boleta,"Aceptar");
          if(Number(this.Actividades[index].boleta) == Number(this.activityArrullo.boleta)){
-           //this.showAlert("dentro de Actividad22",this.Actividades[index].boleta,"Aceptar");
+           this.showAlert("dentro de Actividad22",this.Actividades[index].boleta,"Aceptar");
          }
       }
     });
@@ -49,8 +46,6 @@ export class Arrullo {
 
   getAllAlumnos(){
     this.tasksService.getAllAlumnos().then(alumnos=>{
-
-      this.showAlert("Json",JSON.stringify(alumnos, null, 4),"Aceptar");
       this.Alumnos = alumnos;
     });
 
