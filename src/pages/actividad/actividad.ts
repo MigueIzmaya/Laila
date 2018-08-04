@@ -30,7 +30,7 @@ export class Actividad {
     this.registerActivityDataBase.fechaInicio = this.registerActivity.miDia + " " + this.registerActivity.miHora;
     this.registerActivityDataBase.duracion = this.registerActivity.duracion;
     this.registerActivityDataBase.Actividad_idActividad = this.registerActivity.activity;
-    this.registerActivityDataBase.boleta = null;
+    this.registerActivityDataBase.boleta = this.registerActivity.alumno;
     this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase);
     this.showAlert("Actividad","Actividad registrada con éxito","Aceptar");
   }
