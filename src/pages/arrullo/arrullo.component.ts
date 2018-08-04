@@ -49,6 +49,8 @@ export class Arrullo {
 
   getAllAlumnos(){
     this.tasksService.getAllAlumnos().then(alumnos=>{
+
+      this.showAlert("Json",JSON.stringify(this.Alumnos, null, 4),"Aceptar");
       this.Alumnos = alumnos;
     });
 
