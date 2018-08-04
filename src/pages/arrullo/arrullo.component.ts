@@ -33,6 +33,8 @@ export class Arrullo {
       this.descripcion = descripciones;
     });
 
+    this.showAlert("Antes de ",this.activityArrullo.boleta,"Aceptar");
+/*
     this.tasksService.getActivitiesByUser(this.activityArrullo.boleta).then(actividades=>{
       this.showAlert("ByUser",JSON.stringify(actividades, null, 4),"Aceptar");
       this.Actividades = actividades;
@@ -40,8 +42,8 @@ export class Arrullo {
          if(Number(this.Actividades[index].boleta) == Number(this.activityArrullo.boleta)){
 
          }
-      }*/
-    });
+      }
+    });*/
 
   }
 
