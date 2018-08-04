@@ -129,7 +129,6 @@ export class TasksServiceProvider {
 
       let Actividades = [];
       for (let index = 0; index < response.rows.length; index ++){
-        this.showAlert("ActividadesUsuario_1",response.rows.item(index),"Aceptar");
         Actividades.push(response.rows.item(index) );
       }
 

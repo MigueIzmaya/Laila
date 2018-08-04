@@ -34,12 +34,13 @@ export class Arrullo {
     });
 
     this.tasksService.getActivitiesByUser(this.activityArrullo.boleta).then(actividades=>{
+      this.showAlert("ByUser",JSON.stringify(actividades, null, 4),"Aceptar");
       this.Actividades = actividades;
-      for (let index = 0; index < this.Actividades.length; index++){
+      /*for (let index = 0; index < this.Actividades.length; index++){
          if(Number(this.Actividades[index].boleta) == Number(this.activityArrullo.boleta)){
-           this.showAlert("dentro de Actividad22",this.Actividades[index].boleta,"Aceptar");
+
          }
-      }
+      }*/
     });
 
   }
