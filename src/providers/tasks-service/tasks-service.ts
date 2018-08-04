@@ -258,7 +258,7 @@ export class TasksServiceProvider {
       let Actividades = [];
       this.showAlert("Actividades_1", response.rows.length ,"Aceptar");
       for (let index = 0; index < response.rows.length; index ++){
-
+        this.showAlert("Json",JSON.stringify(response.rows.item(index), null, 4),"Aceptar");
         Actividades.push(response.rows.item(index) );
       }
 
