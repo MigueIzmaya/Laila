@@ -35,6 +35,8 @@ export class Bluetooth {
     });
   }*/
 
+
+
   connect(serie: string){
     this.bluetoothSerial.connect(serie).subscribe(peripheralData =>{
       this.write("Hola mundo");
@@ -43,7 +45,6 @@ export class Bluetooth {
 
   write(mensaje:string){
     this.bluetoothSerial.write(mensaje + ' \n').then(resultado=>{
-      this.showAlert("Bluetooth",JSON.stringify(resultado, null, 4),"Aceptar");
 
     }).catch(error=>{
       this.showAlert("Error bluetooth",error,"Aceptar");
