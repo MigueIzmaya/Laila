@@ -7,31 +7,31 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
   templateUrl: 'bluetooth.html'
 })
 export class Bluetooth {
-  devices:any;
-pages: Array<{title: string, component: any}>;
+  devicesArray:any;
+  dispositivos = {name: '', address: '', id: '', class: ''};
+  registerActivity = {miDia: '', miHora: '', activity: '', alumno: '', duracion: ''};
   constructor(public navCtrl: NavController,
               private bluetoothSerial: BluetoothSerial,
               public alertCtrl: AlertController) {
-    this.devices = "Presiona para buscar";
+    //this.devices = "Presiona para buscar";
   }
 
   buscar() {
     this.bluetoothSerial.isEnabled().then(device=>{
-      //this.isConnect();
       this.listDevices();
     }).catch(connect=>{
-      this.devices = "El bluetooth está desactivado";
+      this.showAlert("Bluetooth","El bluetooth está desactivado","Aceptar");
     });
   }
-
+  /*
   isConnect(){
     this.bluetoothSerial.isConnected().then(device =>{
       this.write();
     }).catch(device=>{
       this.connect();
     });
-  }
-
+  }*/
+  /*
   connect(){
     this.bluetoothSerial.connect("00:06:66:80:AD:70").subscribe(peripheralData =>{
       this.devices = "Conectado";
@@ -50,16 +50,11 @@ pages: Array<{title: string, component: any}>;
     this.bluetoothSerial.read().then(peripheralData => {
       this.devices = peripheralData;
     })
-  }
+  }*/
 
   listDevices(){
-
     this.bluetoothSerial.discoverUnpaired().then(devices=>{
-
-      for(let device of devices){
-        this.showAlert("Bluetooth",JSON.stringify(device, null, 4),"Aceptar");
-      }
-
+      this.devicesArray = devices;
     }).catch(error=>{
       this.showAlert("Error",error,"Aceptar");
     });

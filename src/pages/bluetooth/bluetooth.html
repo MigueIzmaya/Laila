@@ -6,14 +6,37 @@
 
 <ion-content>
 
-  <ion-list>
-    <ion-item>
+  <ion-row>
+    <ion-col>
       <button ion-button full (click)="buscar()" >Buscar</button>
-    </ion-item>
+    </ion-col>
+  </ion-row>
 
-    <ion-item>
-      <ion-label>{{devices}}</ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-row>
+    <ion-col>
+      <ion-list>
+        <ion-item-sliding *ngFor="let device of devicesArray">
+          <ion-item>
+            <p>
+              Nombre: {{device.name}}
+            </p>
+
+            <p>
+              Adress: {{device.address}}
+            </p>
+
+          </ion-item>
+
+          <ion-item-options side="right">
+            <button ion-button color="danger" (click)="borrar(device.address)">
+              <ion-icon name="trash"></ion-icon>
+              Borrar
+            </button>
+          </ion-item-options>
+
+        </ion-item-sliding>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 
 </ion-content>
