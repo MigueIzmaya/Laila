@@ -15,8 +15,7 @@
   <ion-row>
     <ion-col>
       <ion-list>
-        <ion-item-sliding *ngFor="let device of devicesArray">
-          <ion-item>
+          <ion-item *ngFor="let device of devicesArray" (click)="seleccionarBluetooth(device.address)">
             <p>
               Nombre: {{device.name}}
             </p>
@@ -26,15 +25,6 @@
             </p>
 
           </ion-item>
-
-          <ion-item-options side="right">
-            <button ion-button color="danger" (click)="borrar(device.address)">
-              <ion-icon name="trash"></ion-icon>
-              Borrar
-            </button>
-          </ion-item-options>
-
-        </ion-item-sliding>
       </ion-list>
     </ion-col>
   </ion-row>

@@ -60,6 +60,10 @@ export class Bluetooth {
     });
   }
 
+  seleccionarBluetooth(address:string){
+    this.showAlert("Seleccionado",address,"Aceptar");    
+  }
+
   showAlert(titulo, contenido, boton) {
     let alert = this.alertCtrl.create({
       title: titulo,
