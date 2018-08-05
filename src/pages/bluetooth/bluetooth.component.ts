@@ -17,6 +17,7 @@ pages: Array<{title: string, component: any}>;
 
   buscar() {
     this.bluetoothSerial.isEnabled().then(device=>{
+      this.showAlert("Buscar",JSON.stringify(device, null, 4),"Aceptar");
       //this.isConnect();
       this.listDevices();
     }).catch(connect=>{
@@ -53,6 +54,7 @@ pages: Array<{title: string, component: any}>;
   }
 
   listDevices(){
+    this.showAlert("listdevices","","Aceptar");
     this.bluetoothSerial.discoverUnpaired().then(device=>{
       this.showAlert("Bluetooth",JSON.stringify(device, null, 4),"Aceptar");
     }).catch(error=>{
