@@ -20,6 +20,7 @@ export class Bluetooth {
 
   buscar() {
     this.bluetoothSerial.isEnabled().then(device=>{
+      this.presentLoadingCustom();
       //this.listDevices();
     }).catch(connect=>{
       this.showAlert("Bluetooth","El bluetooth está desactivado","Aceptar");
