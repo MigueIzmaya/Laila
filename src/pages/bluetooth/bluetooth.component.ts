@@ -7,9 +7,10 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
   templateUrl: 'bluetooth.html'
 })
 export class Bluetooth {
-  devicesArray:any;
+  devicesArray:any = null;
   dispositivos = {name: '', address: '', id: '', class: ''};
   registerActivity = {miDia: '', miHora: '', activity: '', alumno: '', duracion: ''};
+  ejemplo:any;
   constructor(public navCtrl: NavController,
               private bluetoothSerial: BluetoothSerial,
               public alertCtrl: AlertController,
@@ -62,8 +63,8 @@ export class Bluetooth {
   }
 
   seleccionarBluetooth(address:string){
-    this.presentLoadingText();
-    //this.showAlert("Seleccionado",address,"Aceptar");
+    this.presentLoadingCustom();
+
   }
 
   showAlert(titulo, contenido, boton) {
@@ -75,24 +76,29 @@ export class Bluetooth {
     alert.present();
   }
 
-  showLoading() {
-    const loader = this.loadingCtrl.create({
-      content: "Espere por favor...",
-      duration: 3000
-    });
-    loader.present();
-  }
-
-  presentLoadingText() {
+  presentLoadingCustom() {
   let loading = this.loadingCtrl.create({
     spinner: 'hide',
-    content: 'Loading Please Wait...'
+    content: `
+      <div class="custom-spinner-container">
+        <div class="custom-spinner-box"></div>
+      </div>`,
+    duration: 5000
+  });
+
+  loading.onDidDismiss(() => {
+    this.ejemplo = "lala";
+
   });
 
   loading.present();
-
-  setTimeout(() => {
-    loading.dismiss();
-  }, 5000);
 }
+
+  showLoading() {
+    const loader = this.loadingCtrl.create({
+      content: "Espere por favor...",
+      duration: 5000
+    });
+    loader.present();
+  }
 }
