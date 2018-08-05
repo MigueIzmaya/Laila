@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 
 @Component({
@@ -9,7 +9,9 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 export class Bluetooth {
   devices:any;
 pages: Array<{title: string, component: any}>;
-  constructor(public navCtrl: NavController, private bluetoothSerial: BluetoothSerial) {
+  constructor(public navCtrl: NavController,
+              private bluetoothSerial: BluetoothSerial,
+              public alertCtrl: AlertController) {
     this.devices = "Presiona para buscar";
   }
 
@@ -52,11 +54,19 @@ pages: Array<{title: string, component: any}>;
 
   listDevices(){
     this.bluetoothSerial.discoverUnpaired().then(device=>{
-      this.devices = "Aqui";
-      this.devices = device.id;
+      this.showAlert("Bluetooth",JSON.stringify(device, null, 4),"Aceptar");
     }).catch(error=>{
       this.devices = "Error";
       this.devices = error;
     });
+  }
+
+  showAlert(titulo, contenido, boton) {
+    let alert = this.alertCtrl.create({
+      title: titulo,
+      subTitle: contenido,
+      buttons: [boton]
+    });
+    alert.present();
   }
 }
