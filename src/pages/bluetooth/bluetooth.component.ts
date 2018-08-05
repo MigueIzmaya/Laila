@@ -20,7 +20,7 @@ export class Bluetooth {
 
   buscar() {
     this.bluetoothSerial.isEnabled().then(device=>{
-      this.listDevices();
+      //this.listDevices();
     }).catch(connect=>{
       this.showAlert("Bluetooth","El bluetooth está desactivado","Aceptar");
     });
@@ -77,19 +77,18 @@ export class Bluetooth {
   }
 
   presentLoadingCustom() {
-  let loading = this.loadingCtrl.create({
-    spinner: 'hide',
-    content: "Espere por favor...",
-    duration: 5000
-  });
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: "Espere por favor...",
+      duration: 20000
+    });
 
-  loading.onDidDismiss(() => {
-    this.ejemplo = "lala";
+    loading.onDidDismiss(() => {
+      this.listDevices();
+    });
 
-  });
-
-  loading.present();
-}
+    loading.present();
+  }
 
   showLoading() {
     const loader = this.loadingCtrl.create({
