@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController  } from 'ionic-angular';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 
 @Component({
@@ -12,7 +12,8 @@ export class Bluetooth {
   registerActivity = {miDia: '', miHora: '', activity: '', alumno: '', duracion: ''};
   constructor(public navCtrl: NavController,
               private bluetoothSerial: BluetoothSerial,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public loadingCtrl: LoadingController) {
     //this.devices = "Presiona para buscar";
   }
 
@@ -61,7 +62,8 @@ export class Bluetooth {
   }
 
   seleccionarBluetooth(address:string){
-    this.showAlert("Seleccionado",address,"Aceptar");    
+    this.presentLoadingText();
+    //this.showAlert("Seleccionado",address,"Aceptar");
   }
 
   showAlert(titulo, contenido, boton) {
@@ -72,4 +74,25 @@ export class Bluetooth {
     });
     alert.present();
   }
+
+  showLoading() {
+    const loader = this.loadingCtrl.create({
+      content: "Espere por favor...",
+      duration: 3000
+    });
+    loader.present();
+  }
+
+  presentLoadingText() {
+  let loading = this.loadingCtrl.create({
+    spinner: 'hide',
+    content: 'Loading Please Wait...'
+  });
+
+  loading.present();
+
+  setTimeout(() => {
+    loading.dismiss();
+  }, 5000);
+}
 }
