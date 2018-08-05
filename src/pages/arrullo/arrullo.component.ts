@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { NgCalendarModule } from 'ionic2-calendar';
 import { TasksServiceProvider } from '../../providers/tasks-service/tasks-service';
 import { AlertController } from 'ionic-angular';
 
