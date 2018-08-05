@@ -16,6 +16,7 @@ export class Actividad {
   activity:any;
   actividades:any[][];
   Alumnos:any=[];
+  fecha: Date = new Date();
   registerActivity = {miDia: '', miHora: '', activity: '', alumno: '', duracion: ''};
   registerActivityDataBase = {fechaInicio: '', duracion: '', calificacion: '', Actividad_idActividad: '', boleta: ''};
   constructor(public navCtrl: NavController,
@@ -31,7 +32,8 @@ export class Actividad {
     this.registerActivityDataBase.duracion = this.registerActivity.duracion;
     this.registerActivityDataBase.Actividad_idActividad = this.registerActivity.activity;
     this.registerActivityDataBase.boleta = this.registerActivity.alumno;
-    this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase);
+    //this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase);
+    this.getCurrentDate();
     this.showAlert("Actividad","Actividad registrada con éxito","Aceptar");
   }
 
@@ -50,5 +52,7 @@ export class Actividad {
     alert.present();
   }
 
-
+  getCurrentDate(){
+    this.showAlert("Fecha",this.fecha.toISOString(),"Aceptar");
+  }
 }
