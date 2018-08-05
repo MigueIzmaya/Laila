@@ -123,12 +123,12 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, [3, "Cambiar el pañal", "Cambiar el pañal"]);
   }
 
-  getActivitiesByUser(actividadAlumno:any):any{
+  getActivitiesByUser(boleta:string):any{
 
-    this.showAlert("ActividadAlumno",actividadAlumno.boleta,"Aceptar");
+    this.showAlert("ActividadAlumno",boleta,"Aceptar");
 
     let sql = 'SELECT * FROM ActividadAlumno WHERE boleta = ?';
-    return this.db.executeSql(sql, [actividadAlumno.boleta]).then(response => {
+    return this.db.executeSql(sql, [boleta]).then(response => {
 
       let Actividades = [];
       for (let index = 0; index < response.rows.length; index ++){
