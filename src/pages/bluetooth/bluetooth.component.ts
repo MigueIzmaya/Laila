@@ -34,13 +34,13 @@ export class Bluetooth {
       this.connect();
     });
   }*/
-  /*
-  connect(){
-    this.bluetoothSerial.connect("00:06:66:80:AD:70").subscribe(peripheralData =>{
-      this.devices = "Conectado";
+
+  connect(serie: string){
+    this.bluetoothSerial.connect(serie).subscribe(peripheralData =>{
+      this.showAlert("Conectado", JSON.stringify(peripheralData, null, 4),"Aceptar");
     });
   }
-
+/*
   write(){
     this.bluetoothSerial.write('Hola Mundo \n').then(device=>{
       this.devices = "Si escribi";
@@ -64,8 +64,7 @@ export class Bluetooth {
   }
 
   seleccionarBluetooth(address:string){
-    this.presentLoadingCustom();
-
+    this.connect(address);
   }
 
   showAlert(titulo, contenido, boton) {
