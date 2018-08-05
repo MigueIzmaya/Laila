@@ -79,10 +79,7 @@ export class Bluetooth {
   presentLoadingCustom() {
   let loading = this.loadingCtrl.create({
     spinner: 'hide',
-    content: `
-      <div class="custom-spinner-container">
-        <div class="custom-spinner-box"></div>
-      </div>`,
+    content: "Espere por favor...",
     duration: 5000
   });
 
