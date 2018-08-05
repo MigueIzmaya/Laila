@@ -55,7 +55,7 @@ export class Actividad {
   getCurrentDate(){
     let fechaFormat:any = [this.fecha.getFullYear(),
                this.fecha.getMonth()+1,
-               this.fecha.getDate].join('/')+' '+
+               this.fecha.getDate()].join('/')+' '+
               [this.fecha.getHours(),
                this.fecha.getMinutes(),
                this.fecha.getSeconds()].join(':');
