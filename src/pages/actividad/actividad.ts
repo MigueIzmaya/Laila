@@ -53,6 +53,6 @@ export class Actividad {
   }
 
   getCurrentDate(){
-    this.showAlert("Fecha",this.fecha.toISOString(),"Aceptar");
+    this.showAlert("Fecha",this.fecha,"Aceptar");
   }
 }
