@@ -56,8 +56,7 @@ pages: Array<{title: string, component: any}>;
     this.bluetoothSerial.discoverUnpaired().then(device=>{
       this.showAlert("Bluetooth",JSON.stringify(device, null, 4),"Aceptar");
     }).catch(error=>{
-      this.devices = "Error";
-      this.devices = error;
+      this.showAlert("Error",error,"Aceptar");
     });
   }
 
