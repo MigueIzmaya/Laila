@@ -21,6 +21,7 @@ export class BluetoothProvider {
 
   isEnable():any{
     this.bluetoothSerial.isEnabled().then(response=>{
+      this.showAlert("Bluetooth",JSON.stringify(response, null, 4),"Aceptar");
       if(response.toLowerCase() == "ok"){
         return true;
       } else {
