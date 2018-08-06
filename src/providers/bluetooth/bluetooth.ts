@@ -22,9 +22,11 @@ export class BluetoothProvider {
   isEnable():any{
     this.bluetoothSerial.isEnabled().then(response=>{
       this.showAlert("Bluetooth",JSON.stringify(response, null, 4),"Aceptar");
-      if(response.toLowerCase() == "ok"){
+      if(response == "OK"){
+        this.showAlert("Bluetooth","verdadero","Aceptar");
         return true;
       } else {
+        this.showAlert("Bluetooth","falso","Aceptar");
         return false;
       }
     }).catch(connect=>{
