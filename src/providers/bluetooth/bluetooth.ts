@@ -62,8 +62,9 @@ export class BluetoothProvider {
     });
   }
 
-  listDevices(){
+  listDevices():any{
     this.bluetoothSerial.discoverUnpaired().then(devices=>{
+      this.showAlert("Bluetooth",JSON.stringify(devices, null, 4),"Aceptar");
       return devices;
     }).catch(error=>{
       this.showAlert("Error",error,"Aceptar");
