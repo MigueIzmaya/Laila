@@ -37,7 +37,7 @@ export class Actividad {
         this.registerActivityDataBase.idActividad = res;
     });
 
-    if(this.bluetooth.isConnect() == true){
+    /*if(this.bluetooth.isConnect() == true){
       if(this.bluetooth.write("0")){
           if(this.bluetooth.write(this.getCurrentDate())){
             /*if(this.bluetooth.write("1")){
@@ -45,14 +45,14 @@ export class Actividad {
             } else {
 
 
-            }*/
+            }
           } else {
 
           }
       } else {
 
       }
-    }
+    }*/
 
     //this.getCurrentDate();
     this.showAlert("Actividad","Actividad registrada con éxito","Aceptar");
