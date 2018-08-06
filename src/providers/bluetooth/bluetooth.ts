@@ -12,7 +12,7 @@ export class BluetoothProvider {
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController) {}
 
-  isConnect(){
+  isConnect():any{
     this.bluetoothSerial.isConnected().then(device =>{
       return true;
     }).catch(device=>{
@@ -30,7 +30,7 @@ export class BluetoothProvider {
     });
   }
 
-  write(mensaje:string){
+  write(mensaje:string):any{
     this.bluetoothSerial.write(mensaje + ' \n').then(resultado=>{
       if(resultado.toLowerCase() == "ok"){
         return true;

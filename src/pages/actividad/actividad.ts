@@ -23,7 +23,7 @@ export class Actividad {
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public tasksService: TasksServiceProvider,
-            /*public bluetooth: BluetoothProvider*/) {
+              public bluetooth: BluetoothProvider) {
                 this.getAllAlumnos();
 
   }
@@ -35,27 +35,24 @@ export class Actividad {
     this.registerActivityDataBase.boleta = this.registerActivity.alumno;
     this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase).then(res=>{
         this.registerActivityDataBase.idActividad = res;
-
     });
 
-
-
-    /*if(this.bluetooth.isConnect() == true){
+    if(this.bluetooth.isConnect() == true){
       if(this.bluetooth.write("0")){
           if(this.bluetooth.write(this.getCurrentDate())){
-            if(this.bluetooth.write("1")){
+            /*if(this.bluetooth.write("1")){
 
             } else {
 
 
-            }
+            }*/
           } else {
 
           }
       } else {
 
       }
-    }*/
+    }
 
     //this.getCurrentDate();
     this.showAlert("Actividad","Actividad registrada con éxito","Aceptar");
