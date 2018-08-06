@@ -33,11 +33,13 @@ export class Actividad {
     this.registerActivityDataBase.duracion = this.registerActivity.duracion;
     this.registerActivityDataBase.Actividad_idActividad = this.registerActivity.activity;
     this.registerActivityDataBase.boleta = this.registerActivity.alumno;
-    this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase).then(res=>{
-        this.registerActivityDataBase.idActividad = res;
-    });
 
     if(this.bluetooth.isConnect() == true){
+
+      this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase).then(res=>{
+          this.registerActivityDataBase.idActividad = res;
+      });
+
       if(this.bluetooth.write("0")){
           if(this.bluetooth.write(this.getCurrentDate())){
             /*if(this.bluetooth.write("1")){
