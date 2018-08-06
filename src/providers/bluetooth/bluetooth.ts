@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
-import { NavController, AlertController, LoadingController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 
 
 @Injectable()
 export class BluetoothProvider {
 
-  constructor(public navCtrl: NavController,
-              private bluetoothSerial: BluetoothSerial,
+  constructor(private bluetoothSerial: BluetoothSerial,
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController) {}
 
