@@ -20,21 +20,21 @@ export class BluetoothProvider {
   }
 
   isEnable():any{
-    this.bluetoothSerial.isEnabled().then(response=>{
+    return this.bluetoothSerial.isEnabled().then(response=>{
       let respuesta;
       this.showAlert("Bluetooth",JSON.stringify(response, null, 4),"Aceptar");
-      if(response == "OK"){
+      /*if(response == "OK"){
         this.showAlert("Bluetooth","verdadero","Aceptar");
         respuesta = true;
       } else {
         this.showAlert("Bluetooth","falso","Aceptar");
         respuesta = false;
-      }
+      }*/
 
-      return Promise.resolve(respuesta);
+      return Promise.resolve(response);
     }).catch(connect=>{
       this.showAlert("Bluetooth","El bluetooth está desactivado","Aceptar");
-      
+
     });
   }
 
