@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TasksServiceProvider } from '../../providers/tasks-service/tasks-service';
 import { AlertController } from 'ionic-angular';
-import { BluetoothProvider } from '../../providers/bluetooth/bluetooth';
+//import { BluetoothProvider } from '../../providers/bluetooth/bluetooth';
 
 @Component({
   selector: 'page-actividad',
@@ -23,7 +23,7 @@ export class Actividad {
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public tasksService: TasksServiceProvider,
-              public bluetooth: BluetoothProvider) {
+            /*public bluetooth: BluetoothProvider*/) {
                 this.getAllAlumnos();
 
   }
