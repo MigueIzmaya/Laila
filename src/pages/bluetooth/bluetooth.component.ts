@@ -21,8 +21,10 @@ export class Bluetooth {
   }
 
   buscar() {
+
+    this.showAlert("Fuera",this.bluetooth.isEnable(),"Aceptar");
     this.bluetooth.isEnable().then(res =>{
-        this.showAlert("Aceptar",res,"Aceptar");
+        this.showAlert("Dentro de promise",res,"Aceptar");
     });
 
 
