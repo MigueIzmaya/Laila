@@ -21,8 +21,10 @@ export class Bluetooth {
   }
 
   buscar() {
-    let respuesta = this.bluetooth.isEnable();
-    this.showAlert("Aceptar",respuesta,"Aceptar");
+    this.bluetooth.isEnable().then(res =>{
+        this.showAlert("Aceptar",res,"Aceptar");
+    });
+
 
     /*.then(response=>{
       this.showAlert("bluetooth",response,"Aceptar");
