@@ -33,9 +33,11 @@ export class Actividad {
     this.registerActivityDataBase.duracion = this.registerActivity.duracion;
     this.registerActivityDataBase.Actividad_idActividad = this.registerActivity.activity;
     this.registerActivityDataBase.boleta = this.registerActivity.alumno;
-    let id = this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase);
+    this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase).then(res=>{
+        this.showAlert("registrar_actividad",res,"Aceptar");
+    });
 
-    this.showAlert("registrar_actividad",id,"Aceptar");
+
 
     /*if(this.bluetooth.isConnect() == true){
       if(this.bluetooth.write("0")){
