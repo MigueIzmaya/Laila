@@ -21,10 +21,14 @@ export class Bluetooth {
   }
 
   buscar() {
-    if(this.bluetooth.isEnable() == true){
-      this.showAlert("bluetooth","Antes de loadingListDevice","Aceptar");
-      this.loadingListDevices();
-    }
+    this.bluetooth.isEnable().then(response=>{
+      if(response){
+        this.showAlert("bluetooth","Antes de loadingListDevice","Aceptar");
+        this.loadingListDevices();        
+      }
+    });
+
+
   }
 
   connect(serie: string){
