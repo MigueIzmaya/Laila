@@ -22,9 +22,10 @@ export class Bluetooth {
 
   buscar() {
     this.bluetooth.isEnable().then(response=>{
+      this.showAlert("bluetooth",response,"Aceptar");
       if(response){
         this.showAlert("bluetooth","Antes de loadingListDevice","Aceptar");
-        this.loadingListDevices();        
+        this.loadingListDevices();
       }
     });
 
