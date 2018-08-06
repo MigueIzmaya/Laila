@@ -19,7 +19,7 @@ import { AltaAlumno } from '../pages/altaAlumno/altalumno.component';
 import { Configuracion } from '../pages/configuracion/configuracion';
 import { Actividad } from '../pages/actividad/actividad';
 import { TasksServiceProvider } from '../providers/tasks-service/tasks-service';
-
+import { BluetoothProvider } from '../../providers/bluetooth/bluetooth';
 
 @Component({
   templateUrl: 'app.html'
@@ -36,7 +36,8 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public sqlite: SQLite,
-    public tasksService: TasksServiceProvider) {
+    public tasksService: TasksServiceProvider,
+    public bluetooth: BluetoothProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation

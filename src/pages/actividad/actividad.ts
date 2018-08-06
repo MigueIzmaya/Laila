@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TasksServiceProvider } from '../../providers/tasks-service/tasks-service';
 import { AlertController } from 'ionic-angular';
-//import { BluetoothProvider } from '../../providers/bluetooth/bluetooth';
+import { BluetoothProvider } from '../../providers/bluetooth/bluetooth';
 
 @Component({
   selector: 'page-actividad',
@@ -34,7 +34,8 @@ export class Actividad {
     this.registerActivityDataBase.Actividad_idActividad = this.registerActivity.activity;
     this.registerActivityDataBase.boleta = this.registerActivity.alumno;
     this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase).then(res=>{
-        this.showAlert("registrar_actividad",res,"Aceptar");
+        this.registerActivityDataBase.idActividad = res;
+
     });
 
 
