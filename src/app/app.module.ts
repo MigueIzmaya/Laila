@@ -25,6 +25,7 @@ import { ListaAlumnos } from '../pages/lista-alumnos/lista-alumnos';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TasksServiceProvider } from '../providers/tasks-service/tasks-service';
+import { BluetoothProvider } from '../providers/bluetooth/bluetooth';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { TasksServiceProvider } from '../providers/tasks-service/tasks-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BluetoothSerial,
     SQLite,
-    TasksServiceProvider
+    TasksServiceProvider,
+    BluetoothProvider
   ]
 })
 export class AppModule {}

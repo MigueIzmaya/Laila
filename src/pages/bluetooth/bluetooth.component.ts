@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController  } from 'ionic-angular';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { TasksServiceProvider } from '../../providers/tasks-service/tasks-service';
+import { BluetoothProvider } from '../../providers/bluetooth/bluetooth';
 
 @Component({
   selector: 'page-bluetooth',
@@ -26,16 +28,6 @@ export class Bluetooth {
       this.showAlert("Bluetooth","El bluetooth está desactivado","Aceptar");
     });
   }
-  /*
-  isConnect(){
-    this.bluetoothSerial.isConnected().then(device =>{
-      this.write();
-    }).catch(device=>{
-      this.connect();
-    });
-  }*/
-
-
 
   connect(serie: string){
     this.bluetoothSerial.connect(serie).subscribe(peripheralData =>{
