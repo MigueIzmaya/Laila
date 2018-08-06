@@ -21,22 +21,11 @@ export class Bluetooth {
   }
 
   buscar() {
-
-    this.showAlert("Fuera",this.bluetooth.isEnable(),"Aceptar");
     this.bluetooth.isEnable().then(res =>{
-        this.showAlert("Dentro de promise",res,"Aceptar");
-    });
-
-
-    /*.then(response=>{
-      this.showAlert("bluetooth",response,"Aceptar");
-      if(response){
-        this.showAlert("bluetooth","Antes de loadingListDevice","Aceptar");
+      if(res){
         this.loadingListDevices();
       }
-    });*/
-
-
+    });
   }
 
   connect(serie: string){
@@ -66,7 +55,9 @@ export class Bluetooth {
     });
 
     loading.onDidDismiss(() => {
-      this.devicesArray = this.bluetooth.listDevices();
+      this.bluetooth.listDevices().then(resultado => {
+          this.devicesArray = resultado;
+      });
     });
 
     loading.present();

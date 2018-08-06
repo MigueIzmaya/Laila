@@ -22,12 +22,9 @@ export class BluetoothProvider {
   isEnable():any{
     return this.bluetoothSerial.isEnabled().then(response=>{
       let respuesta;
-      this.showAlert("Bluetooth",JSON.stringify(response, null, 4),"Aceptar");
       if(response == "OK"){
-        this.showAlert("Bluetooth","verdadero","Aceptar");
         respuesta = true;
       } else {
-        this.showAlert("Bluetooth","falso","Aceptar");
         respuesta = false;
       }
 
@@ -69,7 +66,7 @@ export class BluetoothProvider {
   }
 
   listDevices():any{
-    this.bluetoothSerial.discoverUnpaired().then(devices=>{
+    return this.bluetoothSerial.discoverUnpaired().then(devices=>{
       this.showAlert("Bluetooth",JSON.stringify(devices, null, 4),"Aceptar");
       return devices;
     }).catch(error=>{
