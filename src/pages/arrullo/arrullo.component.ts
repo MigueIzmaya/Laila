@@ -32,10 +32,8 @@ export class Arrullo {
       this.descripcion = descripciones;
     });
     // JSON.stringify(YOUR_OBJECT_HERE, null, 4)
-    this.showAlert("Antes de ",this.activityArrullo.boleta,"Aceptar");
 
     this.tasksService.getActivitiesByUser(this.activityArrullo.boleta).then(actividades=>{
-      this.showAlert("ByUser",JSON.stringify(actividades, null, 4),"Aceptar");
       this.Actividades = actividades;
       /*for (let index = 0; index < this.Actividades.length; index++){
          if(Number(this.Actividades[index].boleta) == Number(this.activityArrullo.boleta)){

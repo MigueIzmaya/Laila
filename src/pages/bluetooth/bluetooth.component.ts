@@ -16,45 +16,20 @@ export class Bluetooth {
   constructor(public navCtrl: NavController,
               private bluetoothSerial: BluetoothSerial,
               public alertCtrl: AlertController,
-              public loadingCtrl: LoadingController) {
-    //this.devices = "Presiona para buscar";
+              public loadingCtrl: LoadingController,
+              public bluetooth: BluetoothProvider) {
   }
 
   buscar() {
-    this.bluetoothSerial.isEnabled().then(device=>{
-      this.presentLoadingCustom();
-      //this.listDevices();
-    }).catch(connect=>{
-      this.showAlert("Bluetooth","El bluetooth está desactivado","Aceptar");
-    });
+    if(this.bluetooth.isEnable()){
+      this.loadingListDevices();
+    }
   }
 
   connect(serie: string){
-    this.bluetoothSerial.connect(serie).subscribe(peripheralData =>{
-      this.write("Hola mundo");
-    });
-  }
-
-  write(mensaje:string){
-    this.bluetoothSerial.write(mensaje + ' \n').then(resultado=>{
-
-    }).catch(error=>{
-      this.showAlert("Error bluetooth",error,"Aceptar");
-    });
-  }
-/*
-  read(){
-    this.bluetoothSerial.read().then(peripheralData => {
-      this.devices = peripheralData;
-    })
-  }*/
-
-  listDevices(){
-    this.bluetoothSerial.discoverUnpaired().then(devices=>{
-      this.devicesArray = devices;
-    }).catch(error=>{
-      this.showAlert("Error",error,"Aceptar");
-    });
+    if(this.bluetooth.connect(serie)){
+      this.showAlert("Bluetooth","Conectado con éxito","Aceptar");
+    }
   }
 
   seleccionarBluetooth(address:string){
@@ -70,7 +45,7 @@ export class Bluetooth {
     alert.present();
   }
 
-  presentLoadingCustom() {
+  loadingListDevices() {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: "Espere por favor...",
@@ -78,7 +53,7 @@ export class Bluetooth {
     });
 
     loading.onDidDismiss(() => {
-      this.listDevices();
+      this.devicesArray = this.bluetooth.listDevices();
     });
 
     loading.present();

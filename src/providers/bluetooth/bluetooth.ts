@@ -19,7 +19,19 @@ export class BluetoothProvider {
     });
   }
 
-  connect(serie: string){
+  isEnable():any{
+    this.bluetoothSerial.isEnabled().then(response=>{
+      if(response.toLowerCase() == "ok"){
+        return true;
+      } else {
+        return false;
+      }
+    }).catch(connect=>{
+      this.showAlert("Bluetooth","El bluetooth está desactivado","Aceptar");
+    });
+  }
+
+  connect(serie: string): any{
     this.bluetoothSerial.connect(serie).subscribe(data =>{
       if (data.toLowerCase() == "ok"){
         return true;
