@@ -199,8 +199,13 @@ export class TasksServiceProvider {
   insertTableActividadAlumno(actividadAlumno:any){
     let sql = 'INSERT INTO ActividadAlumno(fechaInicio, duracion, calificacion, Actividad_idActividad, boleta) VALUES(?,?,?,?,?)';
     return this.db.executeSql(sql, [actividadAlumno.fechaInicio, actividadAlumno.duracion, actividadAlumno.calificacion, actividadAlumno.Actividad_idActividad, actividadAlumno.boleta]). then(result => {
-      this.showAlert("ActividadAlumno",JSON.stringify(result, null, 4),"Aceptar");
-    })
+      let ActividadAlumno = [];
+      for (let index = 0; index < result.rows.length; index ++){
+        ActividadAlumno.push(result.rows.item(index));
+      }
+
+      return Promise.resolve(ActividadAlumno);
+    }).catch(error => {Promise.reject(error)});
   }
 
   updateTableMaestro(maestro:any){

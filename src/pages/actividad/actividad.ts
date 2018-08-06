@@ -18,7 +18,7 @@ export class Actividad {
   Alumnos:any=[];
   fecha: Date = new Date();
   registerActivity = {miDia: '', miHora: '', activity: '', alumno: '', duracion: ''};
-  registerActivityDataBase = {fechaInicio: '', duracion: '', calificacion: '', Actividad_idActividad: '', boleta: ''};
+  registerActivityDataBase = {fechaInicio: '', duracion: '', calificacion: '', Actividad_idActividad: '', boleta: '', idActividad: ''};
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
@@ -33,7 +33,9 @@ export class Actividad {
     this.registerActivityDataBase.duracion = this.registerActivity.duracion;
     this.registerActivityDataBase.Actividad_idActividad = this.registerActivity.activity;
     this.registerActivityDataBase.boleta = this.registerActivity.alumno;
-    this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase);
+    this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase).then(resultado=>{
+      this.showAlert("registrar_actividad",resultado[0].insertId,"Aceptar");
+    });
 
     /*if(this.bluetooth.isConnect() == true){
       if(this.bluetooth.write("0")){
