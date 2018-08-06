@@ -21,7 +21,7 @@ export class Bluetooth {
   }
 
   buscar() {
-    if(this.bluetooth.isEnable()){
+    if(this.bluetooth.isEnable() == true){
       this.showAlert("bluetooth","Antes de loadingListDevice","Aceptar");
       this.loadingListDevices();
     }
