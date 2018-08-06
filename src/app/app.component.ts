@@ -19,7 +19,7 @@ import { AltaAlumno } from '../pages/altaAlumno/altalumno.component';
 import { Configuracion } from '../pages/configuracion/configuracion';
 import { Actividad } from '../pages/actividad/actividad';
 import { TasksServiceProvider } from '../providers/tasks-service/tasks-service';
-import { BluetoothProvider } from '../../providers/bluetooth/bluetooth';
+import { BluetoothProvider } from '../providers/bluetooth/bluetooth';
 
 @Component({
   templateUrl: 'app.html'
