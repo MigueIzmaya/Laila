@@ -38,24 +38,26 @@ export class Actividad {
       if(res){
 
         this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase).then(res=>{
-          this.showAlert("Actividad","Actividad registrada con éxito","Aceptar");
             this.registerActivityDataBase.idActividad = res;
         });
 
-        if(this.bluetooth.write("0")){
-            if(this.bluetooth.write(this.getCurrentDate())){
-              /*if(this.bluetooth.write("1")){
-
-              } else {
-
-
-              }*/
-            } else {
-
-            }
-        } else {
-
-        }
+        this.bluetooth.write("0").then(res=> {
+          if(res){
+            this.bluetooth.write(this.getCurrentDate()).then(res=>{
+              if (res){
+                this.bluetooth.write("1").then(res=>{
+                  if(res){
+                    this.bluetooth.write(JSON.stringify(this.registerActivityDataBase)).then(res=>{
+                      if(res){
+                        this.showAlert("Actividad","Actividad registrada con éxito","Aceptar");
+                      }
+                    })
+                  }
+                })
+              }
+            })
+          }
+        })
 
       } else {
         this.showAlert("Actividad","Por favor antes de registrar, entra a la sección Bluetooth","Aceptar");
