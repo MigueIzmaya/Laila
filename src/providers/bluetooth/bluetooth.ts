@@ -50,7 +50,7 @@ export class BluetoothProvider {
   }
 
   write(mensaje:string):any{
-    this.bluetoothSerial.write(mensaje + ' \n').then(resultado=>{
+    return this.bluetoothSerial.write(mensaje + ' \n').then(resultado=>{
       if(resultado == "OK"){
         return true;
       } else {
