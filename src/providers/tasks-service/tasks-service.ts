@@ -210,6 +210,11 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, [maestro.contrasena, maestro.usuario]);
   }
 
+  updateTableAlumno(alumno:any){
+    let sql = 'UPDATE Alumno SET numero_serie=? WHERE boleta=?';
+    return this.db.executeSql(sql, [alumno.numero_serie, alumno.boleta]);
+  }
+
   getMaestroByUserName(username: String): any {
     let sql = 'SELECT * FROM Maestro where usuario = ?';
     return this.db.executeSql(sql,[username])

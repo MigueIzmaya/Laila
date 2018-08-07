@@ -42,12 +42,16 @@ export class Actividad {
         });
 
         this.bluetooth.write("0").then(res=> {
+          this.showAlert("Actividad_0",res,"Aceptar");
           if(res){
             this.bluetooth.write(this.getCurrentDate()).then(res=>{
+              this.showAlert("Actividad_01",res,"Aceptar");
               if (res){
                 this.bluetooth.write("1").then(res=>{
+                  this.showAlert("Actividad_1",res,"Aceptar");
                   if(res){
                     this.bluetooth.write(JSON.stringify(this.registerActivityDataBase)).then(res=>{
+                      this.showAlert("Actividad_11",res,"Aceptar");
                       if(res){
                         this.showAlert("Actividad","Actividad registrada con éxito","Aceptar");
                       }

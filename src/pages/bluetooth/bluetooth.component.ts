@@ -13,11 +13,13 @@ export class Bluetooth {
   dispositivos = {name: '', address: '', id: '', class: ''};
   registerActivity = {miDia: '', miHora: '', activity: '', alumno: '', duracion: ''};
   ejemplo:any;
+  Alumnos:any=[];
   constructor(public navCtrl: NavController,
               private bluetoothSerial: BluetoothSerial,
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
-              public bluetooth: BluetoothProvider) {
+              public bluetooth: BluetoothProvider,
+              public tasksService: TasksServiceProvider) {
   }
 
   buscar() {
@@ -29,9 +31,13 @@ export class Bluetooth {
   }
 
   connect(serie: string){
-    if(this.bluetooth.connect(serie)){
-      this.showAlert("Bluetooth","Conectado con éxito","Aceptar");
-    }
+    this.bluetooth.connect(serie).then(res=>{
+      if(res){
+        this.tasksService.updateTableAlumno
+        this.showAlert("Bluetooth","Conectado con éxito","Aceptar");
+      }
+    })
+
   }
 
   seleccionarBluetooth(address:string){
@@ -63,6 +69,12 @@ export class Bluetooth {
     });
 
     loading.present();
+  }
+
+  getAllAlumnos(){
+    this.tasksService.getAllAlumnos().then(alumnos=>{
+      this.Alumnos = alumnos;
+    });
   }
 
   showLoading() {
