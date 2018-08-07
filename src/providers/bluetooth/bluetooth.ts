@@ -13,6 +13,7 @@ export class BluetoothProvider {
 
   isConnect():any{
     return this.bluetoothSerial.isConnected().then(device =>{
+      this.showAlert("isConnect",JSON.stringify(device, null, 4),"Aceptar");
       return true;
     }).catch(device=>{
       return false;
