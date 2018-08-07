@@ -54,6 +54,8 @@ export class Bluetooth {
       duration: 20000
     });
 
+
+
     loading.onDidDismiss(() => {
       this.bluetooth.listDevices().then(resultado => {
           this.devicesArray = resultado;
