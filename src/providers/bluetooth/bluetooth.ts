@@ -36,8 +36,8 @@ export class BluetoothProvider {
   }
 
   connect(serie: string): any{
-    this.bluetoothSerial.connect(serie).subscribe(data =>{
-      if (data.toLowerCase() == "ok"){
+    return this.bluetoothSerial.connect(serie).subscribe(data =>{
+      if (data == "OK"){
         return true;
       } else {
         return false;
@@ -47,7 +47,7 @@ export class BluetoothProvider {
 
   write(mensaje:string):any{
     this.bluetoothSerial.write(mensaje + ' \n').then(resultado=>{
-      if(resultado.toLowerCase() == "ok"){
+      if(resultado == "OK"){
         return true;
       } else {
         return false;
