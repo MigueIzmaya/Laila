@@ -12,7 +12,7 @@ export class BluetoothProvider {
               public loadingCtrl: LoadingController) {}
 
   isConnect():any{
-    this.bluetoothSerial.isConnected().then(device =>{
+    return this.bluetoothSerial.isConnected().then(device =>{
       return true;
     }).catch(device=>{
       return false;
@@ -67,7 +67,6 @@ export class BluetoothProvider {
 
   listDevices():any{
     return this.bluetoothSerial.discoverUnpaired().then(devices=>{
-      this.showAlert("Bluetooth",JSON.stringify(devices, null, 4),"Aceptar");
       return devices;
     }).catch(error=>{
       this.showAlert("Error",error,"Aceptar");
