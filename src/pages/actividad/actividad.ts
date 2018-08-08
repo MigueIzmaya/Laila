@@ -52,32 +52,25 @@ export class Actividad {
         this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase).then(res=>{
           this.showAlert("insert",JSON.stringify(res, null, 4),"Aceptar");
             this.registerActivityDataBase.idActividad = res;
-        });
-
-        this.showAlert("AntesDeenviar",this.registerActivityDataBase.idActividad,"Aceptar");
-
-        this.bluetooth.write("0").then(res=> {
-          this.showAlert("Actividad_0",res,"Aceptar");
-          if(res){
-            this.bluetooth.write(this.getCurrentDate()).then(res=>{
-              this.showAlert("Actividad_01",res,"Aceptar");
-              if (res){
-                this.bluetooth.write("1").then(res=>{
-                  this.showAlert("Actividad_1",res,"Aceptar");
-                  if(res){
-                    this.bluetooth.write(JSON.stringify(this.registerActivityDataBase)).then(res=>{
-                      this.showAlert("Actividad_11",res,"Aceptar");
+            this.showAlert("insert2",JSON.stringify(this.registerActivityDataBase.idActividad, null, 4),"Aceptar");
+            this.bluetooth.write("0").then(res=> {
+              if(res){
+                this.bluetooth.write(this.getCurrentDate()).then(res=>{
+                  if (res){
+                    this.bluetooth.write("1").then(res=>{
                       if(res){
-                        this.showAlert("Actividad","Actividad registrada con éxito","Aceptar");
+                        this.bluetooth.write(JSON.stringify(this.registerActivityDataBase)).then(res=>{
+                          if(res){
+                            this.showAlert("Actividad","Actividad registrada con éxito","Aceptar");
+                          }
+                        })
                       }
                     })
                   }
                 })
               }
             })
-          }
-        })
-
+        });
       } else {
         this.showAlert("Actividad","Por favor antes de registrar, entra a la sección Bluetooth","Aceptar");
       }
