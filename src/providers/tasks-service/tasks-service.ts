@@ -212,7 +212,9 @@ export class TasksServiceProvider {
 
   updateTableAlumno(alumno:any){
     let sql = 'UPDATE Alumno SET numero_serie=? WHERE boleta=?';
-    return this.db.executeSql(sql, [alumno.numero_serie, alumno.boleta]);
+    return this.db.executeSql(sql, [alumno.numero_serie, alumno.boleta]).then(resultado=>{
+      this.showAlert("UpdateAlumno",JSON.stringify(resultado, null, 4),"Aceptar");
+    });
   }
 
   getNumeroSerieByBoleta(boleta:string){
