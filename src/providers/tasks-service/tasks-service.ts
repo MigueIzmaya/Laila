@@ -215,6 +215,20 @@ export class TasksServiceProvider {
     return this.db.executeSql(sql, [alumno.numero_serie, alumno.boleta]);
   }
 
+  getNumeroSerieByBoleta(boleta:string){
+    let sql = 'SELECT numero_serie FROM Alumno where boleta = ?';
+    return this.db.executeSql(sql,[boleta])
+    .then(response => {
+      let Alumno = [];
+      for (let index = 0; index < response.rows.length; index ++){
+        Alumno.push(response.rows.item(index) );
+      }
+
+      return Promise.resolve(Alumno);
+    })
+    .catch(error => {Promise.reject(error)});
+  }
+
   getMaestroByUserName(username: String): any {
     let sql = 'SELECT * FROM Maestro where usuario = ?';
     return this.db.executeSql(sql,[username])

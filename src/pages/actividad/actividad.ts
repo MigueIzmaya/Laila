@@ -34,6 +34,18 @@ export class Actividad {
     this.registerActivityDataBase.Actividad_idActividad = this.registerActivity.activity;
     this.registerActivityDataBase.boleta = this.registerActivity.alumno;
 
+    this.bluetooth.isConnect().then(con=>{
+      if(!con){
+        this.tasksService.getNumeroSerieByBoleta(this.registerActivityDataBase.boleta).then(res=>{
+          this.showAlert("Conectar",JSON.stringify(res, null, 4),"Aceptar");
+          /*this.bluetooth.connect(res[0].numero_serie).then(con=>{
+          });*/
+        });
+      }
+    });
+
+
+
     this.bluetooth.isConnect().then(res =>{
       if(res){
 

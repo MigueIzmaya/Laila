@@ -12,6 +12,7 @@ export class Bluetooth {
   devicesArray:any = null;
   dispositivos = {name: '', address: '', id: '', class: ''};
   registerActivity = {miDia: '', miHora: '', activity: '', alumno: '', duracion: ''};
+  registerBluetooth = {boleta: '', numero_serie: ''};
   ejemplo:any;
   Alumnos:any=[];
   constructor(public navCtrl: NavController,
@@ -20,9 +21,12 @@ export class Bluetooth {
               public loadingCtrl: LoadingController,
               public bluetooth: BluetoothProvider,
               public tasksService: TasksServiceProvider) {
+
+                this.getAllAlumnos();
   }
 
   buscar() {
+
     this.bluetooth.isEnable().then(res =>{
       if(res){
         this.loadingListDevices();
@@ -33,7 +37,9 @@ export class Bluetooth {
   connect(serie: string){
     this.bluetooth.connect(serie).then(res=>{
       if(res){
-        this.tasksService.updateTableAlumno
+        this.registerBluetooth.boleta = this.registerActivity.alumno;
+        this.registerBluetooth.numero_serie = serie;
+        this.tasksService.updateTableAlumno(this.registerBluetooth);
         this.showAlert("Bluetooth","Conectado con éxito","Aceptar");
       }
     })
@@ -54,13 +60,12 @@ export class Bluetooth {
   }
 
   loadingListDevices() {
+
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: "Espere por favor...",
       duration: 20000
     });
-
-
 
     loading.onDidDismiss(() => {
       this.bluetooth.listDevices().then(resultado => {
