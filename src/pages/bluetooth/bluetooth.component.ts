@@ -26,7 +26,6 @@ export class Bluetooth {
   }
 
   buscar() {
-
     this.bluetooth.isEnable().then(res =>{
       if(res){
         this.loadingListDevices();
@@ -35,6 +34,7 @@ export class Bluetooth {
   }
 
   connect(serie: string){
+    this.showAlert("Connect",serie,"Aceptar");
     this.bluetooth.connect(serie).then(res=>{
       this.showAlert("Conectando",JSON.stringify(res, null, 4),"Aceptar");
       if(res){
@@ -48,6 +48,7 @@ export class Bluetooth {
   }
 
   seleccionarBluetooth(address:string){
+    this.showAlert("seleccionarBluetooth",address,"Aceptar");
     this.connect(address);
   }
 

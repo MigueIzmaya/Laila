@@ -41,6 +41,7 @@ export class BluetoothProvider {
 
   connect(serie: string): any{
     return this.bluetoothSerial.connect(serie).subscribe(data =>{
+      this.showAlert("Dentrodeconectserial",JSON.stringify(data, null, 4),"Aceptar");
       if (data == "OK"){
         return true;
       } else {
