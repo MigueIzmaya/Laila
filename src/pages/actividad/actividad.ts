@@ -50,6 +50,7 @@ export class Actividad {
       if(res){
 
         this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase).then(res=>{
+          this.showAlert("insert",JSON.stringify(res, null, 4),"Aceptar");
             this.registerActivityDataBase.idActividad = res;
         });
 
