@@ -54,6 +54,8 @@ export class Actividad {
             this.registerActivityDataBase.idActividad = res;
         });
 
+        this.showAlert("AntesDeenviar",this.registerActivityDataBase.idActividad,"Aceptar");
+
         this.bluetooth.write("0").then(res=> {
           this.showAlert("Actividad_0",res,"Aceptar");
           if(res){
