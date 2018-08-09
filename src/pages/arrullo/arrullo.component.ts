@@ -39,7 +39,7 @@ export class Arrullo {
     this.tasksService.getActivitiesByUser(this.activityArrullo.boleta).then(actividades=>{
       this.Actividades = actividades;
       this.showAlert("ActivitiesUser",JSON.stringify(actividades, null, 4),"Aceptar");
-      for (let index = 0; index < this.Actividades; index++){
+      for (let index = 0; index < this.Actividades.length; index++){
         this.GetActividades.boleta = this.Actividades[index].boleta;
         this.GetActividades.idActividad = this.Actividades[index].id_actividadAlumno;
         this.showAlert("ActivitiesUser",this.GetActividades,"Aceptar");
