@@ -50,7 +50,7 @@ export class Actividades {
   }
 
   goActividad(){
-    this.navCtrl.push( Actividad );
+    this.navCtrl.push( Actividad, {"idMaestro":this.usuario});
   }
 
   goListaAlumnos(){
