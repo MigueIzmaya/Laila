@@ -46,7 +46,6 @@ export class Bluetooth {
   }
 
   seleccionarBluetooth(address:string){
-    this.showAlert("seleccionarBluetooth",address,"Aceptar");
     this.connect(address);
   }
 
