@@ -66,8 +66,8 @@ export class BluetoothProvider {
   }
 
   read(){
-    this.bluetoothSerial.read().then(peripheralData => {
-      return peripheralData;
+    return this.bluetoothSerial.read().then(peripheralData => {
+      this.showAlert("Read",JSON.stringify(peripheralData, null, 4),"Aceptar");
     }).catch(error=>{
       this.showAlert("Bluetooth","Hubo un error al leer los datos","Aceptar");
     });

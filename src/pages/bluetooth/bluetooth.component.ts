@@ -34,9 +34,7 @@ export class Bluetooth {
   }
 
   connect(serie: string){
-    this.showAlert("Connect",serie,"Aceptar");
     this.bluetooth.connect(serie).then(res=>{
-      this.showAlert("Conectando",JSON.stringify(res, null, 4),"Aceptar");
       if(res){
         this.registerBluetooth.boleta = this.registerActivity.alumno;
         this.registerBluetooth.numero_serie = serie;

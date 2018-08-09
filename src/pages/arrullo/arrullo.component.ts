@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TasksServiceProvider } from '../../providers/tasks-service/tasks-service';
 import { AlertController } from 'ionic-angular';
+import { BluetoothProvider } from '../../providers/bluetooth/bluetooth';
 
 @Component({
   selector: 'page-arrullo',
@@ -14,6 +15,7 @@ export class Arrullo {
   Actividades:any=[];
   getActivityDataBase = {fechaInicio: '', duracion: '', calificacion: '', Actividad_idActividad: '', boleta: ''};
   ActivityDataBase = {Actividad_idActividad: '', boleta: ''};
+  GetActividades = {boleta: '', idActividad: ''}
   activityArrullo = {boleta: '', id: ''};
   ActividadesAlumno:any=[];
   descripcion:any=[];
@@ -22,7 +24,8 @@ export class Arrullo {
 
   constructor(public navCtrl: NavController,
               public tasksService: TasksServiceProvider,
-              public alertCtrl: AlertController,) {
+              public alertCtrl: AlertController,
+              public bluetooth: BluetoothProvider){
     this.getAllAlumnos();
 
   }
@@ -35,6 +38,23 @@ export class Arrullo {
 
     this.tasksService.getActivitiesByUser(this.activityArrullo.boleta).then(actividades=>{
       this.Actividades = actividades;
+      for (let index = 0; index < this.Actividades; index++){
+        this.GetActividades.boleta = this.Actividades[index].boleta;
+        this.GetActividades.idActividad = this.Actividades[index].id_actividadAlumno;
+        this.bluetooth.write("2").then(res=>{
+          if(res){
+            this.bluetooth.write(JSON.stringify(this.GetActividades)).then(res=>{
+              if(res){
+                this.bluetooth.read().then(res=>{
+
+                })
+              }
+            })
+          }
+        });
+      }
+
+
       /*for (let index = 0; index < this.Actividades.length; index++){
          if(Number(this.Actividades[index].boleta) == Number(this.activityArrullo.boleta)){
 
