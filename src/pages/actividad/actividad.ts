@@ -38,12 +38,12 @@ export class Actividad {
       if(!con){
         this.tasksService.getNumeroSerieByBoleta(this.registerActivityDataBase.boleta).then(res=>{
 
-          if(res != []){
+          //if(res != []){
             this.showAlert("Conectar",JSON.stringify(res, null, 4),"Aceptar");
             this.showAlert("Conectar2",res[0].numero_serie,"Aceptar");
             /*this.bluetooth.connect().then(con=>{
             });*/
-          }
+          //}
         });
       }
     });
