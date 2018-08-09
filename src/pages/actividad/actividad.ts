@@ -37,8 +37,13 @@ export class Actividad {
     this.bluetooth.isConnect().then(con=>{
       if(!con){
         this.tasksService.getNumeroSerieByBoleta(this.registerActivityDataBase.boleta).then(res=>{
+
+          
+            this.showAlert("Conectar",JSON.stringify(res, null, 4),"Aceptar");
+            this.showAlert("Conectar2",res[0].numero_serie,"Aceptar");
             this.bluetooth.connect(res[0].numero_serie).then(con=>{
             });
+          //}
         });
       }
     });
@@ -49,7 +54,9 @@ export class Actividad {
       if(res){
 
         this.tasksService.insertTableActividadAlumno(this.registerActivityDataBase).then(res=>{
+          this.showAlert("insert",JSON.stringify(res, null, 4),"Aceptar");
             this.registerActivityDataBase.idActividad = res;
+            this.showAlert("insert2",JSON.stringify(this.registerActivityDataBase.idActividad, null, 4),"Aceptar");
             this.bluetooth.write("0").then(res=> {
               if(res){
                 this.bluetooth.write(this.getCurrentDate()).then(res=>{
