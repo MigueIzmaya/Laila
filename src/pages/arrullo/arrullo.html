@@ -23,18 +23,20 @@
         <ion-item-sliding *ngFor="let actividad of Actividades">
           <ion-item>
             <div *ngIf="actividad.Actividad_idActividad == 0">
-              <ion-icon ios="ios-shirt" md="md-shirt" *ngIf="actividad.Actividad_idActividad == '0'"></ion-icon>
+              <ion-icon ios="ios-shirt" md="md-shirt"></ion-icon>
             </div>
 
             <div *ngIf="actividad.Actividad_idActividad == 1">
-              <ion-icon ios="ios-happy" md="md-happy" *ngIf="actividad.Actividad_idActividad == 1"></ion-icon>
+              <ion-icon ios="ios-happy" md="md-happy"></ion-icon>
             </div>
-            <!--
-              <ion-icon ios="ios-happy" md="md-happy" *ngIf="actividad.Actividad_idActividad == 1"></ion-icon>
 
-              <ion-icon ios="ios-sad" md="md-sad" *ngIf="actividad.Actividad_idActividad == 2"></ion-icon>
-              <ion-icon ios="ios-man" md="md-man" *ngIf="actividad.Actividad_idActividad) == 3"></ion-icon>
--->
+            <div *ngIf="actividad.Actividad_idActividad == 2">
+              <ion-icon ios="ios-sad" md="md-sad"></ion-icon>
+            </div>
+
+            <div *ngIf="actividad.Actividad_idActividad == 3">
+              <ion-icon ios="ios-man" md="md-man"></ion-icon>
+            </div>
                 {{descripcion[actividad.Actividad_idActividad].nombre}}
               <p>
                 Fecha: {{actividad.fechaInicio}}
