@@ -4,22 +4,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SQLite } from '@ionic-native/sqlite';
 import { AlertController } from 'ionic-angular';
-
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { Arrullo } from '../pages/arrullo/arrullo.component';
-import { Alimentar } from '../pages/alimentar/alimentar.component';
-import { Panal } from '../pages/panal/panal.component';
 import { Calificacion } from '../pages/calificacion/calificacion.component';
 import { Bluetooth } from '../pages/bluetooth/bluetooth.component';
 import { Contrasena } from '../pages/contrasena/contrasena.component';
-import { Vestimenta } from '../pages/vestimenta/vestimenta.component';
 import { Actividades } from '../pages/actividades/actividades.component';
 import { AltaAlumno } from '../pages/altaAlumno/altalumno.component';
 import { Configuracion } from '../pages/configuracion/configuracion';
 import { Actividad } from '../pages/actividad/actividad';
 import { TasksServiceProvider } from '../providers/tasks-service/tasks-service';
-//import { BluetoothProvider } from '../providers/bluetooth/bluetooth';
 
 @Component({
   templateUrl: 'app.html'
@@ -46,7 +40,6 @@ export class MyApp {
       { title: 'Alimentar', component: Alimentar },
       { title: 'Arrullo', component: Arrullo },
       { title: 'Pañal', component: Panal},
-      { title: 'Vestimenta', component: Vestimenta},
       { title: 'Bluetooth', component: Bluetooth},
       { title: 'Contraseña', component: Contrasena},
       { title: 'Actividades', component: Actividades},
