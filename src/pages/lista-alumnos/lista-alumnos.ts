@@ -15,7 +15,7 @@ export class ListaAlumnos {
               public tasksService: TasksServiceProvider,
               public alertCtrl: AlertController) {
 
-                this.getAllAlumnos();
+              //this.getAllAlumnos();
   }
 
   getAllAlumnos(){
